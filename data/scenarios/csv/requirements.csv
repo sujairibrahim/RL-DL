@@ -1,0 +1,441 @@
+scenario_id,domain,req_type,req_index,requirement
+e9517d8b,e_commerce_marketplace,hidden,0,"The system shall allow sellers to register, create a store profile, and list products with images, descriptions, and prices."
+e9517d8b,e_commerce_marketplace,hidden,1,"The system shall allow buyers to search for products by keyword, category, and price range."
+e9517d8b,e_commerce_marketplace,visible,2,The system shall provide a shopping cart that persists across user sessions.
+e9517d8b,e_commerce_marketplace,visible,3,"The system shall process payments via credit card, debit card, and PayPal."
+e9517d8b,e_commerce_marketplace,visible,4,The system shall send order confirmation and shipping update emails to buyers.
+e9517d8b,e_commerce_marketplace,visible,5,The system shall allow buyers to leave ratings and reviews for completed purchases.
+e9517d8b,e_commerce_marketplace,visible,6,"The system shall provide sellers with a dashboard showing sales, revenue, and inventory."
+e9517d8b,e_commerce_marketplace,visible,7,The system shall enforce a return and refund workflow with seller approval.
+489c1616,subscription_box,visible,0,The system shall allow users to complete a preference questionnaire during onboarding.
+489c1616,subscription_box,hidden,1,The system shall generate a personalised box selection based on user preferences and past ratings.
+489c1616,subscription_box,visible,2,"The system shall support monthly, quarterly, and annual subscription plans."
+489c1616,subscription_box,visible,3,The system shall allow users to pause or cancel their subscription at any time.
+489c1616,subscription_box,hidden,4,The system shall send a box preview notification 5 days before shipping.
+489c1616,subscription_box,visible,5,The system shall allow users to swap up to 2 products from their upcoming box.
+489c1616,subscription_box,visible,6,The system shall charge subscriptions automatically on the renewal date.
+489c1616,subscription_box,visible,7,The system shall track delivery status and notify users at each shipping milestone.
+c5cf01fb,patient_portal,visible,0,The system shall allow patients to register using their NHS/insurance number and verify their identity.
+c5cf01fb,patient_portal,hidden,1,"The system shall display a patient's medical history, test results, and current prescriptions."
+c5cf01fb,patient_portal,visible,2,"The system shall allow patients to book, reschedule, and cancel appointments online."
+c5cf01fb,patient_portal,hidden,3,The system shall provide a secure messaging channel between patients and their assigned GP.
+c5cf01fb,patient_portal,visible,4,The system shall allow doctors to update patient records and issue electronic prescriptions.
+c5cf01fb,patient_portal,visible,5,The system shall send appointment reminders via SMS and email 24 hours before.
+c5cf01fb,patient_portal,visible,6,The system shall allow patients to download their records as a PDF.
+c5cf01fb,patient_portal,visible,7,The system shall enforce role-based access so patients cannot view other patients' records.
+3ab011c3,mental_health_app,visible,0,The system shall allow users to log their mood on a 1-10 scale with optional notes each day.
+3ab011c3,mental_health_app,hidden,1,The system shall display a mood trend chart over the past 30 days.
+3ab011c3,mental_health_app,visible,2,The system shall provide a library of guided meditation sessions categorised by duration and goal.
+3ab011c3,mental_health_app,visible,3,The system shall match users with licensed therapists based on their stated concerns.
+3ab011c3,mental_health_app,visible,4,"The system shall support video, voice, and text therapy sessions within the app."
+3ab011c3,mental_health_app,hidden,5,The system shall send a daily check-in notification at a user-configured time.
+3ab011c3,mental_health_app,visible,6,The system shall detect 3 consecutive low-mood entries and prompt access to crisis resources.
+3ab011c3,mental_health_app,visible,7,The system shall allow users to export their mood data for sharing with their therapist.
+5032b660,online_learning_platform,visible,0,"The system shall allow instructors to create courses with video lectures, quizzes, and assignments."
+5032b660,online_learning_platform,hidden,1,The system shall allow students to enrol in free and paid courses.
+5032b660,online_learning_platform,visible,2,The system shall track student progress and resume from the last watched position.
+5032b660,online_learning_platform,visible,3,The system shall generate a certificate of completion when a student passes all assessments.
+5032b660,online_learning_platform,hidden,4,The system shall provide a discussion forum per course for student-instructor interaction.
+5032b660,online_learning_platform,visible,5,"The system shall support multiple-choice, short answer, and coding exercise question types."
+5032b660,online_learning_platform,visible,6,The system shall allow instructors to set course prerequisites.
+5032b660,online_learning_platform,visible,7,The system shall provide instructors with analytics on student engagement and completion rates.
+5bcfa61d,school_management_system,hidden,0,The system shall maintain a complete academic record for each student including grades and attendance.
+5bcfa61d,school_management_system,visible,1,The system shall generate class timetables based on teacher availability and room allocation.
+5bcfa61d,school_management_system,visible,2,The system shall record daily attendance per class and flag absences to form teachers.
+5bcfa61d,school_management_system,visible,3,The system shall allow teachers to submit grades for assignments and exams.
+5bcfa61d,school_management_system,visible,4,The system shall generate progress reports each term and make them available to parents.
+5bcfa61d,school_management_system,visible,5,The system shall provide a messaging system between teachers and parents.
+5bcfa61d,school_management_system,hidden,6,The system shall allow parents to submit absence notifications.
+5bcfa61d,school_management_system,visible,7,The system shall track and report on SEND (special educational needs) student support plans.
+8d4cecf0,personal_finance_app,hidden,0,The system shall connect to user bank accounts via Open Banking API (PSD2 compliant).
+8d4cecf0,personal_finance_app,visible,1,The system shall automatically categorise transactions into spending categories.
+8d4cecf0,personal_finance_app,visible,2,The system shall allow users to set monthly budgets per category.
+8d4cecf0,personal_finance_app,visible,3,The system shall alert users when they reach 80% of a budget limit.
+8d4cecf0,personal_finance_app,visible,4,The system shall display net worth by aggregating all connected accounts.
+8d4cecf0,personal_finance_app,visible,5,The system shall allow users to set savings goals with target amounts and dates.
+8d4cecf0,personal_finance_app,visible,6,The system shall generate a monthly spending report with category breakdown.
+8d4cecf0,personal_finance_app,hidden,7,The system shall allow manual transaction entry for cash spending.
+e4d34997,peer_lending_platform,visible,0,The system shall allow borrowers to submit loan applications with business details and loan purpose.
+e4d34997,peer_lending_platform,hidden,1,The system shall perform automated credit risk assessment on borrower applications.
+e4d34997,peer_lending_platform,visible,2,The system shall allow lenders to browse verified loan listings and commit funds.
+e4d34997,peer_lending_platform,hidden,3,The system shall distribute borrower repayments proportionally to all contributing lenders.
+e4d34997,peer_lending_platform,visible,4,The system shall provide a secondary market where lenders can sell their loan parts.
+e4d34997,peer_lending_platform,visible,5,The system shall send monthly statements to lenders showing interest earned.
+e4d34997,peer_lending_platform,visible,6,The system shall enforce FCA-regulated investor limits for retail investors.
+e4d34997,peer_lending_platform,visible,7,The system shall place defaulted loans into a collections workflow automatically.
+eeaeecf4,fleet_management,hidden,0,The system shall display real-time GPS location of all vehicles on a map.
+eeaeecf4,fleet_management,visible,1,The system shall calculate and suggest optimal delivery routes based on traffic data.
+eeaeecf4,fleet_management,visible,2,The system shall send alerts when a vehicle deviates from its planned route.
+eeaeecf4,fleet_management,visible,3,The system shall track fuel consumption per vehicle and flag inefficient driving behaviour.
+eeaeecf4,fleet_management,hidden,4,The system shall schedule preventive maintenance based on mileage and engine hours.
+eeaeecf4,fleet_management,visible,5,The system shall allow drivers to log delivery confirmations via mobile app.
+eeaeecf4,fleet_management,visible,6,"The system shall generate end-of-day reports on deliveries completed, failed, and pending."
+eeaeecf4,fleet_management,visible,7,The system shall integrate with the company's existing ERP for order data.
+c9021146,smart_building_iot,visible,0,"The system shall integrate with HVAC, lighting, and access control sensors via MQTT."
+c9021146,smart_building_iot,visible,1,The system shall automatically adjust temperature based on occupancy detected by motion sensors.
+c9021146,smart_building_iot,visible,2,The system shall allow building managers to set energy budgets and alert when exceeded.
+c9021146,smart_building_iot,hidden,3,The system shall provide a floor-plan view showing real-time occupancy per zone.
+c9021146,smart_building_iot,visible,4,The system shall control access door locks and log all entry and exit events.
+c9021146,smart_building_iot,hidden,5,The system shall detect anomalies such as unusual after-hours access and send alerts.
+c9021146,smart_building_iot,visible,6,The system shall generate monthly energy consumption reports by floor and system type.
+c9021146,smart_building_iot,visible,7,The system shall allow remote control of any connected device from the management dashboard.
+8540b2b8,task_management_saas,visible,0,The system shall allow users to create projects and invite team members with defined roles.
+8540b2b8,task_management_saas,hidden,1,The system shall support Kanban boards and sprint-based backlog management.
+8540b2b8,task_management_saas,visible,2,The system shall allow tasks to be assigned to team members with due dates and priority levels.
+8540b2b8,task_management_saas,visible,3,The system shall track time logged against each task.
+8540b2b8,task_management_saas,visible,4,The system shall generate velocity charts and burndown charts for each sprint.
+8540b2b8,task_management_saas,visible,5,The system shall provide a GitHub integration to link commits and PRs to tasks.
+8540b2b8,task_management_saas,hidden,6,The system shall send daily digest emails with overdue and at-risk tasks.
+8540b2b8,task_management_saas,visible,7,The system shall support custom workflow states beyond the default To Do / In Progress / Done.
+802232a4,remote_team_collaboration,visible,0,The system shall provide persistent text channels organised by team and topic.
+802232a4,remote_team_collaboration,visible,1,The system shall support video calls for up to 50 participants with screen sharing.
+802232a4,remote_team_collaboration,visible,2,The system shall allow users to set a status indicating availability.
+802232a4,remote_team_collaboration,visible,3,The system shall provide a shared virtual whiteboard for brainstorming sessions.
+802232a4,remote_team_collaboration,hidden,4,The system shall allow file sharing up to 500MB per file with preview support.
+802232a4,remote_team_collaboration,visible,5,The system shall record meetings on request and make recordings available for 30 days.
+802232a4,remote_team_collaboration,visible,6,The system shall support threaded replies within channels to keep conversations organised.
+802232a4,remote_team_collaboration,hidden,7,The system shall provide a company-wide searchable message archive.
+d9f7fbbd,citizen_services_portal,visible,0,The system shall allow citizens to create a verified digital identity using government ID.
+d9f7fbbd,citizen_services_portal,visible,1,The system shall list all available services with eligibility criteria and required documents.
+d9f7fbbd,citizen_services_portal,visible,2,The system shall allow citizens to submit permit applications and upload supporting documents.
+d9f7fbbd,citizen_services_portal,visible,3,The system shall track application status and notify citizens at each stage.
+d9f7fbbd,citizen_services_portal,hidden,4,"The system shall allow online payment of council tax, fines, and fees."
+d9f7fbbd,citizen_services_portal,visible,5,The system shall provide a live chat and callback request option for citizen support.
+d9f7fbbd,citizen_services_portal,hidden,6,The system shall generate official PDF acknowledgements for every submitted application.
+d9f7fbbd,citizen_services_portal,visible,7,The system shall support Welsh and English languages for Wales-based deployments.
+293dcb61,video_streaming,hidden,0,"The system shall provide a content catalogue with search, genre filter, and recommendation."
+293dcb61,video_streaming,visible,1,"The system shall stream video in 480p, 720p, 1080p, and 4K based on network speed."
+293dcb61,video_streaming,visible,2,The system shall allow users to download content for offline viewing.
+293dcb61,video_streaming,visible,3,The system shall support user profiles within a single household account.
+293dcb61,video_streaming,visible,4,The system shall track watch history and resume playback from the last position.
+293dcb61,video_streaming,visible,5,The system shall implement parental controls with PIN-protected content ratings.
+293dcb61,video_streaming,hidden,6,The system shall provide subtitle support in at least 10 languages.
+293dcb61,video_streaming,visible,7,The system shall support simultaneous streaming on up to 4 devices per account.
+792d628e,food_delivery_platform,visible,0,"The system shall allow customers to browse restaurants by cuisine type, rating, and delivery time."
+792d628e,food_delivery_platform,visible,1,The system shall allow customers to place orders and customise items with add-ons or removals.
+792d628e,food_delivery_platform,hidden,2,The system shall calculate delivery fees and estimated arrival times based on distance and demand.
+792d628e,food_delivery_platform,visible,3,The system shall assign delivery orders to the nearest available driver automatically.
+792d628e,food_delivery_platform,visible,4,The system shall allow customers to track their order in real time on a map.
+792d628e,food_delivery_platform,hidden,5,"The system shall support payment via card, wallet, and cash on delivery."
+792d628e,food_delivery_platform,visible,6,"The system shall send push notifications at order confirmation, preparation, and delivery stages."
+792d628e,food_delivery_platform,visible,7,The system shall allow customers to rate drivers and restaurants after each order.
+7442125b,auction_platform,visible,0,"The system shall allow sellers to list items with photos, descriptions, starting bid, and auction end time."
+7442125b,auction_platform,visible,1,The system shall allow buyers to place bids and show the current highest bid in real time.
+7442125b,auction_platform,hidden,2,The system shall support proxy bidding where the system auto-bids up to a user-set maximum.
+7442125b,auction_platform,visible,3,The system shall notify all bidders when they are outbid via email and push notification.
+7442125b,auction_platform,visible,4,The system shall declare the highest bidder the winner and initiate payment automatically.
+7442125b,auction_platform,visible,5,The system shall hold payment in escrow until the buyer confirms item receipt.
+7442125b,auction_platform,hidden,6,The system shall allow sellers to set a reserve price that must be met for the sale to proceed.
+7442125b,auction_platform,visible,7,The system shall flag and suspend accounts with repeated non-payment or fraudulent listings.
+d4243521,rental_marketplace,visible,0,"The system shall allow owners to list rentable items with availability calendar, daily rate, and deposit."
+d4243521,rental_marketplace,hidden,1,"The system shall allow renters to search listings by category, location, and date range."
+d4243521,rental_marketplace,visible,2,The system shall provide an availability calendar that prevents double bookings.
+d4243521,rental_marketplace,visible,3,The system shall process rental payments and hold a refundable deposit in escrow.
+d4243521,rental_marketplace,hidden,4,The system shall require renters to submit a photo of the item on collection and return.
+d4243521,rental_marketplace,visible,5,The system shall release the deposit to the owner if damage is reported within 48 hours.
+d4243521,rental_marketplace,visible,6,The system shall allow both parties to leave reviews after each rental period.
+d4243521,rental_marketplace,visible,7,The system shall provide an in-app messaging system for owner-renter coordination.
+440c0641,telemedicine_platform,visible,0,The system shall allow patients to book on-demand or scheduled consultations with licensed doctors.
+440c0641,telemedicine_platform,visible,1,The system shall match patients with available doctors based on specialty and language.
+440c0641,telemedicine_platform,visible,2,The system shall provide HIPAA-compliant video and voice consultation rooms.
+440c0641,telemedicine_platform,hidden,3,The system shall allow doctors to issue digital prescriptions that can be sent to pharmacies.
+440c0641,telemedicine_platform,visible,4,The system shall maintain a consultation history and summary accessible to both patient and doctor.
+440c0641,telemedicine_platform,visible,5,The system shall support integration with wearable device data for remote monitoring.
+440c0641,telemedicine_platform,hidden,6,The system shall allow follow-up messaging between patient and doctor for 48 hours post-consultation.
+440c0641,telemedicine_platform,visible,7,The system shall process insurance claims and direct billing for covered consultations.
+716ed617,pharmacy_management,hidden,0,The system shall receive and validate electronic prescriptions from authorised healthcare providers.
+716ed617,pharmacy_management,visible,1,The system shall check drug interactions and allergies before dispensing medication.
+716ed617,pharmacy_management,visible,2,The system shall track medication inventory and trigger low-stock alerts automatically.
+716ed617,pharmacy_management,visible,3,The system shall allow customers to request repeat prescriptions via the patient portal.
+716ed617,pharmacy_management,visible,4,The system shall record all dispensed medications and maintain a full audit trail.
+716ed617,pharmacy_management,hidden,5,The system shall support home delivery scheduling for eligible prescriptions.
+716ed617,pharmacy_management,visible,6,The system shall integrate with the national prescription database for validation.
+716ed617,pharmacy_management,visible,7,The system shall generate compliance reports for regulatory inspections.
+2f8c2565,clinical_trial_management,visible,0,The system shall manage trial protocols and track amendments with full version history.
+2f8c2565,clinical_trial_management,hidden,1,"The system shall support participant screening, enrolment, and randomisation workflows."
+2f8c2565,clinical_trial_management,visible,2,The system shall collect adverse event reports and escalate serious events within 24 hours.
+2f8c2565,clinical_trial_management,hidden,3,The system shall enforce data entry validation rules defined in the trial protocol.
+2f8c2565,clinical_trial_management,visible,4,"The system shall provide role-based access for investigators, monitors, and sponsors."
+2f8c2565,clinical_trial_management,visible,5,The system shall generate 21 CFR Part 11 compliant electronic signatures for all critical actions.
+2f8c2565,clinical_trial_management,visible,6,The system shall integrate with laboratory information systems for biomarker data import.
+2f8c2565,clinical_trial_management,visible,7,The system shall produce CDISC-compliant data exports for regulatory submissions.
+65d643d0,university_admission_system,visible,0,The system shall allow applicants to create accounts and submit applications with personal statements.
+65d643d0,university_admission_system,hidden,1,The system shall validate that all required documents are uploaded before submission.
+65d643d0,university_admission_system,hidden,2,The system shall route applications to appropriate admissions reviewers based on programme.
+65d643d0,university_admission_system,visible,3,The system shall support committee scoring rubrics with configurable criteria and weightings.
+65d643d0,university_admission_system,visible,4,The system shall generate ranked shortlists and offer letters automatically based on scores.
+65d643d0,university_admission_system,visible,5,"The system shall allow applicants to accept, decline, or defer offers with a deadline."
+65d643d0,university_admission_system,visible,6,The system shall maintain a complete audit log of all reviewer comments and decisions.
+65d643d0,university_admission_system,visible,7,The system shall produce equal opportunity monitoring reports for compliance.
+c7a0a2bc,corporate_training_platform,visible,0,The system shall allow HR to assign mandatory training courses to employees with completion deadlines.
+c7a0a2bc,corporate_training_platform,visible,1,The system shall send automated reminders to employees with overdue training.
+c7a0a2bc,corporate_training_platform,visible,2,The system shall record training completion with timestamp and assessment score.
+c7a0a2bc,corporate_training_platform,visible,3,The system shall generate compliance reports showing completion rates by department and course.
+c7a0a2bc,corporate_training_platform,hidden,4,The system shall support SCORM 1.2 and xAPI content standards for third-party courseware.
+c7a0a2bc,corporate_training_platform,hidden,5,The system shall allow managers to view their team's training status dashboard.
+c7a0a2bc,corporate_training_platform,visible,6,The system shall issue digital certificates upon course completion.
+c7a0a2bc,corporate_training_platform,visible,7,The system shall support blended learning with in-person session scheduling alongside online modules.
+83d94f2f,language_learning_app,visible,0,The system shall provide structured learning paths per language from beginner to advanced.
+83d94f2f,language_learning_app,visible,1,"The system shall deliver daily bite-sized lessons with vocabulary, grammar, and listening exercises."
+83d94f2f,language_learning_app,visible,2,The system shall use speech recognition to assess pronunciation and provide feedback.
+83d94f2f,language_learning_app,visible,3,The system shall implement a spaced repetition algorithm to optimise vocabulary review.
+83d94f2f,language_learning_app,hidden,4,"The system shall award experience points, streaks, and badges to encourage daily engagement."
+83d94f2f,language_learning_app,visible,5,The system shall allow users to join language leagues and compete on weekly leaderboards.
+83d94f2f,language_learning_app,hidden,6,The system shall provide AI-powered conversational practice simulating real dialogue.
+83d94f2f,language_learning_app,visible,7,The system shall allow users to set daily learning goals and track time spent.
+298cc453,digital_banking_app,hidden,0,The system shall allow customers to open a current account with digital identity verification.
+298cc453,digital_banking_app,visible,1,The system shall support instant domestic and international bank transfers.
+298cc453,digital_banking_app,visible,2,The system shall provide virtual and physical debit card management within the app.
+298cc453,digital_banking_app,visible,3,The system shall allow customers to set spending limits and freeze or unfreeze their card instantly.
+298cc453,digital_banking_app,visible,4,The system shall provide real-time transaction notifications via push message.
+298cc453,digital_banking_app,hidden,5,The system shall allow customers to create multiple savings pots with target amounts.
+298cc453,digital_banking_app,visible,6,The system shall offer a credit score tracking feature via Open Banking data.
+298cc453,digital_banking_app,visible,7,The system shall support biometric authentication for login and payment authorisation.
+0ed39539,insurance_claims_platform,visible,0,The system shall allow policyholders to file claims online by selecting cover type and describing the incident.
+0ed39539,insurance_claims_platform,visible,1,"The system shall allow claimants to upload photos, videos, and supporting documents."
+0ed39539,insurance_claims_platform,visible,2,"The system shall perform automated triage to classify claims by type, complexity, and fraud risk."
+0ed39539,insurance_claims_platform,visible,3,The system shall assign low-complexity claims for automated settlement and complex claims to assessors.
+0ed39539,insurance_claims_platform,hidden,4,The system shall allow assessors to request additional information and set response deadlines.
+0ed39539,insurance_claims_platform,visible,5,The system shall send real-time status updates to claimants at each stage of processing.
+0ed39539,insurance_claims_platform,visible,6,The system shall process approved claim payments within 48 hours via bank transfer.
+0ed39539,insurance_claims_platform,hidden,7,The system shall flag suspicious claims for special investigation unit review.
+573adc4c,crypto_exchange,visible,0,The system shall allow users to register and complete KYC and AML identity verification.
+573adc4c,crypto_exchange,hidden,1,The system shall support trading of at least 50 cryptocurrency pairs.
+573adc4c,crypto_exchange,visible,2,The system shall provide a real-time order book with market and limit order types.
+573adc4c,crypto_exchange,hidden,3,The system shall execute matched trades within 100 milliseconds.
+573adc4c,crypto_exchange,visible,4,The system shall maintain hot and cold wallet infrastructure with 95% of funds in cold storage.
+573adc4c,crypto_exchange,visible,5,The system shall allow users to set up two-factor authentication for all withdrawals.
+573adc4c,crypto_exchange,visible,6,"The system shall provide a portfolio overview showing holdings, P&L, and transaction history."
+573adc4c,crypto_exchange,visible,7,The system shall generate tax reports showing capital gains per jurisdiction.
+ac47d38d,warehouse_management,visible,0,The system shall track inventory location at bin level using barcode or RFID scanning.
+ac47d38d,warehouse_management,hidden,1,The system shall generate optimised pick lists for warehouse staff based on order priority.
+ac47d38d,warehouse_management,visible,2,The system shall support wave picking to batch multiple orders for efficiency.
+ac47d38d,warehouse_management,visible,3,The system shall guide pickers via mobile devices with step-by-step bin navigation.
+ac47d38d,warehouse_management,hidden,4,The system shall verify picked items against order lines to prevent mis-picks.
+ac47d38d,warehouse_management,visible,5,The system shall integrate with carrier APIs to generate shipping labels on packing.
+ac47d38d,warehouse_management,visible,6,The system shall update inventory in real time as goods are received and dispatched.
+ac47d38d,warehouse_management,visible,7,"The system shall generate KPI dashboards showing throughput, accuracy, and labour productivity."
+da198498,cold_chain_monitoring,visible,0,The system shall collect temperature and humidity readings from IoT sensors every 5 minutes.
+da198498,cold_chain_monitoring,visible,1,The system shall trigger alerts within 60 seconds when readings exceed defined thresholds.
+da198498,cold_chain_monitoring,visible,2,The system shall log all sensor readings with GPS location and timestamp.
+da198498,cold_chain_monitoring,visible,3,The system shall support configurable alert thresholds per product type or shipment.
+da198498,cold_chain_monitoring,hidden,4,The system shall generate excursion reports automatically when threshold breaches occur.
+da198498,cold_chain_monitoring,visible,5,The system shall provide a chain-of-custody dashboard showing shipment status at each handover.
+da198498,cold_chain_monitoring,hidden,6,The system shall integrate with logistics carrier APIs for shipment tracking.
+da198498,cold_chain_monitoring,visible,7,The system shall produce compliance reports suitable for FDA 21 CFR Part 211 audits.
+0b4e4885,smart_parking_system,visible,0,The system shall detect available parking spaces using in-ground sensors or cameras.
+0b4e4885,smart_parking_system,visible,1,The system shall display real-time space availability on entry signs and a mobile app.
+0b4e4885,smart_parking_system,visible,2,The system shall allow drivers to reserve a parking space in advance via the app.
+0b4e4885,smart_parking_system,visible,3,The system shall record entry and exit times using ANPR number plate recognition.
+0b4e4885,smart_parking_system,hidden,4,The system shall calculate parking charges based on duration and tariff zone.
+0b4e4885,smart_parking_system,hidden,5,"The system shall support payment via app, contactless card, and mobile wallet."
+0b4e4885,smart_parking_system,visible,6,The system shall allow permit holders to access reserved zones without payment.
+0b4e4885,smart_parking_system,visible,7,The system shall generate occupancy analytics reports for city planning.
+5906df43,social_media_platform,visible,0,"The system shall allow users to create profiles with bio, avatar, and privacy settings."
+5906df43,social_media_platform,visible,1,"The system shall allow users to create text, image, and short video posts."
+5906df43,social_media_platform,visible,2,The system shall generate a personalised feed based on followed accounts and engagement history.
+5906df43,social_media_platform,hidden,3,"The system shall allow users to like, comment on, and share posts from others."
+5906df43,social_media_platform,visible,4,The system shall implement a reporting system for harmful content with moderator review.
+5906df43,social_media_platform,hidden,5,The system shall notify users of interactions with their content in real time.
+5906df43,social_media_platform,visible,6,The system shall allow users to send direct messages to followers.
+5906df43,social_media_platform,visible,7,The system shall enforce content policies by automatically detecting and flagging violating content.
+fb2964e3,event_management_platform,hidden,0,"The system shall allow organisers to create event pages with schedule, venue, and speaker details."
+fb2964e3,event_management_platform,hidden,1,The system shall support free and paid ticket tiers with configurable capacity limits.
+fb2964e3,event_management_platform,visible,2,The system shall process ticket payments and send e-tickets with QR codes via email.
+fb2964e3,event_management_platform,visible,3,The system shall allow attendees to check in via QR code scan at the venue.
+fb2964e3,event_management_platform,visible,4,The system shall provide organisers with real-time ticket sales and attendance dashboards.
+fb2964e3,event_management_platform,visible,5,The system shall support waitlists when events are sold out and notify on cancellations.
+fb2964e3,event_management_platform,visible,6,The system shall send event reminders to attendees 24 hours and 1 hour before the event.
+fb2964e3,event_management_platform,visible,7,The system shall support refund processing up to a configurable cut-off date.
+61ad64a7,document_collaboration,visible,0,"The system shall allow users to create documents, spreadsheets, and presentation files."
+61ad64a7,document_collaboration,visible,1,The system shall enable simultaneous real-time co-editing with conflict-free merging.
+61ad64a7,document_collaboration,visible,2,The system shall maintain a full version history with the ability to restore any past version.
+61ad64a7,document_collaboration,hidden,3,"The system shall allow document owners to set view, comment, or edit permissions per user."
+61ad64a7,document_collaboration,visible,4,The system shall support inline comments with threaded replies and resolution tracking.
+61ad64a7,document_collaboration,visible,5,The system shall allow users to share documents via link with configurable access levels.
+61ad64a7,document_collaboration,hidden,6,The system shall support offline editing with automatic sync on reconnection.
+61ad64a7,document_collaboration,visible,7,The system shall integrate with cloud storage providers for import and export.
+b19f47ae,voting_system,hidden,0,The system shall authenticate voters using government-issued digital identity before allowing a vote.
+b19f47ae,voting_system,visible,1,The system shall ensure each eligible voter can cast exactly one ballot.
+b19f47ae,voting_system,visible,2,The system shall anonymise votes such that no vote can be linked back to a specific voter.
+b19f47ae,voting_system,visible,3,The system shall produce a paper audit trail for each vote cast.
+b19f47ae,voting_system,hidden,4,The system shall allow independent observers to audit the election results without compromising anonymity.
+b19f47ae,voting_system,visible,5,The system shall publish cryptographically verifiable results within 4 hours of poll close.
+b19f47ae,voting_system,visible,6,The system shall remain operational under DDoS attacks with 99.999% uptime during voting.
+b19f47ae,voting_system,visible,7,The system shall support accessible voting via screen readers and alternative input devices.
+386b64e4,emergency_response_system,visible,0,The system shall receive emergency calls and capture incident details including location and type.
+386b64e4,emergency_response_system,visible,1,The system shall automatically determine the closest available appropriate unit using GPS data.
+386b64e4,emergency_response_system,visible,2,The system shall dispatch units with turn-by-turn routing to the incident location.
+386b64e4,emergency_response_system,hidden,3,The system shall allow dispatchers to monitor all unit locations and statuses on a live map.
+386b64e4,emergency_response_system,visible,4,The system shall escalate incidents automatically when response time thresholds are breached.
+386b64e4,emergency_response_system,visible,5,The system shall allow multi-agency coordination for major incidents with shared incident logs.
+386b64e4,emergency_response_system,hidden,6,The system shall record all dispatch communications for post-incident review.
+386b64e4,emergency_response_system,visible,7,The system shall provide offline capability for field units when network connectivity is unavailable.
+5167f72c,public_transport_app,visible,0,"The system shall provide multi-modal journey planning across bus, rail, metro, and walking."
+5167f72c,public_transport_app,hidden,1,The system shall show real-time vehicle locations and predicted arrival times at stops.
+5167f72c,public_transport_app,visible,2,"The system shall allow passengers to purchase single, day, and season tickets within the app."
+5167f72c,public_transport_app,hidden,3,The system shall support contactless QR code ticket validation at gates and on vehicles.
+5167f72c,public_transport_app,visible,4,The system shall send service disruption alerts and suggest alternative routes.
+5167f72c,public_transport_app,visible,5,The system shall allow passengers to set favourite journeys and receive proactive updates.
+5167f72c,public_transport_app,visible,6,The system shall provide accessibility journey options for wheelchair users.
+5167f72c,public_transport_app,visible,7,The system shall integrate with national rail and regional transport authority data feeds.
+df693e54,music_streaming,visible,0,"The system shall provide a catalogue of over 100 million tracks searchable by artist, album, and genre."
+df693e54,music_streaming,visible,1,The system shall stream audio at 128kbps standard and 320kbps premium quality.
+df693e54,music_streaming,visible,2,"The system shall allow users to create, edit, and share playlists."
+df693e54,music_streaming,hidden,3,The system shall generate personalised daily mix playlists based on listening history.
+df693e54,music_streaming,hidden,4,"The system shall allow offline download of up to 10,000 tracks for premium subscribers."
+df693e54,music_streaming,visible,5,The system shall display real-time lyrics synchronised to playback.
+df693e54,music_streaming,visible,6,The system shall support cross-device playback handoff with seamless continuation.
+df693e54,music_streaming,visible,7,The system shall accurately report stream counts to rights holders for royalty calculation.
+607a936e,gaming_platform,visible,0,The system shall allow users to purchase and download games directly to their device.
+607a936e,gaming_platform,hidden,1,The system shall provide a friends list with online status and in-game activity.
+607a936e,gaming_platform,visible,2,"The system shall support in-game overlay for chat, notifications, and invites."
+607a936e,gaming_platform,visible,3,The system shall manage automatic game updates in the background.
+607a936e,gaming_platform,visible,4,"The system shall provide a community hub per game with reviews, screenshots, and forums."
+607a936e,gaming_platform,hidden,5,The system shall support achievements and a public profile showcasing completed games.
+607a936e,gaming_platform,visible,6,The system shall enforce age verification and parental controls for age-rated content.
+607a936e,gaming_platform,visible,7,The system shall provide a refund policy allowing claims within 2 hours of playtime within 14 days.
+05debc03,podcast_platform,visible,0,The system shall allow creators to upload audio files and publish episodes with titles and show notes.
+05debc03,podcast_platform,visible,1,The system shall generate an RSS feed for each podcast for cross-platform distribution.
+05debc03,podcast_platform,hidden,2,"The system shall allow listeners to search, subscribe, and receive new episode notifications."
+05debc03,podcast_platform,visible,3,The system shall track listening progress and resume playback from the last position.
+05debc03,podcast_platform,visible,4,The system shall support variable playback speed from 0.5x to 3x.
+05debc03,podcast_platform,hidden,5,"The system shall allow creators to access episode analytics including plays, completion rate, and geography."
+05debc03,podcast_platform,visible,6,The system shall support chapter markers for navigation within long episodes.
+05debc03,podcast_platform,visible,7,The system shall allow premium subscription gating for exclusive episodes.
+da4ba8e1,recruitment_platform,visible,0,The system shall allow recruiters to create and publish job postings to multiple job boards.
+da4ba8e1,recruitment_platform,visible,1,The system shall parse CVs automatically to extract candidate skills and experience.
+da4ba8e1,recruitment_platform,visible,2,The system shall screen applications against job criteria and provide a match score.
+da4ba8e1,recruitment_platform,hidden,3,The system shall manage interview scheduling with calendar integration for all participants.
+da4ba8e1,recruitment_platform,visible,4,The system shall allow interviewers to submit structured scorecards after each interview.
+da4ba8e1,recruitment_platform,hidden,5,The system shall maintain a talent pool for future roles with candidate consent.
+da4ba8e1,recruitment_platform,visible,6,The system shall send automated status notifications to candidates at each stage.
+da4ba8e1,recruitment_platform,visible,7,The system shall generate equal opportunity hiring reports to detect bias.
+2e855a9e,hr_management_system,visible,0,"The system shall maintain a digital employee record including personal details, role, and contract."
+2e855a9e,hr_management_system,visible,1,The system shall manage the full employee lifecycle from onboarding to offboarding.
+2e855a9e,hr_management_system,visible,2,"The system shall process monthly payroll with tax, NI, and benefit deductions."
+2e855a9e,hr_management_system,visible,3,"The system shall manage leave requests, approvals, and entitlement balances."
+2e855a9e,hr_management_system,hidden,4,The system shall generate payslips and P60s electronically.
+2e855a9e,hr_management_system,hidden,5,The system shall track training and certifications per employee with expiry alerts.
+2e855a9e,hr_management_system,visible,6,The system shall support organisational chart visualisation and reporting lines.
+2e855a9e,hr_management_system,visible,7,"The system shall generate headcount, attrition, and diversity analytics reports."
+ba4c8c35,employee_performance_management,visible,0,The system shall allow employees to set OKRs and KPIs aligned to company objectives.
+ba4c8c35,employee_performance_management,hidden,1,The system shall support continuous feedback with praise and development notes.
+ba4c8c35,employee_performance_management,visible,2,The system shall facilitate mid-year and annual review cycles with structured templates.
+ba4c8c35,employee_performance_management,visible,3,"The system shall enable 360-degree feedback from peers, reports, and managers."
+ba4c8c35,employee_performance_management,hidden,4,The system shall provide managers with a team performance heatmap.
+ba4c8c35,employee_performance_management,visible,5,The system shall support calibration sessions where managers align ratings across departments.
+ba4c8c35,employee_performance_management,visible,6,The system shall generate development plan recommendations based on review outcomes.
+ba4c8c35,employee_performance_management,visible,7,The system shall produce talent matrix reports for succession planning.
+360eae4a,workforce_scheduling,visible,0,The system shall generate optimised shift schedules based on demand forecasts and staff availability.
+360eae4a,workforce_scheduling,visible,1,The system shall allow employees to submit availability and time-off requests.
+360eae4a,workforce_scheduling,hidden,2,The system shall notify employees of their schedules at least 72 hours in advance.
+360eae4a,workforce_scheduling,visible,3,The system shall allow employees to swap shifts with manager approval.
+360eae4a,workforce_scheduling,hidden,4,The system shall enforce working time regulations including maximum hours and rest period rules.
+360eae4a,workforce_scheduling,visible,5,The system shall integrate with payroll to calculate hours and overtime automatically.
+360eae4a,workforce_scheduling,visible,6,The system shall track actual vs scheduled hours and flag discrepancies.
+360eae4a,workforce_scheduling,visible,7,The system shall send real-time alerts when understaffed shifts are detected.
+f9c1f504,property_listing_platform,visible,0,The system shall allow agents and private sellers to create property listings with photos and floor plans.
+f9c1f504,property_listing_platform,hidden,1,"The system shall allow buyers and renters to search by location, price, bedrooms, and property type."
+f9c1f504,property_listing_platform,visible,2,The system shall display properties on an interactive map with polygon-based search.
+f9c1f504,property_listing_platform,hidden,3,The system shall allow registered users to save properties and receive price change alerts.
+f9c1f504,property_listing_platform,visible,4,The system shall allow interested parties to request viewings directly through the platform.
+f9c1f504,property_listing_platform,visible,5,The system shall provide a mortgage calculator and stamp duty estimator.
+f9c1f504,property_listing_platform,visible,6,The system shall display Energy Performance Certificate ratings on all listings.
+f9c1f504,property_listing_platform,visible,7,The system shall allow agents to manage their listing portfolio and track enquiry volumes.
+7b3ba503,property_management_system,visible,0,The system shall manage tenancy agreements with digital signing and secure storage.
+7b3ba503,property_management_system,visible,1,The system shall track rent collection with automated payment reminders for overdue rent.
+7b3ba503,property_management_system,visible,2,The system shall allow tenants to log maintenance requests with photos and priority.
+7b3ba503,property_management_system,hidden,3,The system shall assign maintenance jobs to contractors and track completion.
+7b3ba503,property_management_system,visible,4,The system shall manage deposit protection scheme registration and return workflows.
+7b3ba503,property_management_system,visible,5,The system shall generate gas safety and EPC certificate expiry alerts.
+7b3ba503,property_management_system,visible,6,"The system shall provide landlord financial reports including income, expenses, and tax summaries."
+7b3ba503,property_management_system,hidden,7,The system shall support portfolio management for landlords with multiple properties.
+ce323351,construction_project_management,visible,0,"The system shall manage project plans with tasks, milestones, and dependencies on a Gantt chart."
+ce323351,construction_project_management,visible,1,"The system shall track labour, materials, and equipment costs against the project budget."
+ce323351,construction_project_management,visible,2,The system shall manage RFI and submittal workflows between stakeholders.
+ce323351,construction_project_management,visible,3,The system shall allow site managers to log daily progress and issues via mobile app.
+ce323351,construction_project_management,hidden,4,The system shall manage drawing version control with clash detection alerts.
+ce323351,construction_project_management,hidden,5,The system shall track safety incidents and near-misses with investigation workflows.
+ce323351,construction_project_management,visible,6,The system shall generate progress reports and cost variance reports for project owners.
+ce323351,construction_project_management,visible,7,The system shall manage subcontractor and supplier contracts and payment schedules.
+00709f3e,precision_farming_platform,visible,0,"The system shall collect soil moisture, temperature, and nutrient data from field sensors."
+00709f3e,precision_farming_platform,visible,1,The system shall integrate with weather forecast APIs to adjust irrigation recommendations.
+00709f3e,precision_farming_platform,visible,2,The system shall generate variable-rate application maps for fertiliser and pesticides.
+00709f3e,precision_farming_platform,hidden,3,The system shall track crop growth stages using satellite and drone imagery analysis.
+00709f3e,precision_farming_platform,visible,4,The system shall provide yield prediction models per field based on historical and current data.
+00709f3e,precision_farming_platform,hidden,5,"The system shall allow farmers to log field operations including planting, spraying, and harvesting."
+00709f3e,precision_farming_platform,visible,6,The system shall generate compliance reports for farm assurance schemes.
+00709f3e,precision_farming_platform,visible,7,The system shall send alerts when soil conditions or weather forecast indicate crop risk.
+a6a05a9b,environmental_monitoring,visible,0,"The system shall ingest sensor readings for PM2.5, NO2, CO2, and noise from a network of stations."
+a6a05a9b,environmental_monitoring,visible,1,The system shall display real-time air quality index on a public-facing map.
+a6a05a9b,environmental_monitoring,visible,2,The system shall trigger automated alerts to the environmental authority when WHO thresholds are exceeded.
+a6a05a9b,environmental_monitoring,visible,3,The system shall correlate pollution events with weather data and traffic patterns.
+a6a05a9b,environmental_monitoring,visible,4,"The system shall generate daily, weekly, and annual air quality reports per monitoring zone."
+a6a05a9b,environmental_monitoring,hidden,5,The system shall allow the public to report pollution incidents via a citizen reporting feature.
+a6a05a9b,environmental_monitoring,hidden,6,The system shall support integration with national air quality networks for data contribution.
+a6a05a9b,environmental_monitoring,visible,7,The system shall predict air quality levels for the next 48 hours using a forecasting model.
+5cd9e2bb,supply_chain_traceability,hidden,0,"The system shall record each supply chain event as an immutable entry covering harvest, processing, shipping, and retail."
+5cd9e2bb,supply_chain_traceability,hidden,1,The system shall allow consumers to scan a product QR code to view its full provenance journey.
+5cd9e2bb,supply_chain_traceability,visible,2,The system shall verify supplier certifications against a trusted registry.
+5cd9e2bb,supply_chain_traceability,visible,3,The system shall detect and flag anomalies in the supply chain such as missing steps or time gaps.
+5cd9e2bb,supply_chain_traceability,visible,4,"The system shall support multi-party access for producers, processors, distributors, and retailers."
+5cd9e2bb,supply_chain_traceability,visible,5,The system shall generate audit-ready traceability reports for food safety inspections.
+5cd9e2bb,supply_chain_traceability,visible,6,The system shall integrate with IoT sensors for automated recording of storage conditions.
+5cd9e2bb,supply_chain_traceability,visible,7,The system shall support product recall workflows by identifying affected batch distribution.
+336777bb,legal_case_management,hidden,0,The system shall allow fee earners to create matters linked to clients with conflict-of-interest checks.
+336777bb,legal_case_management,visible,1,"The system shall manage court dates, deadlines, and limitation periods with calendar alerts."
+336777bb,legal_case_management,visible,2,The system shall store all case correspondence and documents with version control.
+336777bb,legal_case_management,visible,3,The system shall track time recorded against each matter for billing purposes.
+336777bb,legal_case_management,visible,4,The system shall generate invoices and fee notes from recorded time and disbursements.
+336777bb,legal_case_management,visible,5,The system shall allow secure client portal access to share documents and updates.
+336777bb,legal_case_management,hidden,6,The system shall support electronic bundling for court submissions.
+336777bb,legal_case_management,visible,7,The system shall produce regulatory compliance reports for SRA and AML obligations.
+e5b3af68,contract_management,visible,0,The system shall provide a template library for standard contract types with clause libraries.
+e5b3af68,contract_management,visible,1,The system shall support collaborative redlining with tracked changes between parties.
+e5b3af68,contract_management,visible,2,The system shall manage approval workflows with configurable signatory levels.
+e5b3af68,contract_management,hidden,3,The system shall execute contracts via legally binding electronic signatures.
+e5b3af68,contract_management,visible,4,"The system shall track key dates including expiry, renewal, and obligation milestones."
+e5b3af68,contract_management,hidden,5,The system shall send automated alerts for upcoming renewals and obligations.
+e5b3af68,contract_management,visible,6,The system shall provide a contract repository with full-text search across all clauses.
+e5b3af68,contract_management,visible,7,The system shall generate contract analytics including cycle time and clause deviation reports.
+5ecdc8ed,travel_booking_platform,hidden,0,"The system shall allow users to search for flights by origin, destination, dates, and passenger count."
+5ecdc8ed,travel_booking_platform,visible,1,The system shall display fare comparison across airlines with filters for stops and duration.
+5ecdc8ed,travel_booking_platform,visible,2,"The system shall support hotel search with map view, photos, and reviews."
+5ecdc8ed,travel_booking_platform,visible,3,The system shall allow bundling of flights and hotels into a package with combined pricing.
+5ecdc8ed,travel_booking_platform,hidden,4,The system shall process payments and send booking confirmations with e-tickets.
+5ecdc8ed,travel_booking_platform,visible,5,The system shall manage booking amendments and cancellations per airline and hotel policies.
+5ecdc8ed,travel_booking_platform,visible,6,The system shall send check-in reminders and travel documentation alerts.
+5ecdc8ed,travel_booking_platform,visible,7,"The system shall provide a post-trip review feature for flights, hotels, and packages."
+e7bb45ea,hotel_management_system,visible,0,The system shall manage room inventory and accept reservations from direct and OTA channels.
+e7bb45ea,hotel_management_system,visible,1,The system shall perform automatic rate management based on occupancy and demand.
+e7bb45ea,hotel_management_system,visible,2,The system shall manage check-in and check-out processes including key card assignment.
+e7bb45ea,hotel_management_system,hidden,3,The system shall coordinate housekeeping schedules based on checkout and arrival patterns.
+e7bb45ea,hotel_management_system,hidden,4,The system shall manage guest folios and post charges from restaurant and room service.
+e7bb45ea,hotel_management_system,visible,5,The system shall support group bookings with block allocation and rooming list management.
+e7bb45ea,hotel_management_system,visible,6,The system shall send pre-arrival and post-departure communication sequences.
+e7bb45ea,hotel_management_system,visible,7,"The system shall generate front office, revenue, and housekeeping operational reports."
+7c7aa1b6,restaurant_pos_system,visible,0,The system shall allow servers to take table orders and send them directly to the kitchen display.
+7c7aa1b6,restaurant_pos_system,hidden,1,"The system shall manage table layouts with status indicators for occupied, reserved, and available."
+7c7aa1b6,restaurant_pos_system,visible,2,"The system shall support split bill functionality by items, evenly, or by percentage."
+7c7aa1b6,restaurant_pos_system,visible,3,"The system shall process payments by card, cash, and digital wallet."
+7c7aa1b6,restaurant_pos_system,visible,4,"The system shall manage menu items with modifiers, allergen information, and availability."
+7c7aa1b6,restaurant_pos_system,hidden,5,The system shall generate end-of-shift sales reports and reconciliation summaries.
+7c7aa1b6,restaurant_pos_system,visible,6,The system shall integrate with kitchen display systems and receipt printers.
+7c7aa1b6,restaurant_pos_system,visible,7,The system shall support online ordering integration with a branded ordering page.
+07ce17fe,fitness_tracking_app,visible,0,"The system shall allow users to log workouts by type, duration, and intensity."
+07ce17fe,fitness_tracking_app,visible,1,"The system shall sync with wearable devices to import steps, heart rate, and sleep data."
+07ce17fe,fitness_tracking_app,visible,2,The system shall provide a food diary with calorie and macro tracking via a barcode scanner.
+07ce17fe,fitness_tracking_app,hidden,3,The system shall generate weekly fitness and nutrition summary reports.
+07ce17fe,fitness_tracking_app,visible,4,The system shall allow users to set fitness goals and track progress against them.
+07ce17fe,fitness_tracking_app,visible,5,The system shall provide guided workout programmes with video demonstrations.
+07ce17fe,fitness_tracking_app,visible,6,The system shall allow users to connect with friends and share achievements.
+07ce17fe,fitness_tracking_app,hidden,7,The system shall detect workout inactivity streaks and send motivational prompts.
+bc2f6c04,ride_sharing_platform,visible,0,The system shall allow passengers to request rides by entering a destination on a map.
+bc2f6c04,ride_sharing_platform,hidden,1,The system shall match passengers with the nearest available driver within 2 minutes.
+bc2f6c04,ride_sharing_platform,visible,2,The system shall display estimated fare before the passenger confirms the booking.
+bc2f6c04,ride_sharing_platform,visible,3,The system shall allow passengers to track their driver in real time on a map.
+bc2f6c04,ride_sharing_platform,visible,4,The system shall process payments automatically via stored card on trip completion.
+bc2f6c04,ride_sharing_platform,visible,5,The system shall allow passengers to rate drivers and drivers to rate passengers.
+bc2f6c04,ride_sharing_platform,visible,6,The system shall allow drivers to accept or decline trip requests within 30 seconds.
+bc2f6c04,ride_sharing_platform,hidden,7,The system shall support scheduled bookings up to 7 days in advance.

@@ -1,0 +1,6 @@
+{
+  "project_name": "Online Bookstore",
+  "domain": "e-commerce",
+  "rough_idea": "We need an online bookstore platform where customers can browse books by category, search by title or author, add books to a cart, and complete purchases. The system should support user registration and login, order history, book reviews and ratings, and an admin panel for managing inventory. The platform needs to handle concurrent users and secure payment processing.",
+  "qa_pairs": "Q1: Who are the primary users of this system?\nA1: End customers buying books, and admin staff managing inventory.\n\nQ2: What payment methods should be supported?\nA2: Credit and debit cards, PayPal.\n\nQ3: Should the system support digital and physical books?\nA3: Both - physical books with shipping and digital books with download.\n\nQ4: What are the key non-functional requirements?\nA4: Handle 1000 concurrent users, load pages under 2 seconds, 99.9% uptime."
+}

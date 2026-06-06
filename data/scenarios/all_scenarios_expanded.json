@@ -1,0 +1,2769 @@
+[
+  {
+    "scenario_id": "e9517d8b",
+    "domain": "e_commerce_marketplace",
+    "rough_idea": "An online marketplace where sellers can list products and buyers can purchase them securely.",
+    "ground_truth_reqs": [
+      "The system shall allow sellers to register, create a store profile, and list products with images, descriptions, and prices.",
+      "The system shall allow buyers to search for products by keyword, category, and price range.",
+      "The system shall provide a shopping cart that persists across user sessions.",
+      "The system shall process payments via credit card, debit card, and PayPal.",
+      "The system shall send order confirmation and shipping update emails to buyers.",
+      "The system shall allow buyers to leave ratings and reviews for completed purchases.",
+      "The system shall provide sellers with a dashboard showing sales, revenue, and inventory.",
+      "The system shall enforce a return and refund workflow with seller approval."
+    ],
+    "hidden_reqs": [
+      "The system shall allow buyers to search for products by keyword, category, and price range.",
+      "The system shall allow sellers to register, create a store profile, and list products with images, descriptions, and prices."
+    ],
+    "visible_reqs": [
+      "The system shall provide a shopping cart that persists across user sessions.",
+      "The system shall process payments via credit card, debit card, and PayPal.",
+      "The system shall send order confirmation and shipping update emails to buyers.",
+      "The system shall allow buyers to leave ratings and reviews for completed purchases.",
+      "The system shall provide sellers with a dashboard showing sales, revenue, and inventory.",
+      "The system shall enforce a return and refund workflow with seller approval."
+    ],
+    "nfr": [
+      "Page load time shall not exceed 2 seconds under normal load.",
+      "The system shall be available 99.9% of the time.",
+      "All payment data shall be encrypted using AES-256.",
+      "The system shall comply with PCI-DSS standards."
+    ],
+    "stakeholders": [
+      {
+        "name": "Alice",
+        "role": "buyer",
+        "primary_interest": "low prices and fast delivery",
+        "secondary_interest": "easy returns",
+        "conflict_with": "seller"
+      },
+      {
+        "name": "Bob",
+        "role": "seller",
+        "primary_interest": "high visibility and low commission fees",
+        "secondary_interest": "analytics",
+        "conflict_with": "buyer"
+      },
+      {
+        "name": "Carol",
+        "role": "platform_admin",
+        "primary_interest": "fraud prevention and compliance",
+        "secondary_interest": "revenue",
+        "conflict_with": null
+      }
+    ],
+    "domain_entities": [
+      "User",
+      "Seller",
+      "Product",
+      "Cart",
+      "Order",
+      "Payment",
+      "Review",
+      "Category"
+    ],
+    "conflicts": [
+      {
+        "req_a": "Buyers shall receive full refunds within 24 hours.",
+        "req_b": "Sellers shall have 7 days to approve or deny refund requests.",
+        "type": "temporal_conflict"
+      }
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "scenario_id": "489c1616",
+    "domain": "subscription_box",
+    "rough_idea": "A service that sends personalised monthly product boxes to subscribers based on their preferences.",
+    "ground_truth_reqs": [
+      "The system shall allow users to complete a preference questionnaire during onboarding.",
+      "The system shall generate a personalised box selection based on user preferences and past ratings.",
+      "The system shall support monthly, quarterly, and annual subscription plans.",
+      "The system shall allow users to pause or cancel their subscription at any time.",
+      "The system shall send a box preview notification 5 days before shipping.",
+      "The system shall allow users to swap up to 2 products from their upcoming box.",
+      "The system shall charge subscriptions automatically on the renewal date.",
+      "The system shall track delivery status and notify users at each shipping milestone."
+    ],
+    "hidden_reqs": [
+      "The system shall send a box preview notification 5 days before shipping.",
+      "The system shall generate a personalised box selection based on user preferences and past ratings."
+    ],
+    "visible_reqs": [
+      "The system shall allow users to complete a preference questionnaire during onboarding.",
+      "The system shall support monthly, quarterly, and annual subscription plans.",
+      "The system shall allow users to pause or cancel their subscription at any time.",
+      "The system shall allow users to swap up to 2 products from their upcoming box.",
+      "The system shall charge subscriptions automatically on the renewal date.",
+      "The system shall track delivery status and notify users at each shipping milestone."
+    ],
+    "nfr": [
+      "Personalisation algorithm shall run within 500ms.",
+      "System shall handle 10,000 concurrent active subscribers.",
+      "GDPR compliance for user preference data."
+    ],
+    "stakeholders": [
+      {
+        "name": "Dana",
+        "role": "subscriber",
+        "primary_interest": "personalised relevant products",
+        "secondary_interest": "surprise factor",
+        "conflict_with": null
+      },
+      {
+        "name": "Eve",
+        "role": "curator",
+        "primary_interest": "manageable curation workload",
+        "secondary_interest": "product diversity",
+        "conflict_with": null
+      },
+      {
+        "name": "Frank",
+        "role": "logistics_manager",
+        "primary_interest": "predictable fulfilment volumes",
+        "secondary_interest": "on-time delivery",
+        "conflict_with": null
+      }
+    ],
+    "domain_entities": [
+      "Subscriber",
+      "Box",
+      "Product",
+      "Subscription",
+      "Preference",
+      "Shipment"
+    ],
+    "conflicts": [
+      {
+        "req_a": "Users shall be able to cancel with no notice period.",
+        "req_b": "Boxes shall be prepared 10 days before the shipping date, making late cancellations non-refundable.",
+        "type": "business_rule_conflict"
+      }
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "scenario_id": "c5cf01fb",
+    "domain": "patient_portal",
+    "rough_idea": "A web portal where patients can view their medical records, book appointments, and message their doctors.",
+    "ground_truth_reqs": [
+      "The system shall allow patients to register using their NHS/insurance number and verify their identity.",
+      "The system shall display a patient's medical history, test results, and current prescriptions.",
+      "The system shall allow patients to book, reschedule, and cancel appointments online.",
+      "The system shall provide a secure messaging channel between patients and their assigned GP.",
+      "The system shall allow doctors to update patient records and issue electronic prescriptions.",
+      "The system shall send appointment reminders via SMS and email 24 hours before.",
+      "The system shall allow patients to download their records as a PDF.",
+      "The system shall enforce role-based access so patients cannot view other patients' records."
+    ],
+    "hidden_reqs": [
+      "The system shall provide a secure messaging channel between patients and their assigned GP.",
+      "The system shall display a patient's medical history, test results, and current prescriptions."
+    ],
+    "visible_reqs": [
+      "The system shall allow patients to register using their NHS/insurance number and verify their identity.",
+      "The system shall allow patients to book, reschedule, and cancel appointments online.",
+      "The system shall allow doctors to update patient records and issue electronic prescriptions.",
+      "The system shall send appointment reminders via SMS and email 24 hours before.",
+      "The system shall allow patients to download their records as a PDF.",
+      "The system shall enforce role-based access so patients cannot view other patients' records."
+    ],
+    "nfr": [
+      "System shall comply with HL7 FHIR standards for health data.",
+      "All data at rest shall be encrypted using AES-256.",
+      "System shall comply with HIPAA and GDPR.",
+      "Authentication shall use two-factor authentication.",
+      "System uptime shall be 99.95%."
+    ],
+    "stakeholders": [
+      {
+        "name": "Grace",
+        "role": "patient",
+        "primary_interest": "easy access to own records",
+        "secondary_interest": "privacy",
+        "conflict_with": "doctor"
+      },
+      {
+        "name": "Henry",
+        "role": "gp_doctor",
+        "primary_interest": "efficient appointment management",
+        "secondary_interest": "clinical accuracy",
+        "conflict_with": "patient"
+      },
+      {
+        "name": "Irene",
+        "role": "hospital_admin",
+        "primary_interest": "regulatory compliance",
+        "secondary_interest": "cost reduction",
+        "conflict_with": null
+      }
+    ],
+    "domain_entities": [
+      "Patient",
+      "Doctor",
+      "Appointment",
+      "MedicalRecord",
+      "Prescription",
+      "Message",
+      "TestResult"
+    ],
+    "conflicts": [
+      {
+        "req_a": "Patients shall have immediate access to all test results.",
+        "req_b": "Doctors shall review and annotate test results before patient release to prevent misinterpretation.",
+        "type": "access_timing_conflict"
+      }
+    ],
+    "difficulty": "hard"
+  },
+  {
+    "scenario_id": "3ab011c3",
+    "domain": "mental_health_app",
+    "rough_idea": "A mobile app for daily mood tracking, guided meditation, and connecting users with therapists.",
+    "ground_truth_reqs": [
+      "The system shall allow users to log their mood on a 1-10 scale with optional notes each day.",
+      "The system shall display a mood trend chart over the past 30 days.",
+      "The system shall provide a library of guided meditation sessions categorised by duration and goal.",
+      "The system shall match users with licensed therapists based on their stated concerns.",
+      "The system shall support video, voice, and text therapy sessions within the app.",
+      "The system shall send a daily check-in notification at a user-configured time.",
+      "The system shall detect 3 consecutive low-mood entries and prompt access to crisis resources.",
+      "The system shall allow users to export their mood data for sharing with their therapist."
+    ],
+    "hidden_reqs": [
+      "The system shall display a mood trend chart over the past 30 days.",
+      "The system shall send a daily check-in notification at a user-configured time."
+    ],
+    "visible_reqs": [
+      "The system shall allow users to log their mood on a 1-10 scale with optional notes each day.",
+      "The system shall provide a library of guided meditation sessions categorised by duration and goal.",
+      "The system shall match users with licensed therapists based on their stated concerns.",
+      "The system shall support video, voice, and text therapy sessions within the app.",
+      "The system shall detect 3 consecutive low-mood entries and prompt access to crisis resources.",
+      "The system shall allow users to export their mood data for sharing with their therapist."
+    ],
+    "nfr": [
+      "All therapy session data shall be end-to-end encrypted.",
+      "Crisis detection algorithm shall have false negative rate below 5%.",
+      "App shall function with degraded connectivity for mood logging.",
+      "HIPAA compliance mandatory."
+    ],
+    "stakeholders": [
+      {
+        "name": "James",
+        "role": "end_user",
+        "primary_interest": "private mood tracking without stigma",
+        "secondary_interest": "therapist access",
+        "conflict_with": null
+      },
+      {
+        "name": "Karen",
+        "role": "therapist",
+        "primary_interest": "structured patient data before sessions",
+        "secondary_interest": "session scheduling",
+        "conflict_with": null
+      },
+      {
+        "name": "Leo",
+        "role": "clinical_director",
+        "primary_interest": "evidence-based intervention triggers",
+        "secondary_interest": "liability management",
+        "conflict_with": null
+      }
+    ],
+    "domain_entities": [
+      "User",
+      "MoodEntry",
+      "Therapist",
+      "Session",
+      "MeditationTrack",
+      "CrisisAlert"
+    ],
+    "conflicts": [
+      {
+        "req_a": "User mood data shall never be shared without explicit consent.",
+        "req_b": "In the event of crisis indicators, the system shall notify an emergency contact automatically.",
+        "type": "privacy_safety_conflict"
+      }
+    ],
+    "difficulty": "hard"
+  },
+  {
+    "scenario_id": "5032b660",
+    "domain": "online_learning_platform",
+    "rough_idea": "An e-learning platform where instructors create courses and students learn at their own pace.",
+    "ground_truth_reqs": [
+      "The system shall allow instructors to create courses with video lectures, quizzes, and assignments.",
+      "The system shall allow students to enrol in free and paid courses.",
+      "The system shall track student progress and resume from the last watched position.",
+      "The system shall generate a certificate of completion when a student passes all assessments.",
+      "The system shall provide a discussion forum per course for student-instructor interaction.",
+      "The system shall support multiple-choice, short answer, and coding exercise question types.",
+      "The system shall allow instructors to set course prerequisites.",
+      "The system shall provide instructors with analytics on student engagement and completion rates."
+    ],
+    "hidden_reqs": [
+      "The system shall allow students to enrol in free and paid courses.",
+      "The system shall provide a discussion forum per course for student-instructor interaction."
+    ],
+    "visible_reqs": [
+      "The system shall allow instructors to create courses with video lectures, quizzes, and assignments.",
+      "The system shall track student progress and resume from the last watched position.",
+      "The system shall generate a certificate of completion when a student passes all assessments.",
+      "The system shall support multiple-choice, short answer, and coding exercise question types.",
+      "The system shall allow instructors to set course prerequisites.",
+      "The system shall provide instructors with analytics on student engagement and completion rates."
+    ],
+    "nfr": [
+      "Video streaming shall adapt to available bandwidth automatically.",
+      "Platform shall support 50,000 concurrent learners.",
+      "WCAG 2.1 AA accessibility compliance.",
+      "System shall support English, Spanish, French, and Mandarin."
+    ],
+    "stakeholders": [
+      {
+        "name": "Mia",
+        "role": "student",
+        "primary_interest": "self-paced affordable learning",
+        "secondary_interest": "recognised certificates",
+        "conflict_with": null
+      },
+      {
+        "name": "Noah",
+        "role": "instructor",
+        "primary_interest": "easy course creation tools",
+        "secondary_interest": "revenue share",
+        "conflict_with": "student"
+      },
+      {
+        "name": "Olivia",
+        "role": "platform_owner",
+        "primary_interest": "content quality and platform growth",
+        "secondary_interest": "monetisation",
+        "conflict_with": null
+      }
+    ],
+    "domain_entities": [
+      "Student",
+      "Instructor",
+      "Course",
+      "Lecture",
+      "Quiz",
+      "Certificate",
+      "Forum",
+      "Enrolment"
+    ],
+    "conflicts": [
+      {
+        "req_a": "Instructors shall set their own pricing with no restrictions.",
+        "req_b": "Platform shall enforce a maximum course price of \u00a3200 to maintain accessibility.",
+        "type": "pricing_conflict"
+      }
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "scenario_id": "5bcfa61d",
+    "domain": "school_management_system",
+    "rough_idea": "A system for schools to manage student records, timetables, attendance, and parent communication.",
+    "ground_truth_reqs": [
+      "The system shall maintain a complete academic record for each student including grades and attendance.",
+      "The system shall generate class timetables based on teacher availability and room allocation.",
+      "The system shall record daily attendance per class and flag absences to form teachers.",
+      "The system shall allow teachers to submit grades for assignments and exams.",
+      "The system shall generate progress reports each term and make them available to parents.",
+      "The system shall provide a messaging system between teachers and parents.",
+      "The system shall allow parents to submit absence notifications.",
+      "The system shall track and report on SEND (special educational needs) student support plans."
+    ],
+    "hidden_reqs": [
+      "The system shall allow parents to submit absence notifications.",
+      "The system shall maintain a complete academic record for each student including grades and attendance."
+    ],
+    "visible_reqs": [
+      "The system shall generate class timetables based on teacher availability and room allocation.",
+      "The system shall record daily attendance per class and flag absences to form teachers.",
+      "The system shall allow teachers to submit grades for assignments and exams.",
+      "The system shall generate progress reports each term and make them available to parents.",
+      "The system shall provide a messaging system between teachers and parents.",
+      "The system shall track and report on SEND (special educational needs) student support plans."
+    ],
+    "nfr": [
+      "All student data shall comply with FERPA and GDPR.",
+      "System shall be accessible on tablets used in classrooms.",
+      "System shall support batch import of student data via CSV."
+    ],
+    "stakeholders": [
+      {
+        "name": "Paul",
+        "role": "teacher",
+        "primary_interest": "minimal admin overhead",
+        "secondary_interest": "clear grade tracking",
+        "conflict_with": null
+      },
+      {
+        "name": "Quinn",
+        "role": "parent",
+        "primary_interest": "visibility of child's progress",
+        "secondary_interest": "direct teacher communication",
+        "conflict_with": null
+      },
+      {
+        "name": "Rachel",
+        "role": "headteacher",
+        "primary_interest": "whole-school analytics",
+        "secondary_interest": "ofsted compliance",
+        "conflict_with": null
+      }
+    ],
+    "domain_entities": [
+      "Student",
+      "Teacher",
+      "Parent",
+      "Class",
+      "Timetable",
+      "Attendance",
+      "Grade",
+      "Report"
+    ],
+    "conflicts": [
+      {
+        "req_a": "Parents shall have real-time access to their child's grades.",
+        "req_b": "Teachers shall have the ability to lock grades during moderation periods.",
+        "type": "access_conflict"
+      }
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "scenario_id": "8d4cecf0",
+    "domain": "personal_finance_app",
+    "rough_idea": "A mobile app that connects to bank accounts and helps users track spending, set budgets, and save money.",
+    "ground_truth_reqs": [
+      "The system shall connect to user bank accounts via Open Banking API (PSD2 compliant).",
+      "The system shall automatically categorise transactions into spending categories.",
+      "The system shall allow users to set monthly budgets per category.",
+      "The system shall alert users when they reach 80% of a budget limit.",
+      "The system shall display net worth by aggregating all connected accounts.",
+      "The system shall allow users to set savings goals with target amounts and dates.",
+      "The system shall generate a monthly spending report with category breakdown.",
+      "The system shall allow manual transaction entry for cash spending."
+    ],
+    "hidden_reqs": [
+      "The system shall connect to user bank accounts via Open Banking API (PSD2 compliant).",
+      "The system shall allow manual transaction entry for cash spending."
+    ],
+    "visible_reqs": [
+      "The system shall automatically categorise transactions into spending categories.",
+      "The system shall allow users to set monthly budgets per category.",
+      "The system shall alert users when they reach 80% of a budget limit.",
+      "The system shall display net worth by aggregating all connected accounts.",
+      "The system shall allow users to set savings goals with target amounts and dates.",
+      "The system shall generate a monthly spending report with category breakdown."
+    ],
+    "nfr": [
+      "Bank connection shall use read-only OAuth tokens \u2014 no write access.",
+      "All financial data shall be encrypted at rest and in transit.",
+      "FCA regulated and PSD2 compliant.",
+      "App shall not store full bank credentials."
+    ],
+    "stakeholders": [
+      {
+        "name": "Sam",
+        "role": "end_user",
+        "primary_interest": "clear spending insight",
+        "secondary_interest": "financial privacy",
+        "conflict_with": null
+      },
+      {
+        "name": "Tara",
+        "role": "product_manager",
+        "primary_interest": "engagement and retention",
+        "secondary_interest": "monetisation via premium tier",
+        "conflict_with": null
+      },
+      {
+        "name": "Uma",
+        "role": "compliance_officer",
+        "primary_interest": "FCA and PSD2 compliance",
+        "secondary_interest": "data minimisation",
+        "conflict_with": null
+      }
+    ],
+    "domain_entities": [
+      "User",
+      "BankAccount",
+      "Transaction",
+      "Budget",
+      "Category",
+      "SavingsGoal",
+      "Report"
+    ],
+    "conflicts": [
+      {
+        "req_a": "System shall retain transaction history indefinitely for trend analysis.",
+        "req_b": "GDPR requires data to be deleted upon user request within 30 days.",
+        "type": "retention_conflict"
+      }
+    ],
+    "difficulty": "hard"
+  },
+  {
+    "scenario_id": "e4d34997",
+    "domain": "peer_lending_platform",
+    "rough_idea": "A platform where individuals can lend money to small businesses and earn interest returns.",
+    "ground_truth_reqs": [
+      "The system shall allow borrowers to submit loan applications with business details and loan purpose.",
+      "The system shall perform automated credit risk assessment on borrower applications.",
+      "The system shall allow lenders to browse verified loan listings and commit funds.",
+      "The system shall distribute borrower repayments proportionally to all contributing lenders.",
+      "The system shall provide a secondary market where lenders can sell their loan parts.",
+      "The system shall send monthly statements to lenders showing interest earned.",
+      "The system shall enforce FCA-regulated investor limits for retail investors.",
+      "The system shall place defaulted loans into a collections workflow automatically."
+    ],
+    "hidden_reqs": [
+      "The system shall distribute borrower repayments proportionally to all contributing lenders.",
+      "The system shall perform automated credit risk assessment on borrower applications."
+    ],
+    "visible_reqs": [
+      "The system shall allow borrowers to submit loan applications with business details and loan purpose.",
+      "The system shall allow lenders to browse verified loan listings and commit funds.",
+      "The system shall provide a secondary market where lenders can sell their loan parts.",
+      "The system shall send monthly statements to lenders showing interest earned.",
+      "The system shall enforce FCA-regulated investor limits for retail investors.",
+      "The system shall place defaulted loans into a collections workflow automatically."
+    ],
+    "nfr": [
+      "Platform shall be FCA authorised and regulated.",
+      "Credit scoring model shall be explainable (no black-box decisions).",
+      "All fund transfers shall use ring-fenced client money accounts.",
+      "System shall pass annual penetration tests."
+    ],
+    "stakeholders": [
+      {
+        "name": "Victor",
+        "role": "lender",
+        "primary_interest": "attractive returns with managed risk",
+        "secondary_interest": "liquidity via secondary market",
+        "conflict_with": "borrower"
+      },
+      {
+        "name": "Wendy",
+        "role": "borrower",
+        "primary_interest": "fast approval and fair rates",
+        "secondary_interest": "privacy of financials",
+        "conflict_with": "lender"
+      },
+      {
+        "name": "Xavier",
+        "role": "risk_officer",
+        "primary_interest": "default rate below 3%",
+        "secondary_interest": "regulatory compliance",
+        "conflict_with": null
+      }
+    ],
+    "domain_entities": [
+      "Lender",
+      "Borrower",
+      "LoanApplication",
+      "LoanListing",
+      "Investment",
+      "Repayment",
+      "SecondaryMarket"
+    ],
+    "conflicts": [
+      {
+        "req_a": "Borrowers shall receive loan decisions within 24 hours.",
+        "req_b": "Risk assessment shall include manual review for loans above \u00a350,000.",
+        "type": "speed_thoroughness_conflict"
+      }
+    ],
+    "difficulty": "hard"
+  },
+  {
+    "scenario_id": "eeaeecf4",
+    "domain": "fleet_management",
+    "rough_idea": "A system to track a company's delivery fleet in real time, optimise routes, and manage vehicle maintenance.",
+    "ground_truth_reqs": [
+      "The system shall display real-time GPS location of all vehicles on a map.",
+      "The system shall calculate and suggest optimal delivery routes based on traffic data.",
+      "The system shall send alerts when a vehicle deviates from its planned route.",
+      "The system shall track fuel consumption per vehicle and flag inefficient driving behaviour.",
+      "The system shall schedule preventive maintenance based on mileage and engine hours.",
+      "The system shall allow drivers to log delivery confirmations via mobile app.",
+      "The system shall generate end-of-day reports on deliveries completed, failed, and pending.",
+      "The system shall integrate with the company's existing ERP for order data."
+    ],
+    "hidden_reqs": [
+      "The system shall display real-time GPS location of all vehicles on a map.",
+      "The system shall schedule preventive maintenance based on mileage and engine hours."
+    ],
+    "visible_reqs": [
+      "The system shall calculate and suggest optimal delivery routes based on traffic data.",
+      "The system shall send alerts when a vehicle deviates from its planned route.",
+      "The system shall track fuel consumption per vehicle and flag inefficient driving behaviour.",
+      "The system shall allow drivers to log delivery confirmations via mobile app.",
+      "The system shall generate end-of-day reports on deliveries completed, failed, and pending.",
+      "The system shall integrate with the company's existing ERP for order data."
+    ],
+    "nfr": [
+      "GPS tracking shall update every 30 seconds.",
+      "Mobile app shall work offline and sync when connectivity is restored.",
+      "System shall handle a fleet of up to 500 vehicles.",
+      "Driver data shall comply with GDPR."
+    ],
+    "stakeholders": [
+      {
+        "name": "Yara",
+        "role": "fleet_manager",
+        "primary_interest": "full vehicle visibility",
+        "secondary_interest": "cost reduction",
+        "conflict_with": null
+      },
+      {
+        "name": "Zack",
+        "role": "driver",
+        "primary_interest": "simple mobile interface",
+        "secondary_interest": "privacy of location outside working hours",
+        "conflict_with": "fleet_manager"
+      },
+      {
+        "name": "Anna",
+        "role": "operations_director",
+        "primary_interest": "delivery SLA compliance",
+        "secondary_interest": "ERP integration",
+        "conflict_with": null
+      }
+    ],
+    "domain_entities": [
+      "Vehicle",
+      "Driver",
+      "Route",
+      "Delivery",
+      "MaintenanceSchedule",
+      "FuelLog",
+      "Alert"
+    ],
+    "conflicts": [
+      {
+        "req_a": "System shall track driver location continuously during working hours.",
+        "req_b": "Drivers shall have the ability to disable location tracking during breaks.",
+        "type": "surveillance_privacy_conflict"
+      }
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "scenario_id": "c9021146",
+    "domain": "smart_building_iot",
+    "rough_idea": "An IoT platform to manage energy, security, and comfort systems in a commercial office building.",
+    "ground_truth_reqs": [
+      "The system shall integrate with HVAC, lighting, and access control sensors via MQTT.",
+      "The system shall automatically adjust temperature based on occupancy detected by motion sensors.",
+      "The system shall allow building managers to set energy budgets and alert when exceeded.",
+      "The system shall provide a floor-plan view showing real-time occupancy per zone.",
+      "The system shall control access door locks and log all entry and exit events.",
+      "The system shall detect anomalies such as unusual after-hours access and send alerts.",
+      "The system shall generate monthly energy consumption reports by floor and system type.",
+      "The system shall allow remote control of any connected device from the management dashboard."
+    ],
+    "hidden_reqs": [
+      "The system shall provide a floor-plan view showing real-time occupancy per zone.",
+      "The system shall detect anomalies such as unusual after-hours access and send alerts."
+    ],
+    "visible_reqs": [
+      "The system shall integrate with HVAC, lighting, and access control sensors via MQTT.",
+      "The system shall automatically adjust temperature based on occupancy detected by motion sensors.",
+      "The system shall allow building managers to set energy budgets and alert when exceeded.",
+      "The system shall control access door locks and log all entry and exit events.",
+      "The system shall generate monthly energy consumption reports by floor and system type.",
+      "The system shall allow remote control of any connected device from the management dashboard."
+    ],
+    "nfr": [
+      "Device command latency shall be under 500ms.",
+      "System shall support 10,000 concurrent IoT device connections.",
+      "All device communications shall use TLS 1.3.",
+      "System shall remain operational if internet connectivity is lost (local fallback mode)."
+    ],
+    "stakeholders": [
+      {
+        "name": "Ben",
+        "role": "building_manager",
+        "primary_interest": "energy cost reduction",
+        "secondary_interest": "tenant comfort",
+        "conflict_with": null
+      },
+      {
+        "name": "Cleo",
+        "role": "security_officer",
+        "primary_interest": "access control audit trail",
+        "secondary_interest": "intrusion detection",
+        "conflict_with": null
+      },
+      {
+        "name": "Dan",
+        "role": "tenant_company",
+        "primary_interest": "comfortable working environment",
+        "secondary_interest": "privacy from landlord",
+        "conflict_with": "building_manager"
+      }
+    ],
+    "domain_entities": [
+      "Sensor",
+      "Device",
+      "Zone",
+      "OccupancyEvent",
+      "EnergyReading",
+      "AccessEvent",
+      "Alert"
+    ],
+    "conflicts": [
+      {
+        "req_a": "Building manager shall have access to individual occupancy data per desk.",
+        "req_b": "Tenant privacy policy prohibits individual-level location tracking of employees.",
+        "type": "granularity_privacy_conflict"
+      }
+    ],
+    "difficulty": "hard"
+  },
+  {
+    "scenario_id": "8540b2b8",
+    "domain": "task_management_saas",
+    "rough_idea": "A project management tool for software teams to track tasks, sprints, and bugs.",
+    "ground_truth_reqs": [
+      "The system shall allow users to create projects and invite team members with defined roles.",
+      "The system shall support Kanban boards and sprint-based backlog management.",
+      "The system shall allow tasks to be assigned to team members with due dates and priority levels.",
+      "The system shall track time logged against each task.",
+      "The system shall generate velocity charts and burndown charts for each sprint.",
+      "The system shall provide a GitHub integration to link commits and PRs to tasks.",
+      "The system shall send daily digest emails with overdue and at-risk tasks.",
+      "The system shall support custom workflow states beyond the default To Do / In Progress / Done."
+    ],
+    "hidden_reqs": [
+      "The system shall send daily digest emails with overdue and at-risk tasks.",
+      "The system shall support Kanban boards and sprint-based backlog management."
+    ],
+    "visible_reqs": [
+      "The system shall allow users to create projects and invite team members with defined roles.",
+      "The system shall allow tasks to be assigned to team members with due dates and priority levels.",
+      "The system shall track time logged against each task.",
+      "The system shall generate velocity charts and burndown charts for each sprint.",
+      "The system shall provide a GitHub integration to link commits and PRs to tasks.",
+      "The system shall support custom workflow states beyond the default To Do / In Progress / Done."
+    ],
+    "nfr": [
+      "API shall respond within 200ms at the 99th percentile.",
+      "Data shall be exportable in CSV and JSON formats.",
+      "System shall support SSO via SAML 2.0 for enterprise customers.",
+      "99.9% monthly uptime SLA."
+    ],
+    "stakeholders": [
+      {
+        "name": "Elle",
+        "role": "developer",
+        "primary_interest": "minimal process overhead",
+        "secondary_interest": "clear task ownership",
+        "conflict_with": null
+      },
+      {
+        "name": "Fred",
+        "role": "product_manager",
+        "primary_interest": "sprint planning visibility",
+        "secondary_interest": "stakeholder reporting",
+        "conflict_with": null
+      },
+      {
+        "name": "Gina",
+        "role": "engineering_manager",
+        "primary_interest": "team velocity tracking",
+        "secondary_interest": "resource allocation",
+        "conflict_with": null
+      }
+    ],
+    "domain_entities": [
+      "Project",
+      "Task",
+      "Sprint",
+      "User",
+      "Team",
+      "TimeLog",
+      "GitCommit",
+      "WorkflowState"
+    ],
+    "conflicts": [
+      {
+        "req_a": "Developers shall be able to re-estimate tasks at any time during a sprint.",
+        "req_b": "Sprint commitments shall be locked at sprint start to maintain predictability.",
+        "type": "agile_methodology_conflict"
+      }
+    ],
+    "difficulty": "easy"
+  },
+  {
+    "scenario_id": "802232a4",
+    "domain": "remote_team_collaboration",
+    "rough_idea": "A virtual office platform where distributed teams can have video calls, share screens, and maintain persistent chat rooms.",
+    "ground_truth_reqs": [
+      "The system shall provide persistent text channels organised by team and topic.",
+      "The system shall support video calls for up to 50 participants with screen sharing.",
+      "The system shall allow users to set a status indicating availability.",
+      "The system shall provide a shared virtual whiteboard for brainstorming sessions.",
+      "The system shall allow file sharing up to 500MB per file with preview support.",
+      "The system shall record meetings on request and make recordings available for 30 days.",
+      "The system shall support threaded replies within channels to keep conversations organised.",
+      "The system shall provide a company-wide searchable message archive."
+    ],
+    "hidden_reqs": [
+      "The system shall provide a company-wide searchable message archive.",
+      "The system shall allow file sharing up to 500MB per file with preview support."
+    ],
+    "visible_reqs": [
+      "The system shall provide persistent text channels organised by team and topic.",
+      "The system shall support video calls for up to 50 participants with screen sharing.",
+      "The system shall allow users to set a status indicating availability.",
+      "The system shall provide a shared virtual whiteboard for brainstorming sessions.",
+      "The system shall record meetings on request and make recordings available for 30 days.",
+      "The system shall support threaded replies within channels to keep conversations organised."
+    ],
+    "nfr": [
+      "Video calls shall maintain quality at 720p on a 5Mbps connection.",
+      "Message delivery latency shall be under 100ms.",
+      "End-to-end encryption for direct messages.",
+      "GDPR compliance for EU users."
+    ],
+    "stakeholders": [
+      {
+        "name": "Hugo",
+        "role": "remote_employee",
+        "primary_interest": "seamless async communication",
+        "secondary_interest": "work-life boundary",
+        "conflict_with": null
+      },
+      {
+        "name": "Isla",
+        "role": "hr_manager",
+        "primary_interest": "culture and engagement monitoring",
+        "secondary_interest": "compliance",
+        "conflict_with": null
+      },
+      {
+        "name": "Jake",
+        "role": "cto",
+        "primary_interest": "security and enterprise features",
+        "secondary_interest": "integration with existing tools",
+        "conflict_with": null
+      }
+    ],
+    "domain_entities": [
+      "User",
+      "Channel",
+      "Message",
+      "VideoCall",
+      "Recording",
+      "File",
+      "Whiteboard"
+    ],
+    "conflicts": [
+      {
+        "req_a": "HR shall have access to all message history for compliance purposes.",
+        "req_b": "Direct messages shall be end-to-end encrypted and inaccessible to employers.",
+        "type": "compliance_privacy_conflict"
+      }
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "scenario_id": "d9f7fbbd",
+    "domain": "citizen_services_portal",
+    "rough_idea": "A government portal where citizens can apply for permits, pay taxes, and access public services online.",
+    "ground_truth_reqs": [
+      "The system shall allow citizens to create a verified digital identity using government ID.",
+      "The system shall list all available services with eligibility criteria and required documents.",
+      "The system shall allow citizens to submit permit applications and upload supporting documents.",
+      "The system shall track application status and notify citizens at each stage.",
+      "The system shall allow online payment of council tax, fines, and fees.",
+      "The system shall provide a live chat and callback request option for citizen support.",
+      "The system shall generate official PDF acknowledgements for every submitted application.",
+      "The system shall support Welsh and English languages for Wales-based deployments."
+    ],
+    "hidden_reqs": [
+      "The system shall allow online payment of council tax, fines, and fees.",
+      "The system shall generate official PDF acknowledgements for every submitted application."
+    ],
+    "visible_reqs": [
+      "The system shall allow citizens to create a verified digital identity using government ID.",
+      "The system shall list all available services with eligibility criteria and required documents.",
+      "The system shall allow citizens to submit permit applications and upload supporting documents.",
+      "The system shall track application status and notify citizens at each stage.",
+      "The system shall provide a live chat and callback request option for citizen support.",
+      "The system shall support Welsh and English languages for Wales-based deployments."
+    ],
+    "nfr": [
+      "WCAG 2.2 AA accessibility compliance mandatory.",
+      "System shall comply with UK Government Digital Service (GDS) standards.",
+      "99.99% uptime during business hours.",
+      "All data stored in UK data centres."
+    ],
+    "stakeholders": [
+      {
+        "name": "Lena",
+        "role": "citizen",
+        "primary_interest": "quick self-service without queuing",
+        "secondary_interest": "privacy of personal data",
+        "conflict_with": null
+      },
+      {
+        "name": "Mike",
+        "role": "council_caseworker",
+        "primary_interest": "structured application data",
+        "secondary_interest": "manageable caseload",
+        "conflict_with": null
+      },
+      {
+        "name": "Nina",
+        "role": "digital_director",
+        "primary_interest": "GDS compliance and cost savings",
+        "secondary_interest": "accessibility",
+        "conflict_with": null
+      }
+    ],
+    "domain_entities": [
+      "Citizen",
+      "Application",
+      "Service",
+      "Document",
+      "Payment",
+      "CaseWorker",
+      "Notification"
+    ],
+    "conflicts": [
+      {
+        "req_a": "System shall auto-approve low-risk permit applications within 24 hours.",
+        "req_b": "All permit approvals shall require manual sign-off by a qualified caseworker.",
+        "type": "automation_accountability_conflict"
+      }
+    ],
+    "difficulty": "hard"
+  },
+  {
+    "scenario_id": "293dcb61",
+    "domain": "video_streaming",
+    "rough_idea": "A video streaming platform for watching movies and TV shows on any device.",
+    "ground_truth_reqs": [
+      "The system shall provide a content catalogue with search, genre filter, and recommendation.",
+      "The system shall stream video in 480p, 720p, 1080p, and 4K based on network speed.",
+      "The system shall allow users to download content for offline viewing.",
+      "The system shall support user profiles within a single household account.",
+      "The system shall track watch history and resume playback from the last position.",
+      "The system shall implement parental controls with PIN-protected content ratings.",
+      "The system shall provide subtitle support in at least 10 languages.",
+      "The system shall support simultaneous streaming on up to 4 devices per account."
+    ],
+    "hidden_reqs": [
+      "The system shall provide a content catalogue with search, genre filter, and recommendation.",
+      "The system shall provide subtitle support in at least 10 languages."
+    ],
+    "visible_reqs": [
+      "The system shall stream video in 480p, 720p, 1080p, and 4K based on network speed.",
+      "The system shall allow users to download content for offline viewing.",
+      "The system shall support user profiles within a single household account.",
+      "The system shall track watch history and resume playback from the last position.",
+      "The system shall implement parental controls with PIN-protected content ratings.",
+      "The system shall support simultaneous streaming on up to 4 devices per account."
+    ],
+    "nfr": [
+      "Video shall start within 3 seconds on a 10Mbps connection.",
+      "DRM protection via Widevine or FairPlay.",
+      "CDN shall serve content from the nearest edge node.",
+      "System shall handle 1 million concurrent streams."
+    ],
+    "stakeholders": [
+      {
+        "name": "Ora",
+        "role": "subscriber",
+        "primary_interest": "wide content library and offline access",
+        "secondary_interest": "affordable pricing",
+        "conflict_with": null
+      },
+      {
+        "name": "Pete",
+        "role": "content_partner",
+        "primary_interest": "DRM enforcement and royalty tracking",
+        "secondary_interest": "audience analytics",
+        "conflict_with": null
+      },
+      {
+        "name": "Rita",
+        "role": "product_manager",
+        "primary_interest": "subscriber growth and retention",
+        "secondary_interest": "personalisation accuracy",
+        "conflict_with": null
+      }
+    ],
+    "domain_entities": [
+      "Content",
+      "User",
+      "Profile",
+      "WatchHistory",
+      "Download",
+      "Subscription",
+      "Recommendation"
+    ],
+    "conflicts": [
+      {
+        "req_a": "Downloads shall be available for unlimited offline viewing.",
+        "req_b": "Content licences restrict offline viewing to 30 days and 5 saves per title.",
+        "type": "licence_constraint_conflict"
+      }
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "scenario_id": "d9379e17",
+    "domain": "factory_quality_control",
+    "rough_idea": "We want a system that catches defects on our production line before products leave the factory.",
+    "ground_truth_reqs": [
+      "The system shall capture images from conveyor belt cameras at 30 frames per second.",
+      "The system shall detect surface defects, dimensional deviations, and colour inconsistencies using computer vision.",
+      "The system shall automatically divert defective units to a rejection bin via actuator signal.",
+      "The system shall log every defect event with timestamp, camera ID, and defect classification.",
+      "The system shall allow quality engineers to review and reclassify flagged items within 1 hour.",
+      "The system shall generate end-of-shift defect rate reports by product line.",
+      "The system shall alert supervisors when defect rate exceeds configurable thresholds.",
+      "The system shall maintain a rolling 90-day defect database for trend analysis.",
+      "The system shall support adding new defect classifiers without redeploying the core system.",
+      "The system shall integrate with the existing ERP to update production yield records."
+    ],
+    "hidden_reqs": [
+      "The system shall automatically divert defective units to a rejection bin via actuator signal.",
+      "The system shall alert supervisors when defect rate exceeds configurable thresholds."
+    ],
+    "visible_reqs": [
+      "The system shall capture images from conveyor belt cameras at 30 frames per second.",
+      "The system shall detect surface defects, dimensional deviations, and colour inconsistencies using computer vision.",
+      "The system shall log every defect event with timestamp, camera ID, and defect classification.",
+      "The system shall allow quality engineers to review and reclassify flagged items within 1 hour.",
+      "The system shall generate end-of-shift defect rate reports by product line.",
+      "The system shall maintain a rolling 90-day defect database for trend analysis.",
+      "The system shall support adding new defect classifiers without redeploying the core system.",
+      "The system shall integrate with the existing ERP to update production yield records."
+    ],
+    "nfr": [
+      "Defect detection latency shall be under 200ms to avoid halting the conveyor.",
+      "System shall achieve at least 98% precision and 95% recall on the calibration dataset.",
+      "System shall operate in environments with temperatures between 5\u00b0C and 45\u00b0C.",
+      "Audit logs shall be tamper-evident and retained for 5 years."
+    ],
+    "stakeholders": [
+      {
+        "name": "Amara",
+        "role": "quality_engineer",
+        "primary_interest": "accurate defect detection",
+        "secondary_interest": "easy reclassification",
+        "conflict_with": null
+      },
+      {
+        "name": "Brice",
+        "role": "production_manager",
+        "primary_interest": "minimal line downtime",
+        "secondary_interest": "yield improvement",
+        "conflict_with": "quality_engineer"
+      },
+      {
+        "name": "Cara",
+        "role": "compliance_officer",
+        "primary_interest": "ISO 9001 audit trail",
+        "secondary_interest": "traceability",
+        "conflict_with": null
+      }
+    ],
+    "domain_entities": [
+      "DefectEvent",
+      "ProductUnit",
+      "ConveyorLine",
+      "Camera",
+      "Classifier",
+      "QualityReport",
+      "Actuator"
+    ],
+    "conflicts": [
+      {
+        "req_a": "The system shall halt the conveyor when 3 consecutive defects are detected.",
+        "req_b": "Production manager shall have authority to override automatic halts to meet daily quotas.",
+        "type": "safety_productivity_conflict"
+      }
+    ],
+    "difficulty": "hard"
+  },
+  {
+    "scenario_id": "2aa5a454",
+    "domain": "predictive_maintenance",
+    "rough_idea": "Our machines keep breaking down unexpectedly. We want software that tells us when something is about to fail before it actually does.",
+    "ground_truth_reqs": [
+      "The system shall collect vibration, temperature, and pressure sensor data from all monitored machines.",
+      "The system shall train predictive models per machine type using historical failure data.",
+      "The system shall generate a maintenance prediction at least 72 hours before predicted failure.",
+      "The system shall assign a confidence score and failure mode to each prediction.",
+      "The system shall create work orders in the CMMS automatically for high-confidence predictions.",
+      "The system shall allow maintenance engineers to accept, defer, or dismiss predicted work orders.",
+      "The system shall update model accuracy metrics after each resolved maintenance event.",
+      "The system shall provide a machine health dashboard with real-time status indicators."
+    ],
+    "hidden_reqs": [
+      "The system shall allow maintenance engineers to accept, defer, or dismiss predicted work orders.",
+      "The system shall generate a maintenance prediction at least 72 hours before predicted failure."
+    ],
+    "visible_reqs": [
+      "The system shall collect vibration, temperature, and pressure sensor data from all monitored machines.",
+      "The system shall train predictive models per machine type using historical failure data.",
+      "The system shall assign a confidence score and failure mode to each prediction.",
+      "The system shall create work orders in the CMMS automatically for high-confidence predictions.",
+      "The system shall update model accuracy metrics after each resolved maintenance event.",
+      "The system shall provide a machine health dashboard with real-time status indicators."
+    ],
+    "nfr": [
+      "Sensor polling interval shall be configurable between 1 second and 1 minute.",
+      "Prediction model shall achieve at least 85% recall on held-out failure events.",
+      "System shall process 10,000 sensor readings per second without data loss.",
+      "CMMS integration shall use REST API with OAuth 2.0."
+    ],
+    "stakeholders": [
+      {
+        "name": "Demi",
+        "role": "maintenance_engineer",
+        "primary_interest": "actionable advance warning",
+        "secondary_interest": "reduced emergency callouts",
+        "conflict_with": null
+      },
+      {
+        "name": "Evan",
+        "role": "plant_manager",
+        "primary_interest": "maximum uptime",
+        "secondary_interest": "maintenance cost control",
+        "conflict_with": "maintenance_engineer"
+      },
+      {
+        "name": "Faye",
+        "role": "data_scientist",
+        "primary_interest": "model transparency and retraining tools",
+        "secondary_interest": "feature engineering access",
+        "conflict_with": null
+      }
+    ],
+    "domain_entities": [
+      "Machine",
+      "Sensor",
+      "SensorReading",
+      "Prediction",
+      "WorkOrder",
+      "FailureEvent",
+      "MaintenanceRecord"
+    ],
+    "conflicts": [
+      {
+        "req_a": "Maintenance work orders shall be auto-scheduled into the nearest available slot.",
+        "req_b": "Maintenance engineers shall have sole authority to schedule their own work orders.",
+        "type": "autonomy_control_conflict"
+      }
+    ],
+    "difficulty": "hard"
+  },
+  {
+    "scenario_id": "c0f50695",
+    "domain": "warehouse_management",
+    "rough_idea": "We run a large warehouse and need a better system to track where everything is and speed up picking.",
+    "ground_truth_reqs": [
+      "The system shall maintain a real-time inventory of all items including location, quantity, and lot number.",
+      "The system shall generate optimised pick lists for warehouse operatives using bin locations.",
+      "The system shall support barcode and RFID scanning for receiving, picking, and dispatch.",
+      "The system shall assign incoming stock to available bin locations using a slotting algorithm.",
+      "The system shall trigger replenishment orders when stock falls below reorder point.",
+      "The system shall track batch and expiry dates and enforce FEFO (first expired, first out) picking.",
+      "The system shall provide a cycle counting module for partial stock verification.",
+      "The system shall generate despatch notes and integrate with the carrier booking system."
+    ],
+    "hidden_reqs": [
+      "The system shall support barcode and RFID scanning for receiving, picking, and dispatch.",
+      "The system shall generate optimised pick lists for warehouse operatives using bin locations."
+    ],
+    "visible_reqs": [
+      "The system shall maintain a real-time inventory of all items including location, quantity, and lot number.",
+      "The system shall assign incoming stock to available bin locations using a slotting algorithm.",
+      "The system shall trigger replenishment orders when stock falls below reorder point.",
+      "The system shall track batch and expiry dates and enforce FEFO (first expired, first out) picking.",
+      "The system shall provide a cycle counting module for partial stock verification.",
+      "The system shall generate despatch notes and integrate with the carrier booking system."
+    ],
+    "nfr": [
+      "Pick list generation shall complete in under 1 second.",
+      "System shall support 200 simultaneous scanner sessions.",
+      "Barcode scanning accuracy shall be confirmed by redundant check digit validation.",
+      "System shall be accessible on handheld scanners running Android 10 or later."
+    ],
+    "stakeholders": [
+      {
+        "name": "Gil",
+        "role": "warehouse_operative",
+        "primary_interest": "clear pick instructions",
+        "secondary_interest": "minimal walking distance",
+        "conflict_with": null
+      },
+      {
+        "name": "Hana",
+        "role": "warehouse_manager",
+        "primary_interest": "accurate stock counts",
+        "secondary_interest": "fast despatch",
+        "conflict_with": null
+      },
+      {
+        "name": "Ivan",
+        "role": "supply_chain_director",
+        "primary_interest": "vendor integration and reporting",
+        "secondary_interest": "inventory turn rate",
+        "conflict_with": null
+      }
+    ],
+    "domain_entities": [
+      "SKU",
+      "Bin",
+      "PickList",
+      "PurchaseOrder",
+      "DespatechNote",
+      "LotNumber",
+      "CycleCount"
+    ],
+    "conflicts": [
+      {
+        "req_a": "System shall enforce FEFO picking strictly regardless of bin location distance.",
+        "req_b": "Optimised pick routes shall minimise travel distance to improve operative throughput.",
+        "type": "compliance_efficiency_conflict"
+      }
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "scenario_id": "36653489",
+    "domain": "supply_chain_visibility",
+    "rough_idea": "We need to see exactly where all our supplier shipments are and get early warnings when something might be late.",
+    "ground_truth_reqs": [
+      "The system shall aggregate shipment tracking data from multiple carrier APIs and EDI feeds.",
+      "The system shall display all active shipments on a world map with estimated arrival dates.",
+      "The system shall compare actual vs planned arrival dates and flag exceptions.",
+      "The system shall calculate the impact of late shipments on downstream production schedules.",
+      "The system shall send automated alerts to buyers and suppliers for shipments at risk.",
+      "The system shall maintain a supplier on-time delivery scorecard updated weekly.",
+      "The system shall support purchase order status tracking linked to shipment milestones."
+    ],
+    "hidden_reqs": [
+      "The system shall support purchase order status tracking linked to shipment milestones."
+    ],
+    "visible_reqs": [
+      "The system shall aggregate shipment tracking data from multiple carrier APIs and EDI feeds.",
+      "The system shall display all active shipments on a world map with estimated arrival dates.",
+      "The system shall compare actual vs planned arrival dates and flag exceptions.",
+      "The system shall calculate the impact of late shipments on downstream production schedules.",
+      "The system shall send automated alerts to buyers and suppliers for shipments at risk.",
+      "The system shall maintain a supplier on-time delivery scorecard updated weekly."
+    ],
+    "nfr": [
+      "Shipment data shall be refreshed every 15 minutes from carrier APIs.",
+      "Map shall load within 3 seconds for up to 5,000 active shipments.",
+      "System shall support EDI 856 (Advance Ship Notice) format."
+    ],
+    "stakeholders": [
+      {
+        "name": "Jess",
+        "role": "procurement_manager",
+        "primary_interest": "proactive delay alerts",
+        "secondary_interest": "supplier accountability",
+        "conflict_with": null
+      },
+      {
+        "name": "Kurt",
+        "role": "logistics_coordinator",
+        "primary_interest": "real-time shipment visibility",
+        "secondary_interest": "carrier diversity",
+        "conflict_with": null
+      },
+      {
+        "name": "Lana",
+        "role": "supplier",
+        "primary_interest": "clear communication of requirements",
+        "secondary_interest": "fair scoring",
+        "conflict_with": null
+      }
+    ],
+    "domain_entities": [
+      "Shipment",
+      "PurchaseOrder",
+      "Carrier",
+      "Milestone",
+      "Supplier",
+      "RiskAlert",
+      "Scorecard"
+    ],
+    "conflicts": [
+      {
+        "req_a": "Supplier scorecards shall be publicly visible to all platform users.",
+        "req_b": "Suppliers shall have the right to dispute and temporarily suppress scorecard publication.",
+        "type": "transparency_dispute_conflict"
+      }
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "scenario_id": "f2330410",
+    "domain": "contract_management",
+    "rough_idea": "Our legal team spends hours hunting through old contracts. We want a system that stores them, finds key clauses, and reminds us when things expire.",
+    "ground_truth_reqs": [
+      "The system shall store contracts in PDF and DOCX formats with full-text indexing.",
+      "The system shall extract key metadata from uploaded contracts: parties, value, start date, end date, governing law.",
+      "The system shall allow users to search contracts by keyword, party name, contract type, and date range.",
+      "The system shall send configurable expiry reminders at 90, 60, 30, and 7 days before contract end.",
+      "The system shall support contract version control with a full audit trail of changes.",
+      "The system shall allow clause-level tagging so users can find all contracts containing a specific clause type.",
+      "The system shall provide a dashboard showing contracts expiring this month, next month, and next quarter.",
+      "The system shall support e-signature workflow integration for new and renewed contracts.",
+      "The system shall enforce access controls so users only see contracts relevant to their department.",
+      "The system shall generate a monthly obligations report listing upcoming deliverables per active contract."
+    ],
+    "hidden_reqs": [
+      "The system shall allow clause-level tagging so users can find all contracts containing a specific clause type.",
+      "The system shall extract key metadata from uploaded contracts: parties, value, start date, end date, governing law."
+    ],
+    "visible_reqs": [
+      "The system shall store contracts in PDF and DOCX formats with full-text indexing.",
+      "The system shall allow users to search contracts by keyword, party name, contract type, and date range.",
+      "The system shall send configurable expiry reminders at 90, 60, 30, and 7 days before contract end.",
+      "The system shall support contract version control with a full audit trail of changes.",
+      "The system shall provide a dashboard showing contracts expiring this month, next month, and next quarter.",
+      "The system shall support e-signature workflow integration for new and renewed contracts.",
+      "The system shall enforce access controls so users only see contracts relevant to their department.",
+      "The system shall generate a monthly obligations report listing upcoming deliverables per active contract."
+    ],
+    "nfr": [
+      "Full-text search shall return results within 2 seconds across 100,000 contracts.",
+      "All documents shall be encrypted at rest using AES-256.",
+      "System shall retain all contract versions for the lifetime of the contract plus 7 years.",
+      "SOC 2 Type II compliance required."
+    ],
+    "stakeholders": [
+      {
+        "name": "Marta",
+        "role": "in_house_lawyer",
+        "primary_interest": "fast clause search and version control",
+        "secondary_interest": "compliance tracking",
+        "conflict_with": null
+      },
+      {
+        "name": "Neil",
+        "role": "cfo",
+        "primary_interest": "contract value visibility and renewal cost control",
+        "secondary_interest": "liability exposure",
+        "conflict_with": null
+      },
+      {
+        "name": "Opal",
+        "role": "contracts_admin",
+        "primary_interest": "easy upload and metadata capture",
+        "secondary_interest": "reminder reliability",
+        "conflict_with": null
+      }
+    ],
+    "domain_entities": [
+      "Contract",
+      "Clause",
+      "Party",
+      "Version",
+      "Obligation",
+      "ExpiryAlert",
+      "Signature"
+    ],
+    "conflicts": [
+      {
+        "req_a": "Legal team shall have read access to all contracts across all departments.",
+        "req_b": "Departmental contracts containing commercially sensitive terms shall be restricted to department heads only.",
+        "type": "access_confidentiality_conflict"
+      },
+      {
+        "req_a": "Expired contracts shall be automatically archived and removed from the active view.",
+        "req_b": "Finance team shall retain access to expired contracts for 7 years for audit purposes.",
+        "type": "retention_access_conflict"
+      }
+    ],
+    "difficulty": "hard"
+  },
+  {
+    "scenario_id": "1d0131e7",
+    "domain": "regulatory_compliance_tracker",
+    "rough_idea": "We have to comply with a lot of different regulations and we keep missing deadlines. We need something to track all the requirements and who is responsible.",
+    "ground_truth_reqs": [
+      "The system shall maintain a register of all applicable regulations with their requirements and deadlines.",
+      "The system shall assign ownership of each compliance requirement to a named individual.",
+      "The system shall track completion evidence for each requirement via document upload or task sign-off.",
+      "The system shall calculate an overall compliance score per regulation and organisation-wide.",
+      "The system shall escalate overdue requirements to the owner's line manager automatically.",
+      "The system shall generate a board-level compliance report on demand.",
+      "The system shall allow users to flag requirements that are not applicable with a justification."
+    ],
+    "hidden_reqs": [
+      "The system shall maintain a register of all applicable regulations with their requirements and deadlines."
+    ],
+    "visible_reqs": [
+      "The system shall assign ownership of each compliance requirement to a named individual.",
+      "The system shall track completion evidence for each requirement via document upload or task sign-off.",
+      "The system shall calculate an overall compliance score per regulation and organisation-wide.",
+      "The system shall escalate overdue requirements to the owner's line manager automatically.",
+      "The system shall generate a board-level compliance report on demand.",
+      "The system shall allow users to flag requirements that are not applicable with a justification."
+    ],
+    "nfr": [
+      "Compliance score shall update within 5 minutes of any evidence upload.",
+      "System shall support import of regulatory frameworks via CSV template.",
+      "Audit trail of all actions shall be immutable and exportable."
+    ],
+    "stakeholders": [
+      {
+        "name": "Petra",
+        "role": "compliance_manager",
+        "primary_interest": "complete requirement coverage",
+        "secondary_interest": "clear ownership",
+        "conflict_with": null
+      },
+      {
+        "name": "Quinn",
+        "role": "department_head",
+        "primary_interest": "minimal compliance burden on teams",
+        "secondary_interest": "clear deadlines",
+        "conflict_with": null
+      },
+      {
+        "name": "Raj",
+        "role": "board_director",
+        "primary_interest": "enterprise-level compliance posture",
+        "secondary_interest": "regulatory risk visibility",
+        "conflict_with": null
+      }
+    ],
+    "domain_entities": [
+      "Regulation",
+      "Requirement",
+      "Owner",
+      "Evidence",
+      "ComplianceScore",
+      "EscalationEvent"
+    ],
+    "conflicts": [
+      {
+        "req_a": "All compliance gaps shall be visible to the full executive team in real time.",
+        "req_b": "Department heads shall have 48 hours to remediate and upload evidence before escalation to the board.",
+        "type": "transparency_remediation_conflict"
+      }
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "scenario_id": "73aca540",
+    "domain": "legal_case_management",
+    "rough_idea": "We are a law firm and our lawyers need a better way to manage their cases, deadlines, and billing.",
+    "ground_truth_reqs": [
+      "The system shall maintain a matter file for each case including client details, documents, and correspondence.",
+      "The system shall provide a deadline tracker with court date and filing deadline reminders.",
+      "The system shall allow time recording per matter with billable and non-billable classification.",
+      "The system shall generate invoices based on recorded time and agreed fee arrangements.",
+      "The system shall maintain a conflict-of-interest check against the client and opposing party database.",
+      "The system shall store all correspondence with full audit trail and version history.",
+      "The system shall provide a dashboard of upcoming deadlines across all active matters."
+    ],
+    "hidden_reqs": [
+      "The system shall generate invoices based on recorded time and agreed fee arrangements."
+    ],
+    "visible_reqs": [
+      "The system shall maintain a matter file for each case including client details, documents, and correspondence.",
+      "The system shall provide a deadline tracker with court date and filing deadline reminders.",
+      "The system shall allow time recording per matter with billable and non-billable classification.",
+      "The system shall maintain a conflict-of-interest check against the client and opposing party database.",
+      "The system shall store all correspondence with full audit trail and version history.",
+      "The system shall provide a dashboard of upcoming deadlines across all active matters."
+    ],
+    "nfr": [
+      "Time entry shall be possible within 30 seconds of completing a task.",
+      "System shall comply with SRA (Solicitors Regulation Authority) accounts rules.",
+      "All client data shall be stored on UK servers only."
+    ],
+    "stakeholders": [
+      {
+        "name": "Sara",
+        "role": "solicitor",
+        "primary_interest": "fast time recording and deadline visibility",
+        "secondary_interest": "matter organisation",
+        "conflict_with": null
+      },
+      {
+        "name": "Tom",
+        "role": "billing_manager",
+        "primary_interest": "accurate invoice generation",
+        "secondary_interest": "WIP visibility",
+        "conflict_with": null
+      },
+      {
+        "name": "Uma",
+        "role": "managing_partner",
+        "primary_interest": "firm profitability and utilisation",
+        "secondary_interest": "risk management",
+        "conflict_with": null
+      }
+    ],
+    "domain_entities": [
+      "Matter",
+      "Client",
+      "TimeEntry",
+      "Invoice",
+      "Deadline",
+      "Document",
+      "Correspondence"
+    ],
+    "conflicts": [
+      {
+        "req_a": "All time entries shall require partner approval before billing.",
+        "req_b": "Invoices shall be generated and sent within 48 hours of matter completion.",
+        "type": "approval_speed_conflict"
+      }
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "scenario_id": "2503df8b",
+    "domain": "recruitment_platform",
+    "rough_idea": "Hiring is taking too long and we lose good candidates. We need a better system for posting jobs, tracking applicants, and coordinating interviews.",
+    "ground_truth_reqs": [
+      "The system shall allow HR to create job postings with description, requirements, and salary range.",
+      "The system shall publish job postings to the company website and major job boards via API.",
+      "The system shall allow candidates to apply online and upload CVs and cover letters.",
+      "The system shall score and rank applications using configurable criteria.",
+      "The system shall manage interview scheduling with calendar integration and automated candidate communication.",
+      "The system shall support structured interview feedback forms completed by each interviewer.",
+      "The system shall maintain an applicant tracking board with drag-and-drop stage progression.",
+      "The system shall generate an offer letter from a template and route it for approval.",
+      "The system shall anonymise applicant data for diversity and inclusion reporting.",
+      "The system shall archive rejected applications for 12 months for legal compliance."
+    ],
+    "hidden_reqs": [
+      "The system shall publish job postings to the company website and major job boards via API.",
+      "The system shall support structured interview feedback forms completed by each interviewer."
+    ],
+    "visible_reqs": [
+      "The system shall allow HR to create job postings with description, requirements, and salary range.",
+      "The system shall allow candidates to apply online and upload CVs and cover letters.",
+      "The system shall score and rank applications using configurable criteria.",
+      "The system shall manage interview scheduling with calendar integration and automated candidate communication.",
+      "The system shall maintain an applicant tracking board with drag-and-drop stage progression.",
+      "The system shall generate an offer letter from a template and route it for approval.",
+      "The system shall anonymise applicant data for diversity and inclusion reporting.",
+      "The system shall archive rejected applications for 12 months for legal compliance."
+    ],
+    "nfr": [
+      "Job board API integrations shall post within 30 minutes of publication.",
+      "CV parsing accuracy shall exceed 90% for standard CV formats.",
+      "System shall comply with GDPR right-to-erasure for candidate data.",
+      "WCAG 2.1 AA compliance for the candidate-facing application portal."
+    ],
+    "stakeholders": [
+      {
+        "name": "Vera",
+        "role": "recruiter",
+        "primary_interest": "fast pipeline management",
+        "secondary_interest": "candidate experience",
+        "conflict_with": null
+      },
+      {
+        "name": "Will",
+        "role": "hiring_manager",
+        "primary_interest": "structured interview process",
+        "secondary_interest": "quality hire visibility",
+        "conflict_with": null
+      },
+      {
+        "name": "Xena",
+        "role": "dei_manager",
+        "primary_interest": "unbiased assessment and diversity metrics",
+        "secondary_interest": "pipeline transparency",
+        "conflict_with": null
+      }
+    ],
+    "domain_entities": [
+      "JobPosting",
+      "Applicant",
+      "CV",
+      "InterviewSlot",
+      "FeedbackForm",
+      "OfferLetter",
+      "Stage"
+    ],
+    "conflicts": [
+      {
+        "req_a": "Hiring managers shall see candidate names and photos during screening.",
+        "req_b": "Diversity policy requires blind screening to reduce unconscious bias.",
+        "type": "dei_visibility_conflict"
+      }
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "scenario_id": "b24e986d",
+    "domain": "employee_performance_management",
+    "rough_idea": "We want to replace our paper appraisal process with something digital that makes goals, feedback, and reviews easier.",
+    "ground_truth_reqs": [
+      "The system shall allow employees and managers to collaboratively set OKRs each quarter.",
+      "The system shall support continuous feedback requests between any employees.",
+      "The system shall facilitate 360-degree reviews from peers, direct reports, and managers.",
+      "The system shall produce an annual performance summary aggregating all feedback and goal completion.",
+      "The system shall allow calibration sessions where managers adjust ratings across their teams.",
+      "The system shall link performance ratings to compensation review recommendations.",
+      "The system shall track mandatory training completion per employee.",
+      "The system shall identify high-performers and flight risks using configurable scoring models."
+    ],
+    "hidden_reqs": [
+      "The system shall link performance ratings to compensation review recommendations.",
+      "The system shall allow calibration sessions where managers adjust ratings across their teams."
+    ],
+    "visible_reqs": [
+      "The system shall allow employees and managers to collaboratively set OKRs each quarter.",
+      "The system shall support continuous feedback requests between any employees.",
+      "The system shall facilitate 360-degree reviews from peers, direct reports, and managers.",
+      "The system shall produce an annual performance summary aggregating all feedback and goal completion.",
+      "The system shall track mandatory training completion per employee.",
+      "The system shall identify high-performers and flight risks using configurable scoring models."
+    ],
+    "nfr": [
+      "Review cycle completion reminders shall be configurable per organisation.",
+      "Performance data shall be accessible only to the employee, their manager, and HR.",
+      "System shall integrate with the HRIS via bidirectional API."
+    ],
+    "stakeholders": [
+      {
+        "name": "Yuki",
+        "role": "employee",
+        "primary_interest": "clear goal visibility and fair assessment",
+        "secondary_interest": "constructive feedback",
+        "conflict_with": null
+      },
+      {
+        "name": "Zara",
+        "role": "hr_business_partner",
+        "primary_interest": "consistent process across departments",
+        "secondary_interest": "retention insights",
+        "conflict_with": null
+      },
+      {
+        "name": "Alex",
+        "role": "senior_manager",
+        "primary_interest": "calibrated ratings for compensation",
+        "secondary_interest": "talent pipeline visibility",
+        "conflict_with": null
+      }
+    ],
+    "domain_entities": [
+      "Employee",
+      "Manager",
+      "OKR",
+      "FeedbackRequest",
+      "Review",
+      "CalibrationSession",
+      "TrainingRecord"
+    ],
+    "conflicts": [
+      {
+        "req_a": "All 360 feedback shall be attributed to the giver to ensure accountability.",
+        "req_b": "Anonymous peer feedback produces more honest and useful results per best practice.",
+        "type": "anonymity_accountability_conflict"
+      }
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "scenario_id": "7bde6642",
+    "domain": "shift_scheduling",
+    "rough_idea": "Our managers spend hours every week making the rota. We want software that does it automatically based on who is available and what we need.",
+    "ground_truth_reqs": [
+      "The system shall allow employees to submit their availability and time-off requests.",
+      "The system shall generate weekly schedules that meet minimum staffing levels per role per shift.",
+      "The system shall enforce legal working hour constraints including rest periods and maximum weekly hours.",
+      "The system shall allow managers to manually override and adjust generated schedules.",
+      "The system shall publish approved schedules to employees via mobile app notification.",
+      "The system shall allow employees to request shift swaps subject to manager approval.",
+      "The system shall track actual hours worked against scheduled hours for payroll integration.",
+      "The system shall flag scheduling conflicts such as double-booking or insufficient rest."
+    ],
+    "hidden_reqs": [
+      "The system shall publish approved schedules to employees via mobile app notification.",
+      "The system shall track actual hours worked against scheduled hours for payroll integration."
+    ],
+    "visible_reqs": [
+      "The system shall allow employees to submit their availability and time-off requests.",
+      "The system shall generate weekly schedules that meet minimum staffing levels per role per shift.",
+      "The system shall enforce legal working hour constraints including rest periods and maximum weekly hours.",
+      "The system shall allow managers to manually override and adjust generated schedules.",
+      "The system shall allow employees to request shift swaps subject to manager approval.",
+      "The system shall flag scheduling conflicts such as double-booking or insufficient rest."
+    ],
+    "nfr": [
+      "Schedule generation shall complete within 10 seconds for up to 200 employees.",
+      "Mobile app shall support push notifications on iOS and Android.",
+      "System shall comply with the Working Time Regulations 1998."
+    ],
+    "stakeholders": [
+      {
+        "name": "Beth",
+        "role": "floor_manager",
+        "primary_interest": "fast schedule creation",
+        "secondary_interest": "fair distribution",
+        "conflict_with": null
+      },
+      {
+        "name": "Carl",
+        "role": "employee",
+        "primary_interest": "schedule visibility and easy swap requests",
+        "secondary_interest": "work-life balance",
+        "conflict_with": null
+      },
+      {
+        "name": "Dani",
+        "role": "hr_director",
+        "primary_interest": "legal compliance and payroll accuracy",
+        "secondary_interest": "retention via fair scheduling",
+        "conflict_with": null
+      }
+    ],
+    "domain_entities": [
+      "Employee",
+      "Shift",
+      "Schedule",
+      "TimeOffRequest",
+      "SwapRequest",
+      "StaffingRequirement"
+    ],
+    "conflicts": [
+      {
+        "req_a": "Schedule algorithm shall prioritise seniority when assigning preferred shifts.",
+        "req_b": "Junior employees shall have equal access to preferred shifts to aid retention.",
+        "type": "seniority_equity_conflict"
+      }
+    ],
+    "difficulty": "easy"
+  },
+  {
+    "scenario_id": "1fb0b5eb",
+    "domain": "property_management",
+    "rough_idea": "We manage a portfolio of rental properties and everything is on spreadsheets. We need one system to handle tenants, repairs, and rent.",
+    "ground_truth_reqs": [
+      "The system shall maintain a property portfolio with details of each unit, its current tenant, and lease terms.",
+      "The system shall track rent due dates and automate rent collection reminders.",
+      "The system shall allow tenants to log maintenance requests with photos and description.",
+      "The system shall assign maintenance requests to contractors and track progress to completion.",
+      "The system shall produce monthly financial statements per property including rent income and maintenance costs.",
+      "The system shall manage tenancy renewals with automated notice period tracking.",
+      "The system shall store all tenancy documents and correspondence per property.",
+      "The system shall generate compliance certificates and service schedule reminders for gas safety, EICR, and EPC."
+    ],
+    "hidden_reqs": [
+      "The system shall maintain a property portfolio with details of each unit, its current tenant, and lease terms.",
+      "The system shall manage tenancy renewals with automated notice period tracking."
+    ],
+    "visible_reqs": [
+      "The system shall track rent due dates and automate rent collection reminders.",
+      "The system shall allow tenants to log maintenance requests with photos and description.",
+      "The system shall assign maintenance requests to contractors and track progress to completion.",
+      "The system shall produce monthly financial statements per property including rent income and maintenance costs.",
+      "The system shall store all tenancy documents and correspondence per property.",
+      "The system shall generate compliance certificates and service schedule reminders for gas safety, EICR, and EPC."
+    ],
+    "nfr": [
+      "Rent reminder emails shall be sent no later than 3 days before due date.",
+      "System shall store documents for the duration of tenancy plus 6 years.",
+      "Tenant portal shall be mobile-responsive."
+    ],
+    "stakeholders": [
+      {
+        "name": "Elsa",
+        "role": "landlord",
+        "primary_interest": "rent collection and maintenance cost control",
+        "secondary_interest": "portfolio overview",
+        "conflict_with": null
+      },
+      {
+        "name": "Finn",
+        "role": "tenant",
+        "primary_interest": "fast maintenance resolution",
+        "secondary_interest": "transparent communication",
+        "conflict_with": null
+      },
+      {
+        "name": "Gael",
+        "role": "property_manager",
+        "primary_interest": "reduced admin workload",
+        "secondary_interest": "compliance tracking",
+        "conflict_with": null
+      }
+    ],
+    "domain_entities": [
+      "Property",
+      "Unit",
+      "Tenant",
+      "Lease",
+      "MaintenanceRequest",
+      "Contractor",
+      "ComplianceCertificate"
+    ],
+    "conflicts": [
+      {
+        "req_a": "Maintenance contractors shall be auto-assigned based on lowest quote.",
+        "req_b": "Landlord shall personally approve any maintenance spend above \u00a3200.",
+        "type": "cost_control_speed_conflict"
+      }
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "scenario_id": "b503360a",
+    "domain": "real_estate_crm",
+    "rough_idea": "Our estate agents need a better way to track potential buyers, properties for sale, and which viewings led to offers.",
+    "ground_truth_reqs": [
+      "The system shall maintain profiles for all registered buyers with their search criteria and budget.",
+      "The system shall list properties with full details, photos, floor plans, and EPC ratings.",
+      "The system shall match new property listings to buyers whose criteria they meet and send alerts.",
+      "The system shall manage viewing appointments with calendar integration and reminder notifications.",
+      "The system shall record feedback from viewings and make it visible to the vendor.",
+      "The system shall track offer history per property including status, amount, and buyer details.",
+      "The system shall generate a sales progression timeline from offer acceptance to completion."
+    ],
+    "hidden_reqs": [
+      "The system shall manage viewing appointments with calendar integration and reminder notifications."
+    ],
+    "visible_reqs": [
+      "The system shall maintain profiles for all registered buyers with their search criteria and budget.",
+      "The system shall list properties with full details, photos, floor plans, and EPC ratings.",
+      "The system shall match new property listings to buyers whose criteria they meet and send alerts.",
+      "The system shall record feedback from viewings and make it visible to the vendor.",
+      "The system shall track offer history per property including status, amount, and buyer details.",
+      "The system shall generate a sales progression timeline from offer acceptance to completion."
+    ],
+    "nfr": [
+      "Property search results shall load within 1 second.",
+      "System shall comply with estate agency anti-money-laundering checks.",
+      "All financial figures (offer amounts) shall be restricted to authorised staff only."
+    ],
+    "stakeholders": [
+      {
+        "name": "Holly",
+        "role": "estate_agent",
+        "primary_interest": "fast buyer-property matching",
+        "secondary_interest": "viewing management",
+        "conflict_with": null
+      },
+      {
+        "name": "Ian",
+        "role": "vendor",
+        "primary_interest": "buyer feedback visibility",
+        "secondary_interest": "transparent offer process",
+        "conflict_with": null
+      },
+      {
+        "name": "Jade",
+        "role": "branch_manager",
+        "primary_interest": "sales pipeline analytics",
+        "secondary_interest": "compliance oversight",
+        "conflict_with": null
+      }
+    ],
+    "domain_entities": [
+      "Buyer",
+      "Property",
+      "Viewing",
+      "Offer",
+      "Vendor",
+      "SalesProgression",
+      "Match"
+    ],
+    "conflicts": [
+      {
+        "req_a": "Vendors shall see all buyer offer amounts in real time to enable informed decisions.",
+        "req_b": "Revealing offer amounts between competing buyers could constitute bid manipulation under estate agency law.",
+        "type": "transparency_legal_conflict"
+      }
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "scenario_id": "7d7d9f1c",
+    "domain": "hotel_booking_system",
+    "rough_idea": "We run a small hotel chain and want guests to book rooms online, and staff to see all reservations and manage housekeeping.",
+    "ground_truth_reqs": [
+      "The system shall display room availability and pricing for any date range in real time.",
+      "The system shall allow guests to book rooms directly with credit card guarantee.",
+      "The system shall send booking confirmation and pre-arrival information emails automatically.",
+      "The system shall provide a front-desk dashboard showing today's arrivals, departures, and room status.",
+      "The system shall manage room allocation and allow front desk to reassign rooms.",
+      "The system shall support group bookings and handle block room allocation.",
+      "The system shall produce daily housekeeping task lists per floor.",
+      "The system shall process check-out invoices with itemised extras.",
+      "The system shall manage corporate rate contracts and apply rates automatically for qualifying bookings."
+    ],
+    "hidden_reqs": [
+      "The system shall manage corporate rate contracts and apply rates automatically for qualifying bookings.",
+      "The system shall allow guests to book rooms directly with credit card guarantee."
+    ],
+    "visible_reqs": [
+      "The system shall display room availability and pricing for any date range in real time.",
+      "The system shall send booking confirmation and pre-arrival information emails automatically.",
+      "The system shall provide a front-desk dashboard showing today's arrivals, departures, and room status.",
+      "The system shall manage room allocation and allow front desk to reassign rooms.",
+      "The system shall support group bookings and handle block room allocation.",
+      "The system shall produce daily housekeeping task lists per floor.",
+      "The system shall process check-out invoices with itemised extras."
+    ],
+    "nfr": [
+      "System shall connect to OTA channels (Booking.com, Expedia) via channel manager API.",
+      "Booking engine shall complete reservation in under 3 seconds.",
+      "PCI-DSS compliance for all payment card handling."
+    ],
+    "stakeholders": [
+      {
+        "name": "Kim",
+        "role": "guest",
+        "primary_interest": "easy booking and clear confirmation",
+        "secondary_interest": "flexible cancellation",
+        "conflict_with": null
+      },
+      {
+        "name": "Leo",
+        "role": "front_desk_staff",
+        "primary_interest": "fast check-in and room management",
+        "secondary_interest": "clear housekeeping status",
+        "conflict_with": null
+      },
+      {
+        "name": "Mika",
+        "role": "revenue_manager",
+        "primary_interest": "rate optimisation and occupancy visibility",
+        "secondary_interest": "OTA parity compliance",
+        "conflict_with": null
+      }
+    ],
+    "domain_entities": [
+      "Room",
+      "Booking",
+      "Guest",
+      "Invoice",
+      "HousekeepingTask",
+      "RateContract",
+      "Channel"
+    ],
+    "conflicts": [
+      {
+        "req_a": "Guests shall be able to cancel bookings up to 24 hours before arrival for a full refund.",
+        "req_b": "Corporate rate contracts require 72-hour cancellation notice to protect revenue.",
+        "type": "cancellation_policy_conflict"
+      }
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "scenario_id": "4d00e1e6",
+    "domain": "travel_expense_management",
+    "rough_idea": "Staff submit expense claims on paper receipts and reimbursement takes weeks. We need something digital where they submit expenses and managers approve them.",
+    "ground_truth_reqs": [
+      "The system shall allow employees to submit expenses by photographing receipts with a mobile app.",
+      "The system shall automatically extract amount, date, merchant, and category from receipt images.",
+      "The system shall enforce company travel and expense policy limits and flag violations.",
+      "The system shall route expense claims to the approving manager based on organisational hierarchy.",
+      "The system shall allow managers to approve, reject, or query individual expense line items.",
+      "The system shall integrate with the payroll system to reimburse approved expenses in the next pay run.",
+      "The system shall generate monthly department expense reports by category."
+    ],
+    "hidden_reqs": [
+      "The system shall route expense claims to the approving manager based on organisational hierarchy."
+    ],
+    "visible_reqs": [
+      "The system shall allow employees to submit expenses by photographing receipts with a mobile app.",
+      "The system shall automatically extract amount, date, merchant, and category from receipt images.",
+      "The system shall enforce company travel and expense policy limits and flag violations.",
+      "The system shall allow managers to approve, reject, or query individual expense line items.",
+      "The system shall integrate with the payroll system to reimburse approved expenses in the next pay run.",
+      "The system shall generate monthly department expense reports by category."
+    ],
+    "nfr": [
+      "Receipt OCR extraction shall achieve 90% accuracy for standard receipts.",
+      "Approval workflow shall complete within 5 working days of submission.",
+      "System shall support GBP, EUR, USD, and auto-convert to GBP using daily exchange rates."
+    ],
+    "stakeholders": [
+      {
+        "name": "Nora",
+        "role": "employee",
+        "primary_interest": "fast reimbursement and simple submission",
+        "secondary_interest": "clear policy guidance",
+        "conflict_with": null
+      },
+      {
+        "name": "Omar",
+        "role": "finance_manager",
+        "primary_interest": "policy compliance and fraud prevention",
+        "secondary_interest": "accurate expense categorisation",
+        "conflict_with": null
+      },
+      {
+        "name": "Pia",
+        "role": "it_manager",
+        "primary_interest": "payroll system integration and security",
+        "secondary_interest": "audit trail",
+        "conflict_with": null
+      }
+    ],
+    "domain_entities": [
+      "Expense",
+      "Receipt",
+      "ExpenseClaim",
+      "ApprovalChain",
+      "Policy",
+      "Reimbursement",
+      "Category"
+    ],
+    "conflicts": [
+      {
+        "req_a": "Claims over \u00a3500 shall require receipts for every individual line item.",
+        "req_b": "Overseas travel often produces receipts that are not in English, making line-item verification impractical.",
+        "type": "policy_practicality_conflict"
+      }
+    ],
+    "difficulty": "easy"
+  },
+  {
+    "scenario_id": "0a6dc4e8",
+    "domain": "precision_agriculture",
+    "rough_idea": "We want to use sensors and data to tell us exactly where on our fields we need to apply fertiliser or water, rather than treating everything the same.",
+    "ground_truth_reqs": [
+      "The system shall collect soil moisture, nutrient, and pH data from field sensors.",
+      "The system shall integrate satellite and drone imagery for crop health mapping.",
+      "The system shall generate variable-rate application maps for fertiliser, pesticide, and water.",
+      "The system shall connect to compatible farm machinery via ISOBUS to deliver application maps.",
+      "The system shall log all field inputs by GPS location, date, product, and quantity.",
+      "The system shall forecast yield per field zone based on historical data and current crop health.",
+      "The system shall generate compliance reports meeting cross-compliance and single farm payment requirements.",
+      "The system shall send weather-based intervention alerts such as frost risk or optimal spray windows."
+    ],
+    "hidden_reqs": [
+      "The system shall integrate satellite and drone imagery for crop health mapping.",
+      "The system shall log all field inputs by GPS location, date, product, and quantity."
+    ],
+    "visible_reqs": [
+      "The system shall collect soil moisture, nutrient, and pH data from field sensors.",
+      "The system shall generate variable-rate application maps for fertiliser, pesticide, and water.",
+      "The system shall connect to compatible farm machinery via ISOBUS to deliver application maps.",
+      "The system shall forecast yield per field zone based on historical data and current crop health.",
+      "The system shall generate compliance reports meeting cross-compliance and single farm payment requirements.",
+      "The system shall send weather-based intervention alerts such as frost risk or optimal spray windows."
+    ],
+    "nfr": [
+      "Field maps shall load within 2 seconds for up to 500 field zones.",
+      "Sensor data shall be ingested in real time with under 5-minute latency.",
+      "System shall operate in low-connectivity rural environments with data sync on reconnection."
+    ],
+    "stakeholders": [
+      {
+        "name": "Quin",
+        "role": "farmer",
+        "primary_interest": "reduced input costs and better yields",
+        "secondary_interest": "simple interface",
+        "conflict_with": null
+      },
+      {
+        "name": "Rosa",
+        "role": "agronomist",
+        "primary_interest": "data-driven crop recommendations",
+        "secondary_interest": "field comparison tools",
+        "conflict_with": null
+      },
+      {
+        "name": "Stan",
+        "role": "rural_payments_agency",
+        "primary_interest": "accurate cross-compliance records",
+        "secondary_interest": "audit readiness",
+        "conflict_with": null
+      }
+    ],
+    "domain_entities": [
+      "Field",
+      "Zone",
+      "Sensor",
+      "CropMap",
+      "ApplicationMap",
+      "FarmMachine",
+      "WeatherAlert"
+    ],
+    "conflicts": [
+      {
+        "req_a": "System shall automatically apply variable-rate maps to connected machinery.",
+        "req_b": "Farmer shall manually confirm any application maps before machinery executes them.",
+        "type": "automation_confirmation_conflict"
+      }
+    ],
+    "difficulty": "hard"
+  },
+  {
+    "scenario_id": "14568459",
+    "domain": "environmental_monitoring",
+    "rough_idea": "The council wants a system to track air quality, noise, and water quality in real time across the city and alert when pollution limits are exceeded.",
+    "ground_truth_reqs": [
+      "The system shall collect data from air quality, noise, and water quality sensors across the monitoring network.",
+      "The system shall display all sensor readings on a GIS map with colour-coded status indicators.",
+      "The system shall generate alerts when any reading exceeds the configured regulatory threshold.",
+      "The system shall allow authorised users to acknowledge and document alerts with response actions.",
+      "The system shall publish a public-facing dashboard with real-time pollution levels.",
+      "The system shall generate daily, weekly, and monthly compliance reports per monitoring site.",
+      "The system shall support adding new sensor types without system redevelopment."
+    ],
+    "hidden_reqs": [
+      "The system shall generate alerts when any reading exceeds the configured regulatory threshold."
+    ],
+    "visible_reqs": [
+      "The system shall collect data from air quality, noise, and water quality sensors across the monitoring network.",
+      "The system shall display all sensor readings on a GIS map with colour-coded status indicators.",
+      "The system shall allow authorised users to acknowledge and document alerts with response actions.",
+      "The system shall publish a public-facing dashboard with real-time pollution levels.",
+      "The system shall generate daily, weekly, and monthly compliance reports per monitoring site.",
+      "The system shall support adding new sensor types without system redevelopment."
+    ],
+    "nfr": [
+      "Sensor data shall be ingested and displayed within 60 seconds of reading.",
+      "Public dashboard shall handle 10,000 simultaneous visitors without degradation.",
+      "All historical readings shall be retained for 10 years for regulatory purposes."
+    ],
+    "stakeholders": [
+      {
+        "name": "Tina",
+        "role": "environment_officer",
+        "primary_interest": "real-time threshold alerts",
+        "secondary_interest": "easy alert management",
+        "conflict_with": null
+      },
+      {
+        "name": "Uri",
+        "role": "city_councillor",
+        "primary_interest": "public transparency and regulatory compliance",
+        "secondary_interest": "political accountability",
+        "conflict_with": null
+      },
+      {
+        "name": "Val",
+        "role": "citizen",
+        "primary_interest": "clear local air quality information",
+        "secondary_interest": "health guidance",
+        "conflict_with": null
+      }
+    ],
+    "domain_entities": [
+      "Sensor",
+      "SiteLocation",
+      "Reading",
+      "Alert",
+      "ComplianceReport",
+      "PublicDashboard",
+      "RegulatoryThreshold"
+    ],
+    "conflicts": [
+      {
+        "req_a": "Alert notifications shall be sent to local media when thresholds are exceeded.",
+        "req_b": "Media notification shall require sign-off from the communications director to prevent panic.",
+        "type": "transparency_governance_conflict"
+      }
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "scenario_id": "e438ae88",
+    "domain": "it_service_desk",
+    "rough_idea": "Our IT helpdesk is overwhelmed with emails and nobody knows what tickets are outstanding or who owns them.",
+    "ground_truth_reqs": [
+      "The system shall allow users to submit IT support tickets via web portal, email, and mobile app.",
+      "The system shall automatically categorise and prioritise incoming tickets using configurable rules.",
+      "The system shall assign tickets to available agents based on skill set and workload.",
+      "The system shall provide agents with a unified queue of all assigned tickets with SLA countdown.",
+      "The system shall escalate tickets that breach SLA thresholds to the team manager automatically.",
+      "The system shall maintain a knowledge base of resolved issues for self-service and agent reference.",
+      "The system shall send automated status updates to the requester at each ticket state change.",
+      "The system shall generate monthly reports on ticket volume, resolution time, and SLA compliance."
+    ],
+    "hidden_reqs": [
+      "The system shall maintain a knowledge base of resolved issues for self-service and agent reference.",
+      "The system shall escalate tickets that breach SLA thresholds to the team manager automatically."
+    ],
+    "visible_reqs": [
+      "The system shall allow users to submit IT support tickets via web portal, email, and mobile app.",
+      "The system shall automatically categorise and prioritise incoming tickets using configurable rules.",
+      "The system shall assign tickets to available agents based on skill set and workload.",
+      "The system shall provide agents with a unified queue of all assigned tickets with SLA countdown.",
+      "The system shall send automated status updates to the requester at each ticket state change.",
+      "The system shall generate monthly reports on ticket volume, resolution time, and SLA compliance."
+    ],
+    "nfr": [
+      "Ticket creation shall complete within 10 seconds.",
+      "System shall integrate with Active Directory for user authentication and asset lookup.",
+      "ITIL v4 framework alignment required.",
+      "99.9% uptime as the system is critical path for IT operations."
+    ],
+    "stakeholders": [
+      {
+        "name": "Walt",
+        "role": "end_user",
+        "primary_interest": "fast resolution and status visibility",
+        "secondary_interest": "easy submission",
+        "conflict_with": null
+      },
+      {
+        "name": "Xin",
+        "role": "it_agent",
+        "primary_interest": "clear queue management and knowledge access",
+        "secondary_interest": "minimal admin",
+        "conflict_with": null
+      },
+      {
+        "name": "Yael",
+        "role": "it_manager",
+        "primary_interest": "SLA compliance and team utilisation",
+        "secondary_interest": "escalation control",
+        "conflict_with": null
+      }
+    ],
+    "domain_entities": [
+      "Ticket",
+      "Agent",
+      "User",
+      "KnowledgeArticle",
+      "SLA",
+      "Queue",
+      "EscalationRule"
+    ],
+    "conflicts": [
+      {
+        "req_a": "All tickets shall be visible to all agents to enable flexible coverage.",
+        "req_b": "Tickets containing sensitive data such as password resets shall be restricted to senior agents only.",
+        "type": "visibility_security_conflict"
+      }
+    ],
+    "difficulty": "easy"
+  },
+  {
+    "scenario_id": "10d7591e",
+    "domain": "vulnerability_management",
+    "rough_idea": "We get vulnerability scan reports but nobody knows which ones to fix first and whether they have actually been fixed.",
+    "ground_truth_reqs": [
+      "The system shall ingest vulnerability scan results from multiple scanners via API and CSV import.",
+      "The system shall deduplicate vulnerabilities across scan sources and assets.",
+      "The system shall calculate a risk score per vulnerability using CVSS base score and asset criticality.",
+      "The system shall assign vulnerabilities to remediation owners based on asset ownership.",
+      "The system shall track remediation status through accepted, in-progress, and resolved states.",
+      "The system shall verify closure by confirming the vulnerability is absent from the next scan.",
+      "The system shall generate board-level risk reports showing aggregate vulnerability exposure.",
+      "The system shall send weekly digest emails to owners listing their outstanding vulnerabilities."
+    ],
+    "hidden_reqs": [
+      "The system shall assign vulnerabilities to remediation owners based on asset ownership.",
+      "The system shall verify closure by confirming the vulnerability is absent from the next scan."
+    ],
+    "visible_reqs": [
+      "The system shall ingest vulnerability scan results from multiple scanners via API and CSV import.",
+      "The system shall deduplicate vulnerabilities across scan sources and assets.",
+      "The system shall calculate a risk score per vulnerability using CVSS base score and asset criticality.",
+      "The system shall track remediation status through accepted, in-progress, and resolved states.",
+      "The system shall generate board-level risk reports showing aggregate vulnerability exposure.",
+      "The system shall send weekly digest emails to owners listing their outstanding vulnerabilities."
+    ],
+    "nfr": [
+      "Scanner integrations shall support Qualys, Tenable, and Rapid7 at minimum.",
+      "Risk score recalculation shall complete within 1 hour of new scan ingestion.",
+      "System shall handle portfolios of up to 100,000 assets."
+    ],
+    "stakeholders": [
+      {
+        "name": "Zara",
+        "role": "security_analyst",
+        "primary_interest": "prioritised actionable remediation list",
+        "secondary_interest": "verified closure",
+        "conflict_with": null
+      },
+      {
+        "name": "Adam",
+        "role": "asset_owner",
+        "primary_interest": "clear ownership and remediation SLAs",
+        "secondary_interest": "exception request process",
+        "conflict_with": null
+      },
+      {
+        "name": "Beth",
+        "role": "ciso",
+        "primary_interest": "aggregate risk posture and trend visibility",
+        "secondary_interest": "board reporting",
+        "conflict_with": null
+      }
+    ],
+    "domain_entities": [
+      "Vulnerability",
+      "Asset",
+      "RiskScore",
+      "RemediationOwner",
+      "ScanResult",
+      "ExceptionRequest"
+    ],
+    "conflicts": [
+      {
+        "req_a": "All vulnerabilities shall be remediated within 30 days of discovery.",
+        "req_b": "Asset owners shall have the right to request a risk-accepted exception for vulnerabilities that cannot be patched without service disruption.",
+        "type": "policy_exception_conflict"
+      }
+    ],
+    "difficulty": "hard"
+  },
+  {
+    "scenario_id": "8c2037be",
+    "domain": "restaurant_pos",
+    "rough_idea": "We run several restaurants and need a point-of-sale system that handles orders, the kitchen, and end-of-day takings.",
+    "ground_truth_reqs": [
+      "The system shall allow servers to take table orders on tablet devices and send them to the kitchen.",
+      "The system shall display incoming orders on kitchen display screens grouped by course.",
+      "The system shall support split billing and multiple payment methods per table.",
+      "The system shall manage table reservations and walk-in seating allocation.",
+      "The system shall track inventory depletion per dish sold and alert when stock is low.",
+      "The system shall apply happy hour and promotional discounts automatically based on time rules.",
+      "The system shall generate a daily sales report broken down by dish, category, and server.",
+      "The system shall support tipping with automatic tip pool calculation per shift."
+    ],
+    "hidden_reqs": [
+      "The system shall display incoming orders on kitchen display screens grouped by course.",
+      "The system shall allow servers to take table orders on tablet devices and send them to the kitchen."
+    ],
+    "visible_reqs": [
+      "The system shall support split billing and multiple payment methods per table.",
+      "The system shall manage table reservations and walk-in seating allocation.",
+      "The system shall track inventory depletion per dish sold and alert when stock is low.",
+      "The system shall apply happy hour and promotional discounts automatically based on time rules.",
+      "The system shall generate a daily sales report broken down by dish, category, and server.",
+      "The system shall support tipping with automatic tip pool calculation per shift."
+    ],
+    "nfr": [
+      "Order transmission from tablet to kitchen display shall complete in under 2 seconds.",
+      "System shall continue to function offline for up to 4 hours and sync on reconnection.",
+      "PCI-DSS compliance for all card transactions."
+    ],
+    "stakeholders": [
+      {
+        "name": "Cara",
+        "role": "server",
+        "primary_interest": "fast order entry and table overview",
+        "secondary_interest": "tip transparency",
+        "conflict_with": null
+      },
+      {
+        "name": "Dan",
+        "role": "kitchen_manager",
+        "primary_interest": "clear prioritised order display",
+        "secondary_interest": "allergen alerts",
+        "conflict_with": null
+      },
+      {
+        "name": "Ella",
+        "role": "restaurant_owner",
+        "primary_interest": "sales analytics and inventory control",
+        "secondary_interest": "cost management",
+        "conflict_with": null
+      }
+    ],
+    "domain_entities": [
+      "Table",
+      "Order",
+      "MenuItem",
+      "Payment",
+      "Reservation",
+      "KitchenDisplay",
+      "InventoryItem"
+    ],
+    "conflicts": [
+      {
+        "req_a": "Servers shall be able to modify orders after submission to accommodate customer changes.",
+        "req_b": "Kitchen staff shall be notified immediately of any order modifications and changes cannot be silently overwritten.",
+        "type": "modification_notification_conflict"
+      }
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "scenario_id": "bd0793ad",
+    "domain": "food_delivery_platform",
+    "rough_idea": "We want to build something like Deliveroo for a specific city, connecting local restaurants with customers who want food delivered.",
+    "ground_truth_reqs": [
+      "The system shall allow restaurants to create and manage their menus with photos, prices, and allergy information.",
+      "The system shall allow customers to browse nearby restaurants filtered by cuisine, rating, and delivery time.",
+      "The system shall calculate real-time delivery estimates based on restaurant preparation time and driver proximity.",
+      "The system shall process orders and payments and forward confirmed orders to the restaurant.",
+      "The system shall assign delivery drivers using location-based proximity matching.",
+      "The system shall provide live order tracking from restaurant confirmation to doorstep delivery.",
+      "The system shall allow customers to rate the restaurant and driver after delivery.",
+      "The system shall handle refund and reorder requests for missing or incorrect items."
+    ],
+    "hidden_reqs": [
+      "The system shall process orders and payments and forward confirmed orders to the restaurant.",
+      "The system shall allow customers to rate the restaurant and driver after delivery."
+    ],
+    "visible_reqs": [
+      "The system shall allow restaurants to create and manage their menus with photos, prices, and allergy information.",
+      "The system shall allow customers to browse nearby restaurants filtered by cuisine, rating, and delivery time.",
+      "The system shall calculate real-time delivery estimates based on restaurant preparation time and driver proximity.",
+      "The system shall assign delivery drivers using location-based proximity matching.",
+      "The system shall provide live order tracking from restaurant confirmation to doorstep delivery.",
+      "The system shall handle refund and reorder requests for missing or incorrect items."
+    ],
+    "nfr": [
+      "Order confirmation shall be sent to restaurant within 10 seconds.",
+      "Driver location shall update every 10 seconds on the customer tracking screen.",
+      "System shall handle 5,000 concurrent active orders."
+    ],
+    "stakeholders": [
+      {
+        "name": "Finn",
+        "role": "customer",
+        "primary_interest": "fast accurate delivery and live tracking",
+        "secondary_interest": "easy refunds",
+        "conflict_with": null
+      },
+      {
+        "name": "Gaia",
+        "role": "restaurant_owner",
+        "primary_interest": "fast order notification and accurate order details",
+        "secondary_interest": "low commission",
+        "conflict_with": null
+      },
+      {
+        "name": "Hugo",
+        "role": "delivery_driver",
+        "primary_interest": "efficient job allocation and clear navigation",
+        "secondary_interest": "fair pay per delivery",
+        "conflict_with": null
+      }
+    ],
+    "domain_entities": [
+      "Restaurant",
+      "Customer",
+      "Driver",
+      "Order",
+      "MenuItem",
+      "DeliveryZone",
+      "Rating"
+    ],
+    "conflicts": [
+      {
+        "req_a": "Platform commission shall be 30% of order value to ensure platform sustainability.",
+        "req_b": "Restaurants shall not accept orders from platforms charging more than 20% commission.",
+        "type": "commission_rate_conflict"
+      }
+    ],
+    "difficulty": "hard"
+  },
+  {
+    "scenario_id": "5e3d0d75",
+    "domain": "charity_donor_management",
+    "rough_idea": "We are a charity and we need a better way to manage our donor relationships, send thank you letters, and understand who our supporters are.",
+    "ground_truth_reqs": [
+      "The system shall maintain donor profiles with contact details, donation history, and communication preferences.",
+      "The system shall process one-off and recurring donations via card, direct debit, and Gift Aid.",
+      "The system shall automatically claim Gift Aid on eligible donations and generate HMRC submission files.",
+      "The system shall send personalised thank-you emails within 24 hours of any donation.",
+      "The system shall segment donors by giving level, frequency, and acquisition channel.",
+      "The system shall generate a lapsed donor list for re-engagement campaigns.",
+      "The system shall track major donor cultivation with a stewardship pipeline view."
+    ],
+    "hidden_reqs": [
+      "The system shall automatically claim Gift Aid on eligible donations and generate HMRC submission files."
+    ],
+    "visible_reqs": [
+      "The system shall maintain donor profiles with contact details, donation history, and communication preferences.",
+      "The system shall process one-off and recurring donations via card, direct debit, and Gift Aid.",
+      "The system shall send personalised thank-you emails within 24 hours of any donation.",
+      "The system shall segment donors by giving level, frequency, and acquisition channel.",
+      "The system shall generate a lapsed donor list for re-engagement campaigns.",
+      "The system shall track major donor cultivation with a stewardship pipeline view."
+    ],
+    "nfr": [
+      "Gift Aid submission files shall comply with HMRC's Charities Online format.",
+      "All donor financial data shall be PCI-DSS compliant.",
+      "GDPR compliance for all marketing communications with opt-in tracking."
+    ],
+    "stakeholders": [
+      {
+        "name": "Iris",
+        "role": "fundraiser",
+        "primary_interest": "donor relationship visibility and easy segmentation",
+        "secondary_interest": "campaign effectiveness data",
+        "conflict_with": null
+      },
+      {
+        "name": "Jake",
+        "role": "finance_manager",
+        "primary_interest": "accurate Gift Aid records and donation reconciliation",
+        "secondary_interest": "reporting",
+        "conflict_with": null
+      },
+      {
+        "name": "Kira",
+        "role": "donor",
+        "primary_interest": "personalised communication and easy management of giving",
+        "secondary_interest": "privacy",
+        "conflict_with": null
+      }
+    ],
+    "domain_entities": [
+      "Donor",
+      "Donation",
+      "GiftAid",
+      "Segment",
+      "Campaign",
+      "Stewardship",
+      "CommunicationPreference"
+    ],
+    "conflicts": [
+      {
+        "req_a": "System shall send monthly impact newsletters to all active donors.",
+        "req_b": "GDPR requires donors to have opted in explicitly to receive marketing communications.",
+        "type": "engagement_consent_conflict"
+      }
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "scenario_id": "d96da090",
+    "domain": "volunteer_management",
+    "rough_idea": "We rely on hundreds of volunteers but coordinating them, tracking their hours, and matching them to opportunities is very hard to do manually.",
+    "ground_truth_reqs": [
+      "The system shall maintain volunteer profiles with skills, availability, DBS status, and certifications.",
+      "The system shall publish volunteering opportunities with location, date, skills required, and spaces available.",
+      "The system shall allow volunteers to express interest and self-register for opportunities.",
+      "The system shall alert coordinators when opportunities are under-subscribed below the minimum volunteer count.",
+      "The system shall record volunteering hours per session and cumulative hours per volunteer.",
+      "The system shall generate certificates of volunteering hours for volunteers on request.",
+      "The system shall track DBS check expiry dates and alert coordinators 60 days in advance."
+    ],
+    "hidden_reqs": [
+      "The system shall maintain volunteer profiles with skills, availability, DBS status, and certifications."
+    ],
+    "visible_reqs": [
+      "The system shall publish volunteering opportunities with location, date, skills required, and spaces available.",
+      "The system shall allow volunteers to express interest and self-register for opportunities.",
+      "The system shall alert coordinators when opportunities are under-subscribed below the minimum volunteer count.",
+      "The system shall record volunteering hours per session and cumulative hours per volunteer.",
+      "The system shall generate certificates of volunteering hours for volunteers on request.",
+      "The system shall track DBS check expiry dates and alert coordinators 60 days in advance."
+    ],
+    "nfr": [
+      "Opportunity registration shall complete within 10 seconds.",
+      "System shall support 5,000 registered volunteers.",
+      "Volunteer personal data shall comply with GDPR."
+    ],
+    "stakeholders": [
+      {
+        "name": "Luka",
+        "role": "volunteer",
+        "primary_interest": "easy opportunity discovery and hour tracking",
+        "secondary_interest": "recognition",
+        "conflict_with": null
+      },
+      {
+        "name": "Maya",
+        "role": "volunteer_coordinator",
+        "primary_interest": "reliable volunteer fill rates",
+        "secondary_interest": "DBS compliance",
+        "conflict_with": null
+      },
+      {
+        "name": "Nico",
+        "role": "operations_director",
+        "primary_interest": "programme impact measurement",
+        "secondary_interest": "cost of coordination",
+        "conflict_with": null
+      }
+    ],
+    "domain_entities": [
+      "Volunteer",
+      "Opportunity",
+      "Session",
+      "HoursLog",
+      "DBSCheck",
+      "Certification",
+      "Coordinator"
+    ],
+    "conflicts": [
+      {
+        "req_a": "All volunteer hours shall be visible to any staff member for coordination purposes.",
+        "req_b": "Volunteers shall be able to keep their individual hours confidential if they choose.",
+        "type": "recognition_privacy_conflict"
+      }
+    ],
+    "difficulty": "easy"
+  },
+  {
+    "scenario_id": "546a64f3",
+    "domain": "clinical_trial_management",
+    "rough_idea": "We run pharmaceutical clinical trials and everything is on spreadsheets. We need a proper system that handles participants, protocol, and data collection.",
+    "ground_truth_reqs": [
+      "The system shall manage trial protocol versions with a controlled change management workflow.",
+      "The system shall maintain participant records including eligibility screening, consent, and randomisation.",
+      "The system shall capture case report form (CRF) data with edit checks and validation rules.",
+      "The system shall generate and manage randomisation sequences for blinded and unblinded arms.",
+      "The system shall produce an audit trail of every data entry, modification, and query.",
+      "The system shall support remote monitoring access for sponsor representatives.",
+      "The system shall integrate with electronic patient-reported outcomes (ePRO) capture tools.",
+      "The system shall generate CDISC-compliant data exports for regulatory submissions.",
+      "The system shall track serious adverse events (SAEs) and flag for expedited reporting within 24 hours.",
+      "The system shall manage investigational product dispensing records per participant."
+    ],
+    "hidden_reqs": [
+      "The system shall generate and manage randomisation sequences for blinded and unblinded arms.",
+      "The system shall maintain participant records including eligibility screening, consent, and randomisation."
+    ],
+    "visible_reqs": [
+      "The system shall manage trial protocol versions with a controlled change management workflow.",
+      "The system shall capture case report form (CRF) data with edit checks and validation rules.",
+      "The system shall produce an audit trail of every data entry, modification, and query.",
+      "The system shall support remote monitoring access for sponsor representatives.",
+      "The system shall integrate with electronic patient-reported outcomes (ePRO) capture tools.",
+      "The system shall generate CDISC-compliant data exports for regulatory submissions.",
+      "The system shall track serious adverse events (SAEs) and flag for expedited reporting within 24 hours.",
+      "The system shall manage investigational product dispensing records per participant."
+    ],
+    "nfr": [
+      "System shall comply with 21 CFR Part 11 for electronic records and signatures.",
+      "System shall validate to GCP (Good Clinical Practice) standards.",
+      "All data shall be encrypted at rest and in transit using FIPS 140-2 certified methods.",
+      "Audit trail shall be immutable and timestamped to the nearest second."
+    ],
+    "stakeholders": [
+      {
+        "name": "Otto",
+        "role": "clinical_investigator",
+        "primary_interest": "accurate data capture and protocol compliance",
+        "secondary_interest": "participant safety",
+        "conflict_with": null
+      },
+      {
+        "name": "Pam",
+        "role": "data_manager",
+        "primary_interest": "clean auditable data and query resolution",
+        "secondary_interest": "CDISC export quality",
+        "conflict_with": null
+      },
+      {
+        "name": "Rex",
+        "role": "sponsor_monitor",
+        "primary_interest": "data visibility and deviation tracking",
+        "secondary_interest": "timely regulatory reporting",
+        "conflict_with": null
+      }
+    ],
+    "domain_entities": [
+      "Participant",
+      "Protocol",
+      "CRF",
+      "Randomisation",
+      "SAE",
+      "AuditEntry",
+      "InvestigationalProduct"
+    ],
+    "conflicts": [
+      {
+        "req_a": "Sponsor representatives shall have real-time access to all CRF data.",
+        "req_b": "Blinded trial design requires that sponsor personnel cannot see unblinded arm assignments.",
+        "type": "blinding_monitoring_conflict"
+      },
+      {
+        "req_a": "Participants shall have the right to withdraw their data from the trial at any time.",
+        "req_b": "Regulatory submissions require the complete dataset including data from withdrawn participants.",
+        "type": "withdrawal_retention_conflict"
+      }
+    ],
+    "difficulty": "hard"
+  },
+  {
+    "scenario_id": "80a3e02d",
+    "domain": "autonomous_vehicle_ops",
+    "rough_idea": "We operate a small fleet of autonomous delivery pods in a controlled campus environment and need software to manage their missions, safety, and maintenance.",
+    "ground_truth_reqs": [
+      "The system shall dispatch delivery missions to available pods based on load, battery, and proximity.",
+      "The system shall monitor all active pods via telemetry including speed, battery, and sensor health.",
+      "The system shall override pod missions remotely and command emergency stop.",
+      "The system shall detect and log any safety-critical events including collisions, near-misses, and sensor failures.",
+      "The system shall maintain geofenced operating zones and prevent pods from leaving defined areas.",
+      "The system shall schedule pods for charging before battery falls below 15%.",
+      "The system shall provide a live map of all pods with mission status and ETAs.",
+      "The system shall generate incident reports for any safety-critical event within 1 hour."
+    ],
+    "hidden_reqs": [
+      "The system shall provide a live map of all pods with mission status and ETAs.",
+      "The system shall override pod missions remotely and command emergency stop."
+    ],
+    "visible_reqs": [
+      "The system shall dispatch delivery missions to available pods based on load, battery, and proximity.",
+      "The system shall monitor all active pods via telemetry including speed, battery, and sensor health.",
+      "The system shall detect and log any safety-critical events including collisions, near-misses, and sensor failures.",
+      "The system shall maintain geofenced operating zones and prevent pods from leaving defined areas.",
+      "The system shall schedule pods for charging before battery falls below 15%.",
+      "The system shall generate incident reports for any safety-critical event within 1 hour."
+    ],
+    "nfr": [
+      "Emergency stop command shall be received and executed within 500ms.",
+      "Telemetry data shall be retained for 12 months for safety investigations.",
+      "System shall remain operational if communications to individual pods are intermittent."
+    ],
+    "stakeholders": [
+      {
+        "name": "Sam",
+        "role": "fleet_operator",
+        "primary_interest": "mission efficiency and uptime",
+        "secondary_interest": "safety compliance",
+        "conflict_with": null
+      },
+      {
+        "name": "Tia",
+        "role": "safety_officer",
+        "primary_interest": "real-time safety monitoring and incident logging",
+        "secondary_interest": "regulatory reporting",
+        "conflict_with": null
+      },
+      {
+        "name": "Uma",
+        "role": "campus_manager",
+        "primary_interest": "minimal disruption to campus operations",
+        "secondary_interest": "pedestrian safety",
+        "conflict_with": null
+      }
+    ],
+    "domain_entities": [
+      "Pod",
+      "Mission",
+      "Geofence",
+      "SafetyEvent",
+      "ChargingStation",
+      "Telemetry",
+      "IncidentReport"
+    ],
+    "conflicts": [
+      {
+        "req_a": "Pods shall complete assigned missions before returning to base, even at low battery.",
+        "req_b": "Pod safety systems shall override mission completion and return to charge if battery drops below 10%.",
+        "type": "mission_safety_conflict"
+      }
+    ],
+    "difficulty": "hard"
+  }
+]

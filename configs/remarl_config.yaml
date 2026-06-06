@@ -1,0 +1,111 @@
+# configs/remarl_config.yaml
+# ─────────────────────────────────────────────────────────────
+# Master configuration for REMARL training.
+# All paths are relative to the project root.
+# ─────────────────────────────────────────────────────────────
+
+project:
+  name: "REMARL"
+  version: "0.1.0"
+  seed: 42
+
+# ── LLM backend — NVIDIA Build Cloud API ──────────────────────
+llm:
+  provider: "nvidia"                               # nvidia | ollama | openai | anthropic
+  base_url: "https://integrate.api.nvidia.com/v1"  # NVIDIA OpenAI-compatible endpoint
+  model: "meta/llama-3.1-8b-instruct"              # default fallback model
+  temperature: 0.2
+  max_tokens: 512
+  # Per-agent model assignments (NVIDIA Build — verified accessible 2026-05-18)
+  agent_models:
+    stakeholder: "meta/llama-3.2-3b-instruct"            # fast / creative user stories
+    collector:   "mistralai/mixtral-8x7b-instruct-v0.1"  # MoE — best for structured RE drafting
+    modeler:     "meta/llama-3.2-3b-instruct"            # fast / extraction
+    checker:     "meta/llama-3.1-8b-instruct"            # solid QA / completeness analysis
+    documenter:  "upstage/solar-10.7b-instruct"          # 10.7B — best for long-form SRS output
+    negotiator:  "nvidia/llama-3.1-nemotron-nano-8b-v1"  # NVIDIA reasoning / conflict resolution
+
+  # Per-agent token limits — overrides the default above
+  agent_max_tokens:
+    stakeholder: 384    # user stories: short, punchy
+    collector:   512    # questions + draft: medium
+    modeler:     384    # entity/relation lists: short
+    checker:     512    # quality report: medium
+    documenter:  4096   # SRS document: full IEEE 830 needs 3k-5k tokens
+    negotiator:  640    # resolution reasoning: medium-long
+
+# ── State encoder ──────────────────────────────────────────────
+state_encoder:
+  model: "all-MiniLM-L6-v2"    # fast; swap for all-mpnet-base-v2 for better accuracy
+  state_dim: 1544               # 384*4 text fields + 5 phase bits + 3 counters
+
+# ── Reward engine ──────────────────────────────────────────────
+reward:
+  # Immediate reward weights (must sum to 1.0)
+  clarity_weight: 0.30
+  consistency_weight: 0.40
+  coverage_delta_weight: 0.30
+  # Terminal (oracle) reward weights (must sum to 1.0)
+  oracle_coverage_weight: 0.50
+  oracle_precision_weight: 0.20
+  oracle_conflict_weight: 0.15
+  oracle_nfr_weight: 0.15
+  # Step penalty (discourages unnecessary actions)
+  step_penalty: 0.01
+  # Similarity threshold for "covered" judgement
+  coverage_threshold: 0.65
+
+# ── Simulation environment ─────────────────────────────────────
+env:
+  scenario_dir: "data/scenarios/"
+  max_steps_per_episode: 18   #24
+  hide_fraction: 0.25           # fraction of reqs hidden from agents per episode
+
+# ── PPO hyperparameters (one policy per agent role) ───────────
+ppo:
+  learning_rate: 3.0e-4
+  n_steps: 36                    # = 2 full episodes before each PPO update (18 steps/ep)
+  batch_size: 18                 # = 1 episode worth of transitions
+  n_epochs: 10
+  gamma: 0.95                   # discount — ~20-step horizon
+  gae_lambda: 0.95
+  clip_range: 0.2
+  ent_coef: 0.02                # entropy bonus — encourages exploration
+  vf_coef: 0.5
+  max_grad_norm: 0.5
+  policy_arch: [256, 256]       # hidden layers in the MLP policy
+
+# ── Training loop ──────────────────────────────────────────────
+training:
+  n_episodes: 2000
+  eval_every_n_episodes: 50
+  save_every_n_episodes: 100
+  checkpoint_dir: "data/checkpoints/"
+  log_dir: "data/logs/"
+  early_stop_reward: 0.85       # stop if mean eval reward exceeds this
+  agent_roles:                  # which agents to train (others use fixed MARE policy)
+    - "collector"
+    - "modeler"
+    - "checker"
+
+# ── Evaluation ────────────────────────────────────────────────
+eval:
+  n_episodes: 50
+  domains:                      # evaluate on these domains
+    - "e_commerce_marketplace"
+    - "patient_portal"
+    - "online_learning_platform"
+    - "fleet_management"
+  compare_against_baseline: true  # compare with vanilla MARE
+
+# ── Episode memory (SQLite) ───────────────────────────────────
+memory:
+  db_path: "data/episodes.db"
+  max_episodes_stored: 10000
+  prune_older_than_days: 30
+
+# ── Wandb (optional) ─────────────────────────────────────────
+wandb:
+  enabled: false
+  project: "remarl"
+  entity: null                  # your wandb username/org

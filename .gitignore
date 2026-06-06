@@ -1,0 +1,45 @@
+# REMARL .gitignore
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.venv/
+renv/
+*.egg
+
+# Data (large files — don't commit)
+data/checkpoints/
+data/logs/
+data/promise_nfr/
+data/episodes.db
+*.db
+
+# Scenario cache (reproducible from templates — ok to regenerate)
+data/scenarios/all_scenarios.json
+
+# Model checkpoints (too large for git)
+*.zip
+*.pkl
+
+# API keys — NEVER commit
+.env
+*.env
+config_local.yaml
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Tensorboard
+runs/
+
+# Wandb
+wandb/

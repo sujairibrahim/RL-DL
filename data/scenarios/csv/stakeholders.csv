@@ -1,0 +1,166 @@
+scenario_id,domain,stakeholder_index,name,role,primary_interest,secondary_interest,conflict_with
+e9517d8b,e_commerce_marketplace,0,Alice,buyer,low prices and fast delivery,easy returns,seller
+e9517d8b,e_commerce_marketplace,1,Bob,seller,high visibility and low commission fees,analytics,buyer
+e9517d8b,e_commerce_marketplace,2,Carol,platform_admin,fraud prevention and compliance,revenue,
+489c1616,subscription_box,0,Dana,subscriber,personalised relevant products,surprise factor,
+489c1616,subscription_box,1,Eve,curator,manageable curation workload,product diversity,
+489c1616,subscription_box,2,Frank,logistics_manager,predictable fulfilment volumes,on-time delivery,
+c5cf01fb,patient_portal,0,Grace,patient,easy access to own records,privacy,doctor
+c5cf01fb,patient_portal,1,Henry,gp_doctor,efficient appointment management,clinical accuracy,patient
+c5cf01fb,patient_portal,2,Irene,hospital_admin,regulatory compliance,cost reduction,
+3ab011c3,mental_health_app,0,James,end_user,private mood tracking without stigma,therapist access,
+3ab011c3,mental_health_app,1,Karen,therapist,structured patient data before sessions,session scheduling,
+3ab011c3,mental_health_app,2,Leo,clinical_director,evidence-based intervention triggers,liability management,
+5032b660,online_learning_platform,0,Mia,student,self-paced affordable learning,recognised certificates,
+5032b660,online_learning_platform,1,Noah,instructor,easy course creation tools,revenue share,student
+5032b660,online_learning_platform,2,Olivia,platform_owner,content quality and platform growth,monetisation,
+5bcfa61d,school_management_system,0,Paul,teacher,minimal admin overhead,clear grade tracking,
+5bcfa61d,school_management_system,1,Quinn,parent,visibility of child's progress,direct teacher communication,
+5bcfa61d,school_management_system,2,Rachel,headteacher,whole-school analytics,ofsted compliance,
+8d4cecf0,personal_finance_app,0,Sam,end_user,clear spending insight,financial privacy,
+8d4cecf0,personal_finance_app,1,Tara,product_manager,engagement and retention,monetisation via premium tier,
+8d4cecf0,personal_finance_app,2,Uma,compliance_officer,FCA and PSD2 compliance,data minimisation,
+e4d34997,peer_lending_platform,0,Victor,lender,attractive returns with managed risk,liquidity via secondary market,borrower
+e4d34997,peer_lending_platform,1,Wendy,borrower,fast approval and fair rates,privacy of financials,lender
+e4d34997,peer_lending_platform,2,Xavier,risk_officer,default rate below 3%,regulatory compliance,
+eeaeecf4,fleet_management,0,Yara,fleet_manager,full vehicle visibility,cost reduction,
+eeaeecf4,fleet_management,1,Zack,driver,simple mobile interface,privacy of location outside working hours,fleet_manager
+eeaeecf4,fleet_management,2,Anna,operations_director,delivery SLA compliance,ERP integration,
+c9021146,smart_building_iot,0,Ben,building_manager,energy cost reduction,tenant comfort,
+c9021146,smart_building_iot,1,Cleo,security_officer,access control audit trail,intrusion detection,
+c9021146,smart_building_iot,2,Dan,tenant_company,comfortable working environment,privacy from landlord,building_manager
+8540b2b8,task_management_saas,0,Elle,developer,minimal process overhead,clear task ownership,
+8540b2b8,task_management_saas,1,Fred,product_manager,sprint planning visibility,stakeholder reporting,
+8540b2b8,task_management_saas,2,Gina,engineering_manager,team velocity tracking,resource allocation,
+802232a4,remote_team_collaboration,0,Hugo,remote_employee,seamless async communication,work-life boundary,
+802232a4,remote_team_collaboration,1,Isla,hr_manager,culture and engagement monitoring,compliance,
+802232a4,remote_team_collaboration,2,Jake,cto,security and enterprise features,integration with existing tools,
+d9f7fbbd,citizen_services_portal,0,Lena,citizen,quick self-service without queuing,privacy of personal data,
+d9f7fbbd,citizen_services_portal,1,Mike,council_caseworker,structured application data,manageable caseload,
+d9f7fbbd,citizen_services_portal,2,Nina,digital_director,GDS compliance and cost savings,accessibility,
+293dcb61,video_streaming,0,Ora,subscriber,wide content library and offline access,affordable pricing,
+293dcb61,video_streaming,1,Pete,content_partner,DRM enforcement and royalty tracking,audience analytics,
+293dcb61,video_streaming,2,Rita,product_manager,subscriber growth and retention,personalisation accuracy,
+792d628e,food_delivery_platform,0,Amy,customer,fast delivery and accurate orders,variety of restaurants,restaurant
+792d628e,food_delivery_platform,1,Bruno,restaurant_owner,accurate order relay and fair commission,menu control,customer
+792d628e,food_delivery_platform,2,Carlos,delivery_driver,optimised routes and fair pay,flexible working hours,
+7442125b,auction_platform,0,Diana,seller,maximum sale price and low fees,buyer trust,buyer
+7442125b,auction_platform,1,Ethan,buyer,fair bidding and secure payment,item authenticity,seller
+7442125b,auction_platform,2,Fiona,platform_operator,fraud prevention and revenue,dispute resolution,
+d4243521,rental_marketplace,0,George,owner,maximum rental income and item protection,easy listing management,renter
+d4243521,rental_marketplace,1,Hannah,renter,affordable access to equipment,transparent pricing,owner
+d4243521,rental_marketplace,2,Ivan,platform_manager,dispute resolution and trust,insurance partnerships,
+440c0641,telemedicine_platform,0,Julia,patient,quick access to quality medical advice,data privacy,doctor
+440c0641,telemedicine_platform,1,Kevin,doctor,efficient patient management and accurate records,liability protection,patient
+440c0641,telemedicine_platform,2,Laura,insurance_provider,claim verification and fraud prevention,cost control,
+716ed617,pharmacy_management,0,Mark,pharmacist,accurate dispensing and error prevention,efficient workflow,
+716ed617,pharmacy_management,1,Nancy,patient,fast prescription fulfilment and home delivery,medication privacy,
+716ed617,pharmacy_management,2,Oscar,pharmacy_manager,stock optimisation and regulatory compliance,revenue,
+2f8c2565,clinical_trial_management,0,Peter,principal_investigator,protocol compliance and participant safety,data quality,
+2f8c2565,clinical_trial_management,1,Quinn,sponsor,on-time regulatory submissions,cost control,investigator
+2f8c2565,clinical_trial_management,2,Rosa,regulator,GCP compliance and participant protection,audit trail completeness,
+65d643d0,university_admission_system,0,Sara,applicant,clear requirements and fair assessment,application status visibility,
+65d643d0,university_admission_system,1,Tom,admissions_officer,structured review workflow,consistent criteria,applicant
+65d643d0,university_admission_system,2,Uma,compliance_manager,equal opportunity compliance,data retention,
+c7a0a2bc,corporate_training_platform,0,Victor,employee,relevant engaging training with minimal interruption,recognised certification,
+c7a0a2bc,corporate_training_platform,1,Wendy,hr_manager,full compliance visibility and report generation,deadline enforcement,
+c7a0a2bc,corporate_training_platform,2,Xena,l_and_d_manager,course quality and learner engagement metrics,content management,
+83d94f2f,language_learning_app,0,Yuki,learner,measurable progress and fun experience,daily habit formation,
+83d94f2f,language_learning_app,1,Zara,content_linguist,pedagogically sound lesson design,language accuracy,
+83d94f2f,language_learning_app,2,Alex,product_manager,daily active user retention,premium conversion,
+298cc453,digital_banking_app,0,Ben,customer,seamless mobile banking experience,financial security,
+298cc453,digital_banking_app,1,Celia,compliance_officer,AML and KYC compliance,fraud prevention,
+298cc453,digital_banking_app,2,Derek,cto,scalable architecture and security,open banking integrations,
+0ed39539,insurance_claims_platform,0,Emma,claimant,fast fair settlement and clear communication,minimal paperwork,assessor
+0ed39539,insurance_claims_platform,1,Felix,claims_assessor,complete accurate claim information,manageable caseload,claimant
+0ed39539,insurance_claims_platform,2,Grace,fraud_analyst,early fraud detection,minimal false positives,
+573adc4c,crypto_exchange,0,Harry,retail_trader,low fees and fast execution,fund security,
+573adc4c,crypto_exchange,1,Irene,compliance_officer,AML and KYC compliance,regulatory reporting,
+573adc4c,crypto_exchange,2,Jack,security_engineer,exchange security and cold storage,penetration testing,
+ac47d38d,warehouse_management,0,Kim,warehouse_manager,throughput and accuracy,labour efficiency,
+ac47d38d,warehouse_management,1,Leo,picker,clear simple instructions and minimal walking,ergonomic device,
+ac47d38d,warehouse_management,2,Mia,operations_director,SLA compliance and cost reduction,ERP integration,
+da198498,cold_chain_monitoring,0,Nina,logistics_manager,full shipment visibility and compliance,cost reduction,
+da198498,cold_chain_monitoring,1,Omar,quality_manager,excursion detection and product integrity,audit readiness,
+da198498,cold_chain_monitoring,2,Paula,regulatory_affairs,FDA compliance and documentation,audit trail,
+0b4e4885,smart_parking_system,0,Quinn,driver,quick space location and easy payment,fair pricing,
+0b4e4885,smart_parking_system,1,Rachel,parking_operator,revenue maximisation and enforcement,operational efficiency,driver
+0b4e4885,smart_parking_system,2,Steve,city_council,traffic congestion reduction,disabled bay compliance,
+5906df43,social_media_platform,0,Tina,general_user,engaging relevant content and privacy control,no harassment,advertiser
+5906df43,social_media_platform,1,Uma,advertiser,targeted ad delivery and reach metrics,brand safety,user
+5906df43,social_media_platform,2,Vince,trust_safety_lead,rapid harmful content removal,false positive minimisation,
+fb2964e3,event_management_platform,0,Wendy,organiser,easy setup and full sales visibility,low platform fees,attendee
+fb2964e3,event_management_platform,1,Xavier,attendee,smooth ticket purchase and entry experience,reliable refunds,organiser
+fb2964e3,event_management_platform,2,Yolanda,venue_manager,accurate capacity management,smooth entry flow,
+61ad64a7,document_collaboration,0,Zara,knowledge_worker,fast reliable co-editing,version control,
+61ad64a7,document_collaboration,1,Adam,it_admin,enterprise security controls and SSO,audit logging,
+61ad64a7,document_collaboration,2,Beth,team_manager,visibility of document activity,access control,
+b19f47ae,voting_system,0,Chris,eligible_voter,simple private voting experience,confidence in result integrity,
+b19f47ae,voting_system,1,Diana,electoral_commission,tamper-proof audit trail,voter anonymity,
+b19f47ae,voting_system,2,Evan,security_researcher,public verifiability,vulnerability disclosure,
+386b64e4,emergency_response_system,0,Frank,dispatcher,clear incident overview and fast dispatch tools,unit safety,
+386b64e4,emergency_response_system,1,Gina,paramedic,accurate routing and patient information en route,personal safety,
+386b64e4,emergency_response_system,2,Henry,emergency_director,cross-agency coordination and KPI reporting,budget compliance,
+5167f72c,public_transport_app,0,Iris,commuter,accurate real-time information and easy ticketing,journey time saving,
+5167f72c,public_transport_app,1,Jake,transport_authority,ridership growth and revenue,data accuracy,
+5167f72c,public_transport_app,2,Karen,accessibility_advocate,full wheelchair and disability journey planning,step-free routes,
+df693e54,music_streaming,0,Liam,listener,vast library and personalised discovery,offline access,
+df693e54,music_streaming,1,Mia,artist,fair royalty payments and fan analytics,creative control,platform
+df693e54,music_streaming,2,Noah,label_representative,DRM enforcement and accurate reporting,new release promotion,
+607a936e,gaming_platform,0,Oliver,gamer,large library and smooth download experience,competitive community features,
+607a936e,gaming_platform,1,Priya,game_developer,revenue share and review visibility,anti-piracy protection,gamer
+607a936e,gaming_platform,2,Quinn,platform_operator,marketplace revenue and user retention,developer relations,
+05debc03,podcast_platform,0,Ruby,podcast_creator,audience growth and analytics,monetisation tools,
+05debc03,podcast_platform,1,Sam,listener,easy discovery and offline listening,no intrusive ads,
+05debc03,podcast_platform,2,Tara,platform_manager,creator and listener retention,premium revenue,
+da4ba8e1,recruitment_platform,0,Uma,recruiter,efficient pipeline management and fast time-to-hire,quality shortlists,
+da4ba8e1,recruitment_platform,1,Victor,hiring_manager,structured interview data and quick decisions,diverse shortlists,recruiter
+da4ba8e1,recruitment_platform,2,Wendy,candidate,transparent process and timely feedback,privacy of CV data,
+2e855a9e,hr_management_system,0,Xena,hr_business_partner,accurate employee data and easy reporting,compliance,
+2e855a9e,hr_management_system,1,Yuri,employee,transparent payslips and easy leave booking,privacy,
+2e855a9e,hr_management_system,2,Zoe,payroll_manager,accurate automated payroll and HMRC compliance,audit trail,
+ba4c8c35,employee_performance_management,0,Aaron,employee,transparent fair assessment and development support,privacy of feedback,manager
+ba4c8c35,employee_performance_management,1,Beth,line_manager,structured review tools and team visibility,calibration support,employee
+ba4c8c35,employee_performance_management,2,Carl,hr_director,consistent ratings and succession pipeline,legal compliance,
+360eae4a,workforce_scheduling,0,Dana,shift_worker,fair predictable schedules and easy swaps,work-life balance,manager
+360eae4a,workforce_scheduling,1,Ed,store_manager,fully staffed shifts and minimal manual intervention,labour cost control,worker
+360eae4a,workforce_scheduling,2,Fay,hr_compliance,working time regulation adherence,audit trail,
+f9c1f504,property_listing_platform,0,Gill,home_buyer,accurate listings and easy viewing requests,neighbourhood insights,
+f9c1f504,property_listing_platform,1,Hugh,estate_agent,lead generation and enquiry management,low portal fees,buyer
+f9c1f504,property_listing_platform,2,Ida,platform_manager,listing volume and user engagement,data quality,
+7b3ba503,property_management_system,0,Jake,landlord,automated rent collection and compliance alerts,low vacancy periods,tenant
+7b3ba503,property_management_system,1,Kate,tenant,fast maintenance resolution and transparent deposit handling,privacy,landlord
+7b3ba503,property_management_system,2,Leo,letting_agent,portfolio oversight and inspection scheduling,commission management,
+ce323351,construction_project_management,0,Mike,project_manager,schedule and budget control,risk management,
+ce323351,construction_project_management,1,Nora,site_manager,real-time issue logging and drawing access,safety compliance,
+ce323351,construction_project_management,2,Owen,client,cost transparency and milestone visibility,on-time delivery,
+00709f3e,precision_farming_platform,0,Pat,farmer,yield improvement and input cost reduction,easy data entry,
+00709f3e,precision_farming_platform,1,Quinn,agronomist,accurate field data for recommendations,remote advisory capability,
+00709f3e,precision_farming_platform,2,Ruth,agricultural_retailer,demand forecasting for inputs,farmer relationship,
+a6a05a9b,environmental_monitoring,0,Sam,environmental_officer,threshold breach alerts and compliance reporting,data accuracy,
+a6a05a9b,environmental_monitoring,1,Tess,public_citizen,accessible real-time air quality information,health advice,
+a6a05a9b,environmental_monitoring,2,Uri,city_planner,long-term trend analysis for policy decisions,cross-sector data,
+5cd9e2bb,supply_chain_traceability,0,Val,retailer,supplier compliance and recall capability,consumer trust,supplier
+5cd9e2bb,supply_chain_traceability,1,Will,supplier,low compliance overhead and data privacy,fair trade certification,retailer
+5cd9e2bb,supply_chain_traceability,2,Xia,food_safety_regulator,complete traceable audit trail,rapid recall response,
+336777bb,legal_case_management,0,Yvonne,solicitor,efficient matter management and billing capture,client satisfaction,client
+336777bb,legal_case_management,1,Zack,client,transparent case progress and secure document exchange,cost certainty,solicitor
+336777bb,legal_case_management,2,Ann,practice_manager,financial performance and regulatory compliance,resource utilisation,
+e5b3af68,contract_management,0,Brad,contract_manager,fast cycle time and obligation visibility,clause standardisation,legal
+e5b3af68,contract_management,1,Claire,legal_counsel,risk review and clause control,playbook compliance,business
+e5b3af68,contract_management,2,Dave,procurement_manager,supplier contract compliance,cost visibility,
+5ecdc8ed,travel_booking_platform,0,Ella,traveller,best price and seamless booking,flexible cancellation,supplier
+5ecdc8ed,travel_booking_platform,1,Fred,airline_partner,accurate inventory distribution and booking fees,ancillary upsell,traveller
+5ecdc8ed,travel_booking_platform,2,Gina,operations_manager,supplier contract compliance and refund management,customer satisfaction,
+e7bb45ea,hotel_management_system,0,Hugh,hotel_manager,full occupancy and revenue optimisation,guest satisfaction,
+e7bb45ea,hotel_management_system,1,Iris,front_desk_agent,fast check-in and real-time room status,guest conflict resolution,
+e7bb45ea,hotel_management_system,2,Jack,revenue_manager,dynamic pricing and OTA parity,direct booking ratio,
+7c7aa1b6,restaurant_pos_system,0,Kim,server,fast order entry and table management,minimal errors,
+7c7aa1b6,restaurant_pos_system,1,Leo,restaurant_owner,sales visibility and stock management,low downtime,
+7c7aa1b6,restaurant_pos_system,2,Mel,head_chef,accurate order flow and kitchen timing,allergy accuracy,
+07ce17fe,fitness_tracking_app,0,Nick,fitness_user,accurate tracking and motivation,health data privacy,
+07ce17fe,fitness_tracking_app,1,Olivia,personal_trainer,client progress visibility and programme delivery,remote coaching tools,
+07ce17fe,fitness_tracking_app,2,Pete,product_manager,daily active use and premium subscription conversion,user retention,
+bc2f6c04,ride_sharing_platform,0,Quin,passenger,fast reliable rides at fair prices,safety and driver ratings,driver
+bc2f6c04,ride_sharing_platform,1,Ray,driver,steady income and fair ride allocation,passenger safety,passenger
+bc2f6c04,ride_sharing_platform,2,Sue,operations_manager,platform safety compliance and growth,driver retention,

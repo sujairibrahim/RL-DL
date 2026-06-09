@@ -2022,7 +2022,7 @@ class ScenarioGenerator:
     # ── internal helpers ─────────────────────────────────────────────────
 
     def _load_or_build(self):
-        cache_file = self.scenario_dir / "all_scenarios.json"
+        cache_file = self.scenario_dir / "all_scenarios_expanded_V1.json"
         if cache_file.exists():
             with open(cache_file) as f:
                 raw = json.load(f)

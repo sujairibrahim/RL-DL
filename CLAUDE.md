@@ -42,9 +42,23 @@ python train.py --role modeler --episodes 500
 python train.py --role all                             # train all RL roles sequentially
 python train.py --resume data/checkpoints/collector_ep100
 
-# Evaluation
+# Evaluation (simple — delegates to eval/benchmark.py)
 python evaluate.py --checkpoint data/checkpoints/collector_final
 python evaluate.py --checkpoint data/checkpoints/collector_final --domain patient_portal
+
+# Primary paired evaluation: REMARL vs MAREFaithfulPolicy vs random on identical scenarios
+python eval/run_paired_eval.py --checkpoint data/checkpoints/collector_final --n 22
+python eval/run_paired_eval.py --checkpoint data/checkpoints/collector_final --n 22 --domain patient_portal
+
+# Statistical analysis of paired results (t-test, Wilcoxon, Cohen's d, Bonferroni/Holm)
+python eval/analyze_paired.py --input data/benchmarks/paired_eval_<timestamp>.json
+python eval/analyze_paired.py --input data/benchmarks/paired_eval_<timestamp>.json --comparison remarl_vs_random
+
+# MARE-style requirement-level evaluation (exact / token / semantic P/R/F1)
+python -m eval.mare_style_eval --episodes data/benchmarks/paired_eval_<timestamp>.json
+
+# Full benchmark with per-episode CSV and LaTeX table
+python eval/benchmark.py --checkpoint data/checkpoints/collector_final --n_eval 50
 
 # Experiment tracking
 tensorboard --logdir data/logs/
@@ -100,12 +114,22 @@ eval/          ← Benchmarking and metrics
 
 - `AbstractAgent` ([mare/agents/base.py](mare/agents/base.py)) — base class; holds LangChain LLM, conversation history (capped to system prompt + last 4 messages to avoid context bloat), and action history.
 - `AgentFactory.create_all_agents_from_config()` ([mare/agents/factory.py](mare/agents/factory.py)) — reads `llm.*` section of the YAML and instantiates all six agents with their per-role model and token limits.
-- Provider support: `ollama` (default), `openai`, `anthropic` — controlled by `llm.provider` in the YAML config.
+- Provider support: `ollama` (default), `openai`, `anthropic`, `nvidia` (NVIDIA NIM via OpenAI-compatible endpoint) — controlled by `llm.provider` in the YAML config.
 - `SharedWorkspace` ([mare/workspace/shared_workspace.py](mare/workspace/shared_workspace.py)) — the dict-like shared memory that all agents read/write during an episode.
 
 ### Scenario generator ([sim/scenario_gen.py](sim/scenario_gen.py))
 
-14 domain templates across 8 sectors (e-commerce, healthcare, education, fintech, logistics/IoT, social/productivity, government, entertainment). Each template has ground-truth requirements, NFRs, stakeholder personas, domain entities, and intentional conflicts. On first run, templates are expanded and cached to `data/scenarios/all_scenarios.json`. During training, `hide_fraction` (default 0.25) of requirements are hidden from the initial prompt — agents must elicit them.
+30 domain templates across 6 sectors (e-commerce, healthcare, education, fintech, logistics/IoT, government/entertainment). Each template has ground-truth requirements, NFRs, stakeholder personas, domain entities, and intentional conflicts. On first run, templates are expanded and cached to `data/scenarios/all_scenarios_expanded_V1.json`. During training, `hide_fraction` (default 0.25) of requirements are hidden from the initial prompt — agents must elicit them.
+
+### Evaluation layer (eval/)
+
+- `eval/benchmark.py` — full benchmark runner; compares REMARL, `MAREFaithfulPolicy` (canonical MARE action sequence `[propose×3, draft, refine, flag]`), and `MARERandomPolicy` on oracle metrics + requirement-level F1. Outputs per-episode CSV and LaTeX table to `data/benchmarks/eval_<role>_<timestamp>/`.
+- `eval/run_paired_eval.py` — **primary evaluation script for the paper**; runs N paired episodes (default 22, chosen for 80% power at d≈0.643) across all three policies on identical scenarios and saves raw results to `data/benchmarks/paired_eval_<timestamp>.json`.
+- `eval/analyze_paired.py` — statistical analysis of paired results: paired t-test, Wilcoxon signed-rank, Cohen's d, 95% CI, Bonferroni/Holm corrections, and win/tie/loss counts across `total_reward`, `coverage`, `precision`, `conflict`, `nfr`.
+- `eval/mare_style_eval.py` — MARE-paper-style requirement evaluation: extracts "shall/must/should" statements and computes P/R/F1 at exact, token (Jaccard ≥ 0.5), and semantic (cosine ≥ 0.65 via sentence-BERT) matching levels.
+- `eval/mare_eval.py` — `MAREEvaluator` and `EvaluationSuite` used by `benchmark.py`.
+
+Current results (collector role, n=22): REMARL vs MAREFaithfulPolicy — `total_reward` +0.056 (p<.0001, d=1.11), `precision` +0.269 (p<.0001, d=2.12). See `results_table_1.txt` and `results_table_2.txt`.
 
 ### Config ([configs/remarl_config.yaml](configs/remarl_config.yaml))
 

@@ -47,28 +47,41 @@ def run_eval_episode(env, model=None, already_reset: bool = False) -> dict:
     return {"total_reward": total_reward, "steps": steps, "oracle": oracle_result}
 
 
-class MAREFixedPolicy:
-    """Degenerate fixed-action policy — kept for reference only."""
-    FIXED_ACTION = {
-        "stakeholder": 0,
-        "collector":   0,
-        "modeler":     0,
-        "checker":     0,
-        "documenter":  2,
-    }
+class MAREFaithfulPolicy:
+    """
+    Faithful re-implementation of MARE's per-phase action schedule
+    for the collector role.
+
+    Real MARE elicitation pattern (from mare_pipeline._elicitation_phase):
+       stakeholder.speak_user_stories   (handled by env at reset)
+       loop:
+         collector.propose_question     (action 0)
+         stakeholder.answer_question    (handled by env internally)
+       collector.write_req_draft        (action 1)
+       collector.refine_req_draft       (action 2) — on iteration / refinement
+       collector.flag_missing_coverage  (action 3) — completeness pass
+
+    In single-role collector mode the env always interprets actions through
+    the collector's action map, so we drive the collector through MARE's
+    intended sub-sequence:
+
+       3 question rounds  → 1 draft  → 1 refinement  → 1 coverage flag
+       then loop (mimicking MARE's quality-gated re-iteration)
+    """
+
+    COLLECTOR_SEQUENCE = [0, 0, 0, 1, 2, 3]   # propose×3, draft, refine, flag
 
     def __init__(self):
         self._step = 0
 
+    def reset(self):
+        """Call this from the eval loop at the start of each episode."""
+        self._step = 0
+
     def predict(self, obs, deterministic=True):
-        from sim.re_env import DEFAULT_PHASE_SEQUENCE
-        role = DEFAULT_PHASE_SEQUENCE[self._step % len(DEFAULT_PHASE_SEQUENCE)][0]
-        action = self.FIXED_ACTION.get(role, 0)
+        action = self.COLLECTOR_SEQUENCE[self._step % len(self.COLLECTOR_SEQUENCE)]
         self._step += 1
         return action, None
-
-    def reset(self):
-        self._step = 0
 
 
 class MARERandomPolicy:
@@ -159,7 +172,7 @@ def benchmark(config_path, checkpoint_path, n_eval, domain=None):
         remarl_math_results.append(math_result)
 
         # Baseline run — replay the IDENTICAL scenario
-        baseline_policy = MAREFixedPolicy()
+        baseline_policy = MAREFaithfulPolicy()
         baseline_policy.reset()
         env.reset(scenario=paired_scenario)
         b_ep = run_eval_episode(env, model=baseline_policy, already_reset=True)

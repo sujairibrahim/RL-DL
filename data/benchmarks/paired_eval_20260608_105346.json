@@ -1,0 +1,684 @@
+[
+  {
+    "scenario_idx": 0,
+    "domain": "supply_chain_traceability",
+    "baseline": {
+      "total_reward": 0.6051068687140942,
+      "coverage": 0.8912137374281883,
+      "precision": 0.31,
+      "conflict": 0.4,
+      "nfr": 0.25,
+      "episode_steps": 18,
+      "episode_cumulative": 6.891799092861387
+    },
+    "remarl": {
+      "total_reward": 0.6217882781624794,
+      "coverage": 0.8905765563249588,
+      "precision": 0.395,
+      "conflict": 0.4,
+      "nfr": 0.25,
+      "episode_steps": 18,
+      "episode_cumulative": 9.188298820229969
+    },
+    "random": {
+      "total_reward": 0.5533977668583393,
+      "coverage": 0.8747955337166786,
+      "precision": 0.28,
+      "conflict": 0.4,
+      "nfr": 0.0,
+      "episode_steps": 18,
+      "episode_cumulative": 7.659772331819777
+    }
+  },
+  {
+    "scenario_idx": 1,
+    "domain": "food_delivery_platform",
+    "baseline": {
+      "total_reward": 0.5146523838788271,
+      "coverage": 0.8633047677576542,
+      "precision": 0.115,
+      "conflict": 0.4,
+      "nfr": 0.0,
+      "episode_steps": 18,
+      "episode_cumulative": 6.917513822785237
+    },
+    "remarl": {
+      "total_reward": 0.6377316649258137,
+      "coverage": 0.8904633298516273,
+      "precision": 0.475,
+      "conflict": 0.4,
+      "nfr": 0.25,
+      "episode_steps": 18,
+      "episode_cumulative": 9.237979035403304
+    },
+    "random": {
+      "total_reward": 0.5818277754187584,
+      "coverage": 0.8776555508375168,
+      "precision": 0.415,
+      "conflict": 0.4,
+      "nfr": 0.0,
+      "episode_steps": 18,
+      "episode_cumulative": 8.587826090752875
+    }
+  },
+  {
+    "scenario_idx": 2,
+    "domain": "personal_finance_app",
+    "baseline": {
+      "total_reward": 0.5752436586320401,
+      "coverage": 0.90348731726408,
+      "precision": 0.13,
+      "conflict": 0.4,
+      "nfr": 0.25,
+      "episode_steps": 18,
+      "episode_cumulative": 7.28949082817413
+    },
+    "remarl": {
+      "total_reward": 0.630584053993225,
+      "coverage": 0.9011681079864502,
+      "precision": 0.6,
+      "conflict": 0.4,
+      "nfr": 0.0,
+      "episode_steps": 18,
+      "episode_cumulative": 9.262793532430678
+    },
+    "random": {
+      "total_reward": 0.5787731039822102,
+      "coverage": 0.9115462079644203,
+      "precision": 0.315,
+      "conflict": 0.4,
+      "nfr": 0.0,
+      "episode_steps": 18,
+      "episode_cumulative": 7.956673774320518
+    }
+  },
+  {
+    "scenario_idx": 3,
+    "domain": "cold_chain_monitoring",
+    "baseline": {
+      "total_reward": 0.5383125548958778,
+      "coverage": 0.8786251097917557,
+      "precision": 0.195,
+      "conflict": 0.4,
+      "nfr": 0.0,
+      "episode_steps": 18,
+      "episode_cumulative": 7.613755712389898
+    },
+    "remarl": {
+      "total_reward": 0.5913452595472335,
+      "coverage": 0.8826905190944672,
+      "precision": 0.45,
+      "conflict": 0.4,
+      "nfr": 0.0,
+      "episode_steps": 18,
+      "episode_cumulative": 8.90716712166404
+    },
+    "random": {
+      "total_reward": 0.6246893242597581,
+      "coverage": 0.902378648519516,
+      "precision": 0.38,
+      "conflict": 0.4,
+      "nfr": 0.25,
+      "episode_steps": 18,
+      "episode_cumulative": 8.71578656650826
+    }
+  },
+  {
+    "scenario_idx": 4,
+    "domain": "school_management_system",
+    "baseline": {
+      "total_reward": 0.541607327580452,
+      "coverage": 0.8992146551609039,
+      "precision": 0.16,
+      "conflict": 0.4,
+      "nfr": 0.0,
+      "episode_steps": 18,
+      "episode_cumulative": 6.720211074602078
+    },
+    "remarl": {
+      "total_reward": 0.6482881775498389,
+      "coverage": 0.901576355099678,
+      "precision": 0.5,
+      "conflict": 0.4,
+      "nfr": 0.25,
+      "episode_steps": 18,
+      "episode_cumulative": 9.265182490018312
+    },
+    "random": {
+      "total_reward": 0.6444992829859257,
+      "coverage": 0.8989985659718513,
+      "precision": 0.3,
+      "conflict": 0.4,
+      "nfr": 0.5,
+      "episode_steps": 18,
+      "episode_cumulative": 7.618547125387428
+    }
+  },
+  {
+    "scenario_idx": 5,
+    "domain": "voting_system",
+    "baseline": {
+      "total_reward": 0.5956312865912914,
+      "coverage": 0.9082625731825829,
+      "precision": 0.22,
+      "conflict": 0.4,
+      "nfr": 0.25,
+      "episode_steps": 18,
+      "episode_cumulative": 8.676860940324781
+    },
+    "remarl": {
+      "total_reward": 0.6403338122963905,
+      "coverage": 0.9236676245927811,
+      "precision": 0.405,
+      "conflict": 0.4,
+      "nfr": 0.25,
+      "episode_steps": 18,
+      "episode_cumulative": 8.982715652373566
+    },
+    "random": {
+      "total_reward": 0.6170101571679115,
+      "coverage": 0.8770203143358231,
+      "precision": 0.405,
+      "conflict": 0.4,
+      "nfr": 0.25,
+      "episode_steps": 18,
+      "episode_cumulative": 8.082399652359015
+    }
+  },
+  {
+    "scenario_idx": 6,
+    "domain": "citizen_services_portal",
+    "baseline": {
+      "total_reward": 0.599270862430334,
+      "coverage": 0.8905417248606682,
+      "precision": 0.095,
+      "conflict": 0.4,
+      "nfr": 0.5,
+      "episode_steps": 18,
+      "episode_cumulative": 7.166824717943143
+    },
+    "remarl": {
+      "total_reward": 0.6312094808518885,
+      "coverage": 0.8794189617037773,
+      "precision": 0.47,
+      "conflict": 0.4,
+      "nfr": 0.25,
+      "episode_steps": 18,
+      "episode_cumulative": 9.265154095798987
+    },
+    "random": {
+      "total_reward": 0.5739052220135927,
+      "coverage": 0.8738104440271854,
+      "precision": 0.385,
+      "conflict": 0.4,
+      "nfr": 0.0,
+      "episode_steps": 18,
+      "episode_cumulative": 8.268158811398585
+    }
+  },
+  {
+    "scenario_idx": 7,
+    "domain": "smart_parking_system",
+    "baseline": {
+      "total_reward": 0.6629829828441143,
+      "coverage": 0.8859659656882286,
+      "precision": 0.425,
+      "conflict": 0.4,
+      "nfr": 0.5,
+      "episode_steps": 18,
+      "episode_cumulative": 7.262334478079305
+    },
+    "remarl": {
+      "total_reward": 0.71340711414814,
+      "coverage": 0.9268142282962799,
+      "precision": 0.575,
+      "conflict": 0.4,
+      "nfr": 0.5,
+      "episode_steps": 18,
+      "episode_cumulative": 9.082863932744742
+    },
+    "random": {
+      "total_reward": 0.5992748417556286,
+      "coverage": 0.8765496835112572,
+      "precision": 0.505,
+      "conflict": 0.4,
+      "nfr": 0.0,
+      "episode_steps": 18,
+      "episode_cumulative": 7.476147509317953
+    }
+  },
+  {
+    "scenario_idx": 8,
+    "domain": "e_commerce_marketplace",
+    "baseline": {
+      "total_reward": 0.5320384120345116,
+      "coverage": 0.9160768240690231,
+      "precision": 0.07,
+      "conflict": 0.4,
+      "nfr": 0.0,
+      "episode_steps": 18,
+      "episode_cumulative": 7.285516591631124
+    },
+    "remarl": {
+      "total_reward": 0.6413397179841994,
+      "coverage": 0.891679435968399,
+      "precision": 0.49,
+      "conflict": 0.4,
+      "nfr": 0.25,
+      "episode_steps": 18,
+      "episode_cumulative": 9.275568653320082
+    },
+    "random": {
+      "total_reward": 0.6018075487017632,
+      "coverage": 0.9086150974035263,
+      "precision": 0.25,
+      "conflict": 0.4,
+      "nfr": 0.25,
+      "episode_steps": 18,
+      "episode_cumulative": 8.323799706605016
+    }
+  },
+  {
+    "scenario_idx": 9,
+    "domain": "cold_chain_monitoring",
+    "baseline": {
+      "total_reward": 0.5675942250490188,
+      "coverage": 0.9021884500980377,
+      "precision": 0.095,
+      "conflict": 0.4,
+      "nfr": 0.25,
+      "episode_steps": 18,
+      "episode_cumulative": 7.504795065857409
+    },
+    "remarl": {
+      "total_reward": 0.6722066834568976,
+      "coverage": 0.8944133669137955,
+      "precision": 0.45,
+      "conflict": 0.4,
+      "nfr": 0.5,
+      "episode_steps": 18,
+      "episode_cumulative": 9.269873615002128
+    },
+    "random": {
+      "total_reward": 0.6514643820226192,
+      "coverage": 0.9259287640452385,
+      "precision": 0.455,
+      "conflict": 0.4,
+      "nfr": 0.25,
+      "episode_steps": 18,
+      "episode_cumulative": 8.586456890882936
+    }
+  },
+  {
+    "scenario_idx": 10,
+    "domain": "smart_building_iot",
+    "baseline": {
+      "total_reward": 0.5658997837901116,
+      "coverage": 0.9277995675802231,
+      "precision": 0.21,
+      "conflict": 0.4,
+      "nfr": 0.0,
+      "episode_steps": 18,
+      "episode_cumulative": 7.19392304783482
+    },
+    "remarl": {
+      "total_reward": 0.5920415410101414,
+      "coverage": 0.8900830820202827,
+      "precision": 0.435,
+      "conflict": 0.4,
+      "nfr": 0.0,
+      "episode_steps": 18,
+      "episode_cumulative": 9.2215972394021
+    },
+    "random": {
+      "total_reward": 0.5800498446524144,
+      "coverage": 0.9010996893048286,
+      "precision": 0.16,
+      "conflict": 0.4,
+      "nfr": 0.25,
+      "episode_steps": 18,
+      "episode_cumulative": 7.155168859912774
+    }
+  },
+  {
+    "scenario_idx": 11,
+    "domain": "corporate_training_platform",
+    "baseline": {
+      "total_reward": 0.6718873637616634,
+      "coverage": 0.8947747275233269,
+      "precision": 0.26,
+      "conflict": 0.4,
+      "nfr": 0.75,
+      "episode_steps": 18,
+      "episode_cumulative": 7.701875971305442
+    },
+    "remarl": {
+      "total_reward": 0.6511982181966304,
+      "coverage": 0.911396436393261,
+      "precision": 0.49,
+      "conflict": 0.4,
+      "nfr": 0.25,
+      "episode_steps": 18,
+      "episode_cumulative": 9.255013080007158
+    },
+    "random": {
+      "total_reward": 0.600317916572094,
+      "coverage": 0.8906358331441879,
+      "precision": 0.475,
+      "conflict": 0.4,
+      "nfr": 0.0,
+      "episode_steps": 18,
+      "episode_cumulative": 7.580477327593864
+    }
+  },
+  {
+    "scenario_idx": 12,
+    "domain": "insurance_claims_platform",
+    "baseline": {
+      "total_reward": 0.6102532190978528,
+      "coverage": 0.8975064381957054,
+      "precision": 0.32,
+      "conflict": 0.4,
+      "nfr": 0.25,
+      "episode_steps": 18,
+      "episode_cumulative": 7.220627215829662
+    },
+    "remarl": {
+      "total_reward": 0.6191638371646405,
+      "coverage": 0.9073276743292809,
+      "precision": 0.34,
+      "conflict": 0.4,
+      "nfr": 0.25,
+      "episode_steps": 18,
+      "episode_cumulative": 9.268956105082312
+    },
+    "random": {
+      "total_reward": 0.6204877965748311,
+      "coverage": 0.893975593149662,
+      "precision": 0.38,
+      "conflict": 0.4,
+      "nfr": 0.25,
+      "episode_steps": 18,
+      "episode_cumulative": 7.811920714873971
+    }
+  },
+  {
+    "scenario_idx": 13,
+    "domain": "ride_sharing_platform",
+    "baseline": {
+      "total_reward": 0.578865955889225,
+      "coverage": 0.88873191177845,
+      "precision": 0.185,
+      "conflict": 0.4,
+      "nfr": 0.25,
+      "episode_steps": 18,
+      "episode_cumulative": 8.02939583079687
+    },
+    "remarl": {
+      "total_reward": 0.6222538838982582,
+      "coverage": 0.8955077677965164,
+      "precision": 0.385,
+      "conflict": 0.4,
+      "nfr": 0.25,
+      "episode_steps": 18,
+      "episode_cumulative": 9.256757609864717
+    },
+    "random": {
+      "total_reward": 0.5366370157897473,
+      "coverage": 0.8932740315794945,
+      "precision": 0.15,
+      "conflict": 0.4,
+      "nfr": 0.0,
+      "episode_steps": 18,
+      "episode_cumulative": 6.796855718655512
+    }
+  },
+  {
+    "scenario_idx": 14,
+    "domain": "rental_marketplace",
+    "baseline": {
+      "total_reward": 0.5710107880234718,
+      "coverage": 0.9040215760469437,
+      "precision": 0.295,
+      "conflict": 0.4,
+      "nfr": 0.0,
+      "episode_steps": 18,
+      "episode_cumulative": 8.061750222300294
+    },
+    "remarl": {
+      "total_reward": 0.6025533910542725,
+      "coverage": 0.8661067821085453,
+      "precision": 0.36,
+      "conflict": 0.4,
+      "nfr": 0.25,
+      "episode_steps": 18,
+      "episode_cumulative": 8.978802701841436
+    },
+    "random": {
+      "total_reward": 0.6273945494890213,
+      "coverage": 0.9017890989780426,
+      "precision": 0.395,
+      "conflict": 0.4,
+      "nfr": 0.25,
+      "episode_steps": 18,
+      "episode_cumulative": 8.411294945515989
+    }
+  },
+  {
+    "scenario_idx": 15,
+    "domain": "social_media_platform",
+    "baseline": {
+      "total_reward": 0.5793709362447262,
+      "coverage": 0.8957418724894524,
+      "precision": 0.17,
+      "conflict": 0.4,
+      "nfr": 0.25,
+      "episode_steps": 18,
+      "episode_cumulative": 7.72039192239699
+    },
+    "remarl": {
+      "total_reward": 0.561738945543766,
+      "coverage": 0.873477891087532,
+      "precision": 0.325,
+      "conflict": 0.4,
+      "nfr": 0.0,
+      "episode_steps": 18,
+      "episode_cumulative": 9.192678764695783
+    },
+    "random": {
+      "total_reward": 0.5491672275364399,
+      "coverage": 0.9003344550728798,
+      "precision": 0.195,
+      "conflict": 0.4,
+      "nfr": 0.0,
+      "episode_steps": 18,
+      "episode_cumulative": 8.007609757634969
+    }
+  },
+  {
+    "scenario_idx": 16,
+    "domain": "school_management_system",
+    "baseline": {
+      "total_reward": 0.6058309647589921,
+      "coverage": 0.8836619295179844,
+      "precision": 0.145,
+      "conflict": 0.4,
+      "nfr": 0.5,
+      "episode_steps": 18,
+      "episode_cumulative": 7.509539201287066
+    },
+    "remarl": {
+      "total_reward": 0.630566847026348,
+      "coverage": 0.8461336940526962,
+      "precision": 0.55,
+      "conflict": 0.4,
+      "nfr": 0.25,
+      "episode_steps": 18,
+      "episode_cumulative": 9.266761685055497
+    },
+    "random": {
+      "total_reward": 0.602991420865059,
+      "coverage": 0.9229828417301178,
+      "precision": 0.22,
+      "conflict": 0.4,
+      "nfr": 0.25,
+      "episode_steps": 18,
+      "episode_cumulative": 7.6391756313913755
+    }
+  },
+  {
+    "scenario_idx": 17,
+    "domain": "employee_performance_management",
+    "baseline": {
+      "total_reward": 0.5132174471914768,
+      "coverage": 0.8884348943829536,
+      "precision": 0.045,
+      "conflict": 0.4,
+      "nfr": 0.0,
+      "episode_steps": 18,
+      "episode_cumulative": 6.754398935013558
+    },
+    "remarl": {
+      "total_reward": 0.6565452353954314,
+      "coverage": 0.922090470790863,
+      "precision": 0.49,
+      "conflict": 0.4,
+      "nfr": 0.25,
+      "episode_steps": 18,
+      "episode_cumulative": 9.266821770807663
+    },
+    "random": {
+      "total_reward": 0.525979902356863,
+      "coverage": 0.889959804713726,
+      "precision": 0.105,
+      "conflict": 0.4,
+      "nfr": 0.0,
+      "episode_steps": 18,
+      "episode_cumulative": 7.521059329849788
+    }
+  },
+  {
+    "scenario_idx": 18,
+    "domain": "citizen_services_portal",
+    "baseline": {
+      "total_reward": 0.5297637020647525,
+      "coverage": 0.8975274041295052,
+      "precision": 0.105,
+      "conflict": 0.4,
+      "nfr": 0.0,
+      "episode_steps": 18,
+      "episode_cumulative": 7.1345123958345384
+    },
+    "remarl": {
+      "total_reward": 0.6293799398839474,
+      "coverage": 0.9137598797678947,
+      "precision": 0.375,
+      "conflict": 0.4,
+      "nfr": 0.25,
+      "episode_steps": 18,
+      "episode_cumulative": 9.259471901144524
+    },
+    "random": {
+      "total_reward": 0.5890288993716241,
+      "coverage": 0.903057798743248,
+      "precision": 0.2,
+      "conflict": 0.4,
+      "nfr": 0.25,
+      "episode_steps": 18,
+      "episode_cumulative": 8.081114833918786
+    }
+  },
+  {
+    "scenario_idx": 19,
+    "domain": "property_listing_platform",
+    "baseline": {
+      "total_reward": 0.565663312226534,
+      "coverage": 0.9113266244530678,
+      "precision": 0.25,
+      "conflict": 0.4,
+      "nfr": 0.0,
+      "episode_steps": 18,
+      "episode_cumulative": 7.721727556878328
+    },
+    "remarl": {
+      "total_reward": 0.6146795992553233,
+      "coverage": 0.8893591985106468,
+      "precision": 0.55,
+      "conflict": 0.4,
+      "nfr": 0.0,
+      "episode_steps": 18,
+      "episode_cumulative": 8.322658936017415
+    },
+    "random": {
+      "total_reward": 0.7136113989651203,
+      "coverage": 0.9062227979302406,
+      "precision": 0.44,
+      "conflict": 0.4,
+      "nfr": 0.75,
+      "episode_steps": 18,
+      "episode_cumulative": 7.224788628444238
+    }
+  },
+  {
+    "scenario_idx": 20,
+    "domain": "pharmacy_management",
+    "baseline": {
+      "total_reward": 0.5806299648284912,
+      "coverage": 0.8942599296569824,
+      "precision": 0.18,
+      "conflict": 0.4,
+      "nfr": 0.25,
+      "episode_steps": 18,
+      "episode_cumulative": 7.573444269232396
+    },
+    "remarl": {
+      "total_reward": 0.5789851889312267,
+      "coverage": 0.8719703778624535,
+      "precision": 0.415,
+      "conflict": 0.4,
+      "nfr": 0.0,
+      "episode_steps": 18,
+      "episode_cumulative": 8.882032913265718
+    },
+    "random": {
+      "total_reward": 0.5725137767791748,
+      "coverage": 0.8830275535583496,
+      "precision": 0.355,
+      "conflict": 0.4,
+      "nfr": 0.0,
+      "episode_steps": 18,
+      "episode_cumulative": 7.855604574073704
+    }
+  },
+  {
+    "scenario_idx": 21,
+    "domain": "food_delivery_platform",
+    "baseline": {
+      "total_reward": 0.5132413559406996,
+      "coverage": 0.8864827118813992,
+      "precision": 0.05,
+      "conflict": 0.4,
+      "nfr": 0.0,
+      "episode_steps": 18,
+      "episode_cumulative": 7.155940108418674
+    },
+    "remarl": {
+      "total_reward": 0.6734309411644934,
+      "coverage": 0.9048618823289871,
+      "precision": 0.43,
+      "conflict": 0.4,
+      "nfr": 0.5,
+      "episode_steps": 18,
+      "episode_cumulative": 9.247775907318793
+    },
+    "random": {
+      "total_reward": 0.5319797235429287,
+      "coverage": 0.8899594470858574,
+      "precision": 0.135,
+      "conflict": 0.4,
+      "nfr": 0.0,
+      "episode_steps": 18,
+      "episode_cumulative": 7.390676042561336
+    }
+  }
+]

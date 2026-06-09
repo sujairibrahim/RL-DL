@@ -13,6 +13,19 @@ from datetime import datetime
 from pathlib import Path
 from typing import List, Optional
 
+import numpy as np
+
+
+class _NumpyEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, np.integer):
+            return int(obj)
+        if isinstance(obj, np.floating):
+            return float(obj)
+        if isinstance(obj, np.ndarray):
+            return obj.tolist()
+        return super().default(obj)
+
 logger = logging.getLogger(__name__)
 
 
@@ -71,7 +84,7 @@ class EpisodeMemory:
                     round(reward, 6),
                     n_steps,
                     round(covered_pct, 4),
-                    json.dumps(experiences),
+                    json.dumps(experiences, cls=_NumpyEncoder),
                     datetime.utcnow().isoformat(),
                 ),
             )

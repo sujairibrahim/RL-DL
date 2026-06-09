@@ -8,6 +8,7 @@ dist/
 build/
 .venv/
 renv/
+remarlenv/
 *.egg
 
 # Data (large files — don't commit)

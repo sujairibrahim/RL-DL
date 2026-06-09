@@ -11,6 +11,9 @@ Ollama provider requires Ollama running locally at http://localhost:11434.
 import os
 import logging
 import requests
+from dotenv import load_dotenv
+
+load_dotenv()
 
 logger = logging.getLogger(__name__)
 
@@ -64,8 +67,11 @@ class LLMClient:
 
     def _call_nvidia(self, prompt: str, system_prompt: str = "") -> str:
         """Call NVIDIA Build API via the OpenAI-compatible /v1/chat/completions endpoint."""
+        import time
+        import openai
+        from openai import APIConnectionError, APITimeoutError, RateLimitError
+
         if self._client is None:
-            import openai
             api_key = os.environ.get("NVIDIA_API_KEY")
             if not api_key:
                 raise RuntimeError(
@@ -76,18 +82,44 @@ class LLMClient:
             self._client = openai.OpenAI(
                 api_key=api_key,
                 base_url=self.base_url,
+                timeout=120.0,
+                max_retries=4,
             )
+
         messages = []
         if system_prompt:
             messages.append({"role": "system", "content": system_prompt})
         messages.append({"role": "user", "content": prompt})
-        response = self._client.chat.completions.create(
-            model=self.model,
-            messages=messages,
-            temperature=self.temperature,
-            max_tokens=self.max_tokens,
-        )
-        return response.choices[0].message.content.strip()
+
+        max_attempts = 3
+        backoff = 5
+        last_exc = None
+        for attempt in range(max_attempts):
+            try:
+                response = self._client.chat.completions.create(
+                    model=self.model,
+                    messages=messages,
+                    temperature=self.temperature,
+                    max_tokens=self.max_tokens,
+                    timeout=120.0,
+                )
+                return response.choices[0].message.content.strip()
+            except (APIConnectionError, APITimeoutError, RateLimitError) as e:
+                last_exc = e
+                if attempt < max_attempts - 1:
+                    logger.warning(
+                        f"NVIDIA call failed (attempt {attempt+1}/{max_attempts}): {e}. "
+                        f"Retrying in {backoff}s..."
+                    )
+                    time.sleep(backoff)
+                    backoff *= 2
+                else:
+                    logger.error(
+                        f"NVIDIA call failed after {max_attempts} attempts: {e}"
+                    )
+                    raise
+
+        raise RuntimeError(f"unreachable; last_exc={last_exc}")
 
     # ── Ollama ────────────────────────────────────────────────────────────
 

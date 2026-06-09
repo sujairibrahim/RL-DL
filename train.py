@@ -16,6 +16,7 @@ import sys
 import yaml
 from pathlib import Path
 
+
 # Load environment variables from .env (NVIDIA_API_KEY etc.)
 try:
     from dotenv import load_dotenv
@@ -99,23 +100,22 @@ def build_env_fn(config: dict, agent_role: str):
 def train(config: dict, agent_role: str, resume_from: str = None):
     from rl.policy import create_ppo_policy
     from rl.memory import EpisodeMemory
-    from stable_baselines3.common.callbacks import BaseCallback
+    from stable_baselines3.common.callbacks import BaseCallback, CheckpointCallback
 
-    Path(config["training"]["checkpoint_dir"]).mkdir(parents=True, exist_ok=True)
+    checkpoint_dir = Path(config["training"]["checkpoint_dir"])
+    checkpoint_dir.mkdir(parents=True, exist_ok=True)
     Path(config["training"]["log_dir"]).mkdir(parents=True, exist_ok=True)
     memory = EpisodeMemory(config["memory"]["db_path"])
 
     env_fn = build_env_fn(config, agent_role)
     model  = create_ppo_policy(env_fn, config, agent_role)
 
-# ── NEW: Callback to store episodes in EpisodeMemory ─────────
     class MemoryCallback(BaseCallback):
         def __init__(self):
             super().__init__()
             self._ep_count = 0
 
         def _on_step(self) -> bool:
-            # SB3 sets 'dones' when an episode ends
             infos = self.locals.get("infos", [{}])
             for info in infos:
                 if info.get("oracle_result") is not None:
@@ -129,14 +129,16 @@ def train(config: dict, agent_role: str, resume_from: str = None):
                         experiences=info.get("experiences", []),
                         covered_pct=float(oracle.coverage_score),
                     )
-            return True  # return False to stop training early
-    # ─────────────────────────────────────────────────────────────
+            return True
+
+    memory_callback = MemoryCallback()
+
     if resume_from:
         logger.info(f"Resuming from checkpoint: {resume_from}")
         from stable_baselines3 import PPO
         model = PPO.load(resume_from, env=model.get_env())
 
-    n_episodes  = config["training"]["n_episodes"]
+    n_episodes   = config["training"]["n_episodes"]
     steps_per_ep = config["env"]["max_steps_per_episode"]
     total_steps  = n_episodes * steps_per_ep
 
@@ -145,19 +147,24 @@ def train(config: dict, agent_role: str, resume_from: str = None):
         f"episodes={n_episodes} total_steps={total_steps}"
     )
 
-    # SB3 PPO trains by timestep, not episode
-    # We checkpoint every save_every_n_episodes * steps_per_ep steps
-    save_every = config["training"]["save_every_n_episodes"] * steps_per_ep
-    eval_every = config["training"]["eval_every_n_episodes"] * steps_per_ep
+    save_every_n_steps = max(steps_per_ep, total_steps // 10)
+    checkpoint_cb = CheckpointCallback(
+        save_freq=save_every_n_steps,
+        save_path=str(checkpoint_dir),
+        name_prefix=f"{agent_role}_ckpt",
+        save_replay_buffer=False,
+        save_vecnormalize=False,
+        verbose=1,
+    )
 
     model.learn(
         total_timesteps=total_steps,
+        callback=[memory_callback, checkpoint_cb],
         progress_bar=True,
         tb_log_name=f"ppo_{agent_role}",
     )
 
-    # Save final model
-    final_path = Path(config["training"]["checkpoint_dir"]) / f"{agent_role}_final"
+    final_path = checkpoint_dir / f"{agent_role}_final"
     model.save(str(final_path))
     logger.info(f"Saved final model to {final_path}")
 

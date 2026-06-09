@@ -18,6 +18,7 @@ from mare.agents.modeler import ModelerAgent
 from mare.agents.checker import CheckerAgent
 from mare.agents.documenter import DocumenterAgent
 from mare.agents.factory import AgentFactory
+from mare.agents.negotiator import NegotiatorAgent
 
 __all__ = [
     # Base classes and enums
@@ -33,6 +34,7 @@ __all__ = [
     "ModelerAgent",
     "CheckerAgent",
     "DocumenterAgent",
+    "NegotiatorAgent"
 
     # Factory
     "AgentFactory",

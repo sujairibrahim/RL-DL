@@ -1,38 +1,58 @@
-#!/bin/bash
-# Train all 3 roles then evaluate collector checkpoint.
-# Uses fast training config (llama-3.2-3b, 50 episodes/role, ~4h total).
+"""
+remarl/evaluate.py
+------------------
+Evaluate a trained REMARL checkpoint against vanilla MARE baseline.
 
-set -e
-cd "$(dirname "$0")"
-source renv/bin/activate 2>/dev/null || true
+Usage:
+    python evaluate.py --checkpoint data/checkpoints/collector_final
+    python evaluate.py --checkpoint data/checkpoints/collector_final --n 100
+    python evaluate.py --checkpoint data/checkpoints/collector_final --domain patient_portal
+    python evaluate.py --checkpoint data/checkpoints/modeler_final --role modeler
+    python evaluate.py --checkpoint data/checkpoints/checker_final  --role checker
 
-echo "========================================"
-echo "  REMARL Training + Evaluation Pipeline"
-echo "  $(date)"
-echo "========================================"
+FIX [1]: Added --role argument so modeler/checker checkpoints can be evaluated
+         without editing source. Previously hardcoded to 'collector' only.
+FIX [2]: Renamed --n to --n_eval to match benchmark.py's internal parameter name.
+"""
 
-# ── Phase 1: Train all 3 roles ────────────────────────────────
-echo ""
-echo "[1/2] Training collector, modeler, checker (50 eps each)..."
-python train.py --role all --config configs/remarl_train_fast.yaml
-echo "[1/2] Training complete: $(date)"
+import argparse
+import sys
+from pathlib import Path
 
-# ── Phase 2: Evaluate collector checkpoint ────────────────────
-CKPT="data/checkpoints/collector_final"
-if [ -f "${CKPT}.zip" ]; then
-    echo ""
-    echo "[2/2] Evaluating collector checkpoint (20 episodes)..."
-    python evaluate.py \
-        --checkpoint "$CKPT" \
-        --config configs/remarl_train_fast.yaml \
-        --n 20
-    echo "[2/2] Evaluation complete: $(date)"
-    echo ""
-    echo "Benchmark outputs saved to data/benchmarks/"
-    ls -lt data/benchmarks/ | head -5
-else
-    echo "WARNING: checkpoint not found at $CKPT — skipping eval"
-fi
+sys.path.insert(0, str(Path(__file__).parent))
 
-echo ""
-echo "All done: $(date)"
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="Evaluate a trained REMARL policy against the MARE baseline."
+    )
+    parser.add_argument(
+        "--checkpoint", required=True,
+        help="Path to SB3 PPO checkpoint (with or without .zip extension)",
+    )
+    parser.add_argument(
+        "--config", default="configs/remarl_config.yaml",
+        help="YAML config file used during training",
+    )
+    parser.add_argument(
+        "--n_eval", type=int, default=50,
+        help="Number of evaluation episodes",
+    )
+    parser.add_argument(
+        "--domain", default=None,
+        help="Restrict evaluation to a single domain (e.g. patient_portal)",
+    )
+    # FIX [1]: was missing entirely — only collector could be evaluated
+    parser.add_argument(
+        "--role", default="collector",
+        choices=["collector", "modeler", "checker"],
+        help="Agent role whose checkpoint is being evaluated",
+    )
+    args = parser.parse_args()
+
+    from eval.benchmark import benchmark
+    benchmark(args.config, args.checkpoint, args.n_eval, args.domain, args.role)
+
+
+if __name__ == "__main__":
+    main()

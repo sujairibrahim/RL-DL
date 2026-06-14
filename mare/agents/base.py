@@ -13,6 +13,9 @@ from typing import Any, Dict, List, Optional, Union
 from dataclasses import dataclass, field
 from enum import Enum
 import uuid
+import time
+import random
+import logging
 from datetime import datetime
 
 from langchain_core.messages import BaseMessage, HumanMessage, AIMessage, SystemMessage
@@ -144,6 +147,13 @@ class AbstractAgent(ABC, MARELoggerMixin):
                     temperature=self.config.temperature,
                     max_completion_tokens=self.config.max_tokens,
                     nvidia_api_key=api_key,
+                    # NOTE: Do NOT pass timeout= here — ChatNVIDIA does not accept it
+                    # as a constructor parameter.  LangChain silently moves unknown
+                    # kwargs into model_kwargs, which are then forwarded in the API
+                    # request body.  NVIDIA's endpoint rejects them with:
+                    #   400 extra_forbidden  ('body', 'timeout')
+                    # Per-request timeout is handled by the retry logic in
+                    # _generate_response() instead.
                 )
 
             elif provider == "ollama":
@@ -299,59 +309,127 @@ class AbstractAgent(ABC, MARELoggerMixin):
         """Get the system prompt for this agent."""
         pass
     
+    # ── Transient HTTP error codes that are safe to retry ─────────────────
+    _RETRYABLE_CODES = {"[504]", "[503]", "[502]", "[429]", "[500]"}
+    _RETRYABLE_WORDS = {
+        "gateway timeout", "service unavailable", "bad gateway",
+        "too many requests", "rate limit", "internal server error",
+        "connection", "timeout", "timed out",
+    }
+
+    def _is_retryable(self, exc: Exception) -> bool:
+        """Return True if this exception is a transient API error worth retrying."""
+        # 400 Bad Request is a client-side error (malformed request, bad parameters).
+        # It will NEVER resolve by retrying — fail fast instead.
+        # Also critical: NVIDIA's 400 JSON body contains the field name 'timeout'
+        # (e.g. {'loc': ('body', 'timeout'), ...}) which would otherwise match the
+        # "timeout" word in _RETRYABLE_WORDS, causing infinite retries on a bug.
+        if "[400]" in str(exc):
+            return False
+        msg = str(exc).lower()
+        return (
+            any(code in str(exc) for code in self._RETRYABLE_CODES)
+            or any(word in msg for word in self._RETRYABLE_WORDS)
+        )
+
     def _generate_response(
-        self, 
-        prompt: str, 
-        context: Optional[Dict[str, Any]] = None
+        self,
+        prompt: str,
+        context: Optional[Dict[str, Any]] = None,
+        max_retries: int = 4,
+        base_wait: float = 15.0,
     ) -> str:
         """
-        Generate a response using the language model.
-        
+        Generate a response using the language model, with automatic retry
+        and exponential backoff for transient NVIDIA API errors (504, 503,
+        429, 502).
+
+        FIX: The original version had no retry logic. A single 504 Gateway
+        Timeout from NVIDIA (which happens under load) would immediately
+        crash the episode. This version retries up to max_retries times with
+        exponential backoff (15 → 30 → 60 → 120 s) plus a small random jitter
+        to avoid sending all agents back at the same moment.
+
         Args:
-            prompt: The prompt to send to the model
-            context: Optional context information
-            
-        Returns:
-            Generated response
+            prompt:      The prompt to send to the model.
+            context:     Optional context (unused, kept for API compatibility).
+            max_retries: Maximum number of retry attempts after the first
+                         failure (default 4 → 5 total attempts).
+            base_wait:   Seconds to wait before the first retry. Doubles each
+                         attempt (default 15 s).
         """
-        try:
-            # ── Build capped message list ─────────────────────────────
-            # Keep system prompt + last 2 exchanges (5 messages max)
-            system_msgs = [m for m in self._conversation_history
-                           if isinstance(m, SystemMessage)]
-            recent_msgs = [m for m in self._conversation_history
-                           if not isinstance(m, SystemMessage)][-4:]
+        # ── Build capped message list ─────────────────────────────────────
+        # Keep system prompt + last 2 exchanges (4 non-system messages max)
+        system_msgs = [m for m in self._conversation_history
+                       if isinstance(m, SystemMessage)]
+        recent_msgs = [m for m in self._conversation_history
+                       if not isinstance(m, SystemMessage)][-4:]
 
-            if self.config.provider == "nvidia":
-                # NVIDIA models require strict user/assistant alternation.
-                # Some endpoints treat SystemMessage as a user role, producing
-                # [user, user] → 400. Fix: bake system prompt into the first
-                # user message and send only Human/AI pairs thereafter.
-                if system_msgs and not recent_msgs:
-                    # First turn: prepend system prompt to user message
-                    combined = f"{system_msgs[0].content}\n\n{prompt}"
-                    messages = [HumanMessage(content=combined)]
-                else:
-                    # Subsequent turns: strict Human/AI alternation, no system msg
-                    messages = recent_msgs + [HumanMessage(content=prompt)]
+        if self.config.provider == "nvidia":
+            # NVIDIA models require strict user/assistant alternation.
+            # Some endpoints treat SystemMessage as a user role, producing
+            # [user, user] → 400.  Fix: bake system prompt into the first
+            # user message and send only Human/AI pairs thereafter.
+            if system_msgs and not recent_msgs:
+                combined = f"{system_msgs[0].content}\n\n{prompt}"
+                messages = [HumanMessage(content=combined)]
             else:
-                capped_history = system_msgs + recent_msgs
-                messages = capped_history + [HumanMessage(content=prompt)]
-            # ──────────────────────────────────────────────────────────
+                messages = recent_msgs + [HumanMessage(content=prompt)]
+        else:
+            messages = system_msgs + recent_msgs + [HumanMessage(content=prompt)]
+        # ─────────────────────────────────────────────────────────────────
 
-            response = self._llm.invoke(messages)
+        last_exc: Exception = RuntimeError("No attempts made")
+        wait = base_wait
 
-            self.add_message(HumanMessage(content=prompt))
-            self.add_message(AIMessage(content=response.content))
+        for attempt in range(1, max_retries + 2):   # attempts: 1 … max_retries+1
+            try:
+                response = self._llm.invoke(messages)
 
-            return response.content
-            
-        except Exception as e:
-            self.log_error(f"Failed to generate response: {e}")
-            raise AgentExecutionError(
-                f"Response generation failed: {e}",
-                agent_name=self.role.value
-            )
+                # Success — update conversation history and return
+                self.add_message(HumanMessage(content=prompt))
+                self.add_message(AIMessage(content=response.content))
+                return response.content
+
+            except Exception as e:
+                last_exc = e
+
+                if not self._is_retryable(e):
+                    # Non-transient error (e.g. 401 Unauthorized, 400 Bad Request)
+                    # — log and raise immediately, no point retrying
+                    self.log_error(
+                        f"[{self.role.value}] Non-retryable error on attempt "
+                        f"{attempt}: {e}"
+                    )
+                    raise AgentExecutionError(
+                        f"Response generation failed: {e}",
+                        agent_name=self.role.value,
+                    )
+
+                if attempt > max_retries:
+                    break   # exhausted all retries
+
+                # Jitter: ±20 % of wait to spread simultaneous retries
+                jitter = random.uniform(-wait * 0.2, wait * 0.2)
+                sleep_for = max(1.0, wait + jitter)
+
+                self.log_error(
+                    f"[{self.role.value}] Transient API error on attempt "
+                    f"{attempt}/{max_retries + 1} — "
+                    f"retrying in {sleep_for:.0f}s.  Error: {e}"
+                )
+                time.sleep(sleep_for)
+                wait = min(wait * 2, 120.0)   # cap at 120 s
+
+        # All retries exhausted
+        self.log_error(
+            f"[{self.role.value}] All {max_retries + 1} attempts failed. "
+            f"Last error: {last_exc}"
+        )
+        raise AgentExecutionError(
+            f"Response generation failed after {max_retries + 1} attempts: {last_exc}",
+            agent_name=self.role.value,
+        )
     
     def _format_prompt(
         self, 

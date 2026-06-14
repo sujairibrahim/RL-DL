@@ -1,0 +1,65 @@
+{
+  "checkpoint": "data/checkpoints/modeler_final",
+  "agent_role": "modeler",
+  "n_eval": 20,
+  "n_valid": 20,
+  "domain_filter": null,
+  "total_minutes": 72,
+  "timestamp": "20260614_191250",
+  "remarl": {
+    "mean_coverage": 0.88428890760988,
+    "mean_precision": 0.04925000000000001,
+    "mean_total_reward": 0.5933694538049401,
+    "mean_steps": 18.0,
+    "std_reward": 0.0387560419705378,
+    "n_episodes": 20,
+    "ci95_reward": [
+      0.5747598624497198,
+      0.6119790451601604
+    ],
+    "ci95_coverage": [
+      0.8777464978868362,
+      0.8908313173329238
+    ]
+  },
+  "baseline": {
+    "mean_coverage": 0.8900373985990881,
+    "mean_precision": 0.04275000000000001,
+    "mean_total_reward": 0.5660686992995441,
+    "mean_steps": 18.0,
+    "std_reward": 0.052090480551904524,
+    "n_episodes": 20,
+    "ci95_reward": [
+      0.5410562752417696,
+      0.5910811233573185
+    ],
+    "ci95_coverage": [
+      0.8845488592601028,
+      0.8955259379380734
+    ]
+  },
+  "significance": {
+    "n": 20,
+    "alpha_bonferroni": 0.025,
+    "remarl_mean_reward": 0.5934,
+    "baseline_mean_reward": 0.5661,
+    "delta_reward": 0.0273,
+    "ci95_delta_reward": [
+      0.0007,
+      0.0539
+    ],
+    "p_value": 0.0448,
+    "significant_reward": false,
+    "cohen_d": 0.48,
+    "effect_size": "small",
+    "remarl_mean_coverage": 0.8843,
+    "baseline_mean_coverage": 0.89,
+    "delta_coverage": -0.0057,
+    "ci95_delta_coverage": [
+      -0.0152,
+      0.0037
+    ],
+    "coverage_p_value": 0.2176,
+    "significant_coverage": false
+  }
+}

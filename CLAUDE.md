@@ -13,7 +13,9 @@ The project has **two distinct operating modes**:
 
 ## Prerequisites
 
-Ollama must be running locally before either mode can work:
+LLM provider is configured via `llm.provider` in the YAML config (`nvidia` | `ollama` | `openai` | `anthropic`). **The current default is `nvidia`** (`configs/remarl_config.yaml`, `configs/remarl_train_fast.yaml`) — set `NVIDIA_API_KEY=nvapi-...` in `.env` (get a key at https://build.nvidia.com). `LLMClient.check_provider_health()` dispatches the pre-flight check by provider; no LLM call is attempted unless it passes.
+
+To run with `ollama` instead (edit `llm.provider: "ollama"` in the config), Ollama must be running locally:
 ```bash
 ollama serve
 ollama pull llama3.1:8b
@@ -49,6 +51,7 @@ python evaluate.py --checkpoint data/checkpoints/collector_final --domain patien
 # Primary paired evaluation: REMARL vs MAREFaithfulPolicy vs random on identical scenarios
 python eval/run_paired_eval.py --checkpoint data/checkpoints/collector_final --n 22
 python eval/run_paired_eval.py --checkpoint data/checkpoints/collector_final --n 22 --domain patient_portal
+python eval/run_paired_eval.py --checkpoint data/checkpoints/modeler_final --role modeler --n 22
 
 # Statistical analysis of paired results (t-test, Wilcoxon, Cohen's d, Bonferroni/Holm)
 python eval/analyze_paired.py --input data/benchmarks/paired_eval_<timestamp>.json
@@ -114,12 +117,12 @@ eval/          ← Benchmarking and metrics
 
 - `AbstractAgent` ([mare/agents/base.py](mare/agents/base.py)) — base class; holds LangChain LLM, conversation history (capped to system prompt + last 4 messages to avoid context bloat), and action history.
 - `AgentFactory.create_all_agents_from_config()` ([mare/agents/factory.py](mare/agents/factory.py)) — reads `llm.*` section of the YAML and instantiates all six agents with their per-role model and token limits.
-- Provider support: `ollama` (default), `openai`, `anthropic`, `nvidia` (NVIDIA NIM via OpenAI-compatible endpoint) — controlled by `llm.provider` in the YAML config.
+- Provider support: `nvidia` (NVIDIA NIM via OpenAI-compatible endpoint, **default**), `ollama`, `openai`, `anthropic` — controlled by `llm.provider` in the YAML config. Retry logic with exponential backoff for transient errors lives in `AbstractAgent._generate_response()` ([mare/agents/base.py](mare/agents/base.py)).
 - `SharedWorkspace` ([mare/workspace/shared_workspace.py](mare/workspace/shared_workspace.py)) — the dict-like shared memory that all agents read/write during an episode.
 
 ### Scenario generator ([sim/scenario_gen.py](sim/scenario_gen.py))
 
-30 domain templates across 6 sectors (e-commerce, healthcare, education, fintech, logistics/IoT, government/entertainment). Each template has ground-truth requirements, NFRs, stakeholder personas, domain entities, and intentional conflicts. On first run, templates are expanded and cached to `data/scenarios/all_scenarios_expanded_V1.json`. During training, `hide_fraction` (default 0.25) of requirements are hidden from the initial prompt — agents must elicit them.
+55 domain templates across 14 sectors. Each template has ground-truth requirements, NFRs, stakeholder personas, domain entities, and intentional conflicts. On first run, templates are expanded and cached to `data/scenarios/all_scenarios_expanded_V1.json`. During training, `hide_fraction` (default 0.25) of requirements are hidden from the initial prompt — agents must elicit them.
 
 ### Evaluation layer (eval/)
 
@@ -129,16 +132,28 @@ eval/          ← Benchmarking and metrics
 - `eval/mare_style_eval.py` — MARE-paper-style requirement evaluation: extracts "shall/must/should" statements and computes P/R/F1 at exact, token (Jaccard ≥ 0.5), and semantic (cosine ≥ 0.65 via sentence-BERT) matching levels.
 - `eval/mare_eval.py` — `MAREEvaluator` and `EvaluationSuite` used by `benchmark.py`.
 
-Current results (collector role, n=22): REMARL vs MAREFaithfulPolicy — `total_reward` +0.056 (p<.0001, d=1.11), `precision` +0.269 (p<.0001, d=2.12). See `results_table_1.txt` and `results_table_2.txt`.
+Current primary result (collector role, n=22, paired vs `MAREFaithfulPolicy`): `total_reward` +0.056 (p<.0001, d=1.11), `precision` +0.269 (p<.0001, d=2.12); also beats `MARERandomPolicy` (+0.036, p=.006, d=0.65). See `results_table_1.txt` and `results_table_2.txt`. This full paired statistical treatment currently exists only for **collector** — modeler and checker have single-arm `benchmark.py` numbers only (n=20, no vs-random arm, no Wilcoxon). See [Known issues](#known-issues--current-limitations) below.
 
 ### Config ([configs/remarl_config.yaml](configs/remarl_config.yaml))
 
-All hyperparameters live here. Key sections: `llm` (provider, models per agent), `state_encoder`, `reward` (weight breakdown), `env`, `ppo`, `training`, `eval`, `memory`, `wandb`. The trainable roles are listed under `training.agent_roles`; others use fixed MARE policies.
+All hyperparameters live here. Key sections: `llm` (provider, models per agent), `state_encoder`, `reward` (weight breakdown), `env`, `ppo`, `training`, `eval`, `memory`, `wandb`. `training.agent_roles` currently lists **collector, modeler, checker** as RL-trainable (checkpoints exist for all three under `data/checkpoints/`); **stakeholder, negotiator, documenter** always use the fixed MARE policy — negotiator has a fully-implemented LLM agent but is never trained or run inside an RL episode (see below).
+
+## Known issues / current limitations
+
+A full codebase audit is in `RESEARCH_STATUS.md` (repo root, gitignored/untracked — regenerate or consult it for detail). Headline items to keep in mind when working in this area:
+
+- **Checker's benchmark/requirement-F1 results are all zero** — a real bug, not a limitation. `mare/rl_adapter.py` maps checker's `approve_and_document` action to `ActionType.WRITE_SRS`, but `can_perform_action()` in `mare/agents/base.py` only permits `WRITE_SRS` for the documenter role, so every checker episode's terminal action fails silently.
+- **Modeler's requirement-F1 is structurally zero** — modeler writes entities/relations, not "shall" prose, so the shall-statement extractor used for scoring has nothing to match. Needs an entity/relation-F1 metric, not a bug fix.
+- **Negotiator is not RL-trained.** It's fully implemented (prompts, factory registration, action mappings) but excluded from `training.agent_roles` and every train/eval CLI; it only runs inside the interactive HITL pipeline. The `agent_role="multi"` path in `RESimEnv` that would allow true multi-agent episodes exists but is never invoked by any script.
+- **`conflict` metric shows zero variance** (constant 0.400) across every policy/role in paired eval — not currently discriminating between systems.
+- **Dead code**: `mare/agents/base_agent.py`, `mare/prompts/prompt_builder.py`, `mare/pipeline.py`, and `rl/actionspace.py` are superseded/unused modules left in the tree — don't build on them; the live path is `mare/agents/base.py` → `mare/rl_adapter.py` → `sim/re_env.py`.
+- **No CI, narrow test coverage** (~26 tests, confined to reward/state-encoder/env/oracle/scenario-gen — no tests for LLM agents, `rl_adapter.py`, `rl/trainer.py`, `eval/`, or root scripts).
+- **`requirements.txt` floors are stale** relative to what's actually installed/validated (e.g. `langchain>=0.2.0` vs installed `1.3.4`) — no lockfile.
 
 ## Key invariants
 
 - **State dim is 1544** (4 × 384 + 5 + 3). If you change the sentence model or add workspace fields, update `state_encoder.state_dim` in the YAML and the constant in `rl/state_encoder.py`.
 - **Action space is Discrete(4)** per agent role. `AGENT_ACTION_MAP` in `sim/re_env.py` and `ACTION_TYPE_MAP` / `FIELD_MAP` in `mare/rl_adapter.py` must stay in sync when actions are added or renamed.
 - **Reward weights must sum to 1.0** — enforced by assertions in `Oracle.__init__`.
-- **Ollama health is checked** at pipeline start (`LLMClient.check_ollama_health()`). No LLM call will be attempted unless Ollama responds.
+- **Provider health is checked** at pipeline start (`LLMClient.check_provider_health()`, dispatches by `llm.provider`). No LLM call will be attempted unless the configured provider responds.
 - Conversation history is hard-capped to system prompt + last 4 messages in `AbstractAgent._generate_response()` to prevent context explosion across long episodes.

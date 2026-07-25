@@ -316,8 +316,12 @@ class Oracle:
         Score whether the agents detected and addressed known conflicts.
 
         Checks:
-          1. Was the conflict mentioned in the error report?
-          2. Was a resolution documented in the final SRS?
+          1. Was the conflict mentioned in the error report? (detection, 0.6)
+          2. Did the Negotiator's actual resolved content propagate into
+             the final SRS, measured via semantic similarity rather than
+             surface keyword matching — consistent with how coverage,
+             precision, and NFR are scored elsewhere in this class.
+             (resolution, 0.4)
 
         Returns 1.0 if no conflicts exist (no penalty for absent conflicts).
         """
@@ -325,13 +329,15 @@ class Oracle:
             return 1.0
 
         error_report = workspace.get("error_report", "").lower()
-        final_srs = self._extract_srs_text(workspace).lower()
+        req_draft = workspace.get("req_draft", "")
+        final_srs = self._extract_srs_text(workspace)
+
+        resolution_score = self._score_resolution_semantic(req_draft, final_srs)
 
         scores = []
         for conflict in conflicts:
             req_a = conflict["req_a"].lower()
             req_b = conflict["req_b"].lower()
-            conflict_type = conflict.get("type", "")
 
             # Check if key terms from both conflicting requirements appear
             # in the error report (detection signal)
@@ -341,19 +347,65 @@ class Oracle:
             detected_b = any(t in error_report for t in key_terms_b)
             detected = (detected_a and detected_b)
 
-            # Check if resolution language appears in the SRS
-            resolution_words = ["shall", "agreed", "resolved", "compromise", "priority", "unless"]
-            resolution_mentioned = any(w in final_srs for w in resolution_words)
-
             score = 0.0
             if detected:
                 score += 0.6
-            if resolution_mentioned:
-                score += 0.4
+            score += 0.4 * resolution_score
 
             scores.append(score)
 
         return float(np.mean(scores))
+
+    def _extract_resolutions(self, req_draft_text: str) -> List[str]:
+        """
+        Pull the Negotiator's RESOLUTION blocks out of the raw req_draft
+        text (format is dictated by the Negotiator's own prompt: CONFLICT /
+        STAKEHOLDER A NEEDS / STAKEHOLDER B NEEDS / RESOLUTION / RATIONALE,
+        sometimes followed by a "Rewritten requirement:" block). Captures
+        everything from RESOLUTION up to the next CONFLICT marker or the
+        end of the text, so both the short resolution statement and any
+        rewritten requirement text are available for semantic matching.
+        """
+        if not req_draft_text:
+            return []
+        pattern = r"RESOLUTION:\s*(.+?)(?=CONFLICT|\Z)"
+        blocks = re.findall(pattern, req_draft_text, re.DOTALL)
+        resolutions = []
+        for block in blocks:
+            cleaned = re.sub(r"\s+", " ", block).strip()
+            if len(cleaned) > 10:
+                resolutions.append(cleaned[:500])  # cap for embedding sanity
+        return resolutions
+
+    def _score_resolution_semantic(self, req_draft_text: str, final_srs: str) -> float:
+        """
+        Instead of keyword-matching for 'resolved'/'agreed' in the final
+        SRS, check whether the Negotiator's actual resolved content is
+        semantically present in the final document — the same
+        embedding-similarity technique already used for coverage.
+
+        Returns the fraction of extracted resolutions that found a
+        semantic match (cosine >= self.threshold) somewhere in the SRS.
+        """
+        resolutions = self._extract_resolutions(req_draft_text)
+        if not resolutions:
+            return 0.0
+        if not final_srs or len(final_srs.strip()) < 50:
+            return 0.0
+
+        model = self._get_model()
+        srs_sentences = self._split_sentences(final_srs)
+        if not srs_sentences:
+            return 0.0
+
+        res_emb = model.encode(resolutions, batch_size=32, show_progress_bar=False)
+        srs_emb = model.encode(srs_sentences, batch_size=32, show_progress_bar=False)
+
+        from sentence_transformers import util
+        sim_matrix = util.cos_sim(res_emb, srs_emb).numpy()  # (n_resolutions, n_sentences)
+
+        matched = np.any(sim_matrix >= self.threshold, axis=1)
+        return float(matched.mean())
 
     def _score_nfr(self, srs_text: str, nfr_list: List[str]) -> float:
         """

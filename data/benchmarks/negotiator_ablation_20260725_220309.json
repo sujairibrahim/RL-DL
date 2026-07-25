@@ -1,0 +1,122 @@
+{
+  "n": 3,
+  "seed": 42,
+  "config": "configs/remarl_train_fast.yaml",
+  "minutes": 5.8,
+  "episodes": [
+    {
+      "scenario": 1,
+      "domain": "employee_performance_management",
+      "with": {
+        "coverage": 0.6422083005309105,
+        "precision": 0.09090909090909091,
+        "conflict": 0.8,
+        "nfr": 0.0,
+        "total": 0.45928596844727343,
+        "hallucinated": 80,
+        "srs_len": 4960,
+        "error_report_len": 4400
+      },
+      "without": {
+        "coverage": 0.7254349067807198,
+        "precision": 0.12790697674418605,
+        "conflict": 0.6,
+        "nfr": 0.0,
+        "total": 0.47829884873919704,
+        "hallucinated": 75,
+        "srs_len": 5234,
+        "error_report_len": 4219
+      }
+    },
+    {
+      "scenario": 2,
+      "domain": "supply_chain_traceability",
+      "with": {
+        "coverage": 0.5664484538137913,
+        "precision": 0.03896103896103896,
+        "conflict": 0.8,
+        "nfr": 0.0,
+        "total": 0.41101643469910343,
+        "hallucinated": 74,
+        "srs_len": 4666,
+        "error_report_len": 3862
+      },
+      "without": {
+        "coverage": 0.703486580401659,
+        "precision": 0.13636363636363635,
+        "conflict": 0.0,
+        "nfr": 0.0,
+        "total": 0.3790160174735568,
+        "hallucinated": 76,
+        "srs_len": 5006,
+        "error_report_len": 4132
+      }
+    },
+    {
+      "scenario": 3,
+      "domain": "food_delivery_platform",
+      "with": {
+        "coverage": 0.811321884393692,
+        "precision": 0.18604651162790697,
+        "conflict": 1.0,
+        "nfr": 0.5,
+        "total": 0.6678702445224274,
+        "hallucinated": 70,
+        "srs_len": 4813,
+        "error_report_len": 3843
+      },
+      "without": {
+        "coverage": 0.7359531372785568,
+        "precision": 0.10588235294117647,
+        "conflict": 0.6,
+        "nfr": 0.25,
+        "total": 0.5166530392275137,
+        "hallucinated": 76,
+        "srs_len": 4857,
+        "error_report_len": 3766
+      }
+    }
+  ],
+  "summary": {
+    "conflict": {
+      "with_mean": 0.8666666666666667,
+      "without_mean": 0.39999999999999997,
+      "mean_diff": 0.4666666666666666,
+      "t_p": 0.11808289631180315,
+      "wilcoxon_p": 0.25,
+      "cohens_d": 1.5275252316519465
+    },
+    "total": {
+      "with_mean": 0.5127242158896014,
+      "without_mean": 0.4579893018134225,
+      "mean_diff": 0.0547349140761789,
+      "t_p": 0.3912347410322588,
+      "wilcoxon_p": 0.5,
+      "cohens_d": 0.6265261246846523
+    },
+    "coverage": {
+      "with_mean": 0.6733262129127979,
+      "without_mean": 0.7216248748203119,
+      "mean_diff": -0.04829866190751394,
+      "t_p": 0.5278023320180194,
+      "wilcoxon_p": 0.5,
+      "cohens_d": -0.4373805771115021
+    },
+    "precision": {
+      "with_mean": 0.10530554716601227,
+      "without_mean": 0.12338432201633297,
+      "mean_diff": -0.01807877485032068,
+      "t_p": 0.7618077791723377,
+      "wilcoxon_p": 0.75,
+      "cohens_d": -0.20024662586068634
+    },
+    "nfr": {
+      "with_mean": 0.16666666666666666,
+      "without_mean": 0.08333333333333333,
+      "mean_diff": 0.08333333333333333,
+      "t_p": 0.4226497308103743,
+      "wilcoxon_p": 1.0,
+      "cohens_d": 0.5773502691896256
+    }
+  }
+}

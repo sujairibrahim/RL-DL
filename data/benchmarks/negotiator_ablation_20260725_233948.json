@@ -1,0 +1,578 @@
+{
+  "n": 22,
+  "seed": 42,
+  "config": "configs/remarl_train_fast.yaml",
+  "minutes": 46.2,
+  "episodes": [
+    {
+      "scenario": 1,
+      "domain": "employee_performance_management",
+      "with": {
+        "coverage": 0.5637751929461956,
+        "precision": 0.043010752688172046,
+        "conflict": 1.0,
+        "nfr": 0.0,
+        "total": 0.4404897470107322,
+        "hallucinated": 89,
+        "srs_len": 4969,
+        "error_report_len": 4304
+      },
+      "without": {
+        "coverage": 0.6039922051131725,
+        "precision": 0.07777777777777778,
+        "conflict": 0.6,
+        "nfr": 0.0,
+        "total": 0.4075516581121418,
+        "hallucinated": 83,
+        "srs_len": 4812,
+        "error_report_len": 4003
+      }
+    },
+    {
+      "scenario": 2,
+      "domain": "supply_chain_traceability",
+      "with": {
+        "coverage": 0.5716499052941799,
+        "precision": 0.011235955056179775,
+        "conflict": 0.6,
+        "nfr": 0.0,
+        "total": 0.37807214365832587,
+        "hallucinated": 88,
+        "srs_len": 4679,
+        "error_report_len": 3403
+      },
+      "without": {
+        "coverage": 0.5689485855400562,
+        "precision": 0.1388888888888889,
+        "conflict": 0.6,
+        "nfr": 0.0,
+        "total": 0.4022520705478059,
+        "hallucinated": 62,
+        "srs_len": 4747,
+        "error_report_len": 4019
+      }
+    },
+    {
+      "scenario": 3,
+      "domain": "food_delivery_platform",
+      "with": {
+        "coverage": 0.7312244437634945,
+        "precision": 0.14942528735632185,
+        "conflict": 1.0,
+        "nfr": 0.5,
+        "total": 0.6204972793530116,
+        "hallucinated": 74,
+        "srs_len": 4800,
+        "error_report_len": 3578
+      },
+      "without": {
+        "coverage": 0.636039063334465,
+        "precision": 0.20253164556962025,
+        "conflict": 0.6,
+        "nfr": 0.0,
+        "total": 0.4485258607811565,
+        "hallucinated": 63,
+        "srs_len": 5023,
+        "error_report_len": 3773
+      }
+    },
+    {
+      "scenario": 4,
+      "domain": "personal_finance_app",
+      "with": {
+        "coverage": 0.7078103870153427,
+        "precision": 0.2,
+        "conflict": 1.0,
+        "nfr": 0.25,
+        "total": 0.5814051935076714,
+        "hallucinated": 68,
+        "srs_len": 4328,
+        "error_report_len": 3636
+      },
+      "without": {
+        "coverage": 0.7619845382869244,
+        "precision": 0.22988505747126436,
+        "conflict": 0.6,
+        "nfr": 0.25,
+        "total": 0.5544692806377151,
+        "hallucinated": 67,
+        "srs_len": 4703,
+        "error_report_len": 3381
+      }
+    },
+    {
+      "scenario": 5,
+      "domain": "cold_chain_monitoring",
+      "with": {
+        "coverage": 0.7022123858332634,
+        "precision": 0.20987654320987653,
+        "conflict": 0.4,
+        "nfr": 0.0,
+        "total": 0.453081501558607,
+        "hallucinated": 64,
+        "srs_len": 5111,
+        "error_report_len": 4047
+      },
+      "without": {
+        "coverage": 0.6071841083467007,
+        "precision": 0.012658227848101266,
+        "conflict": 0.6,
+        "nfr": 0.25,
+        "total": 0.43362369974297055,
+        "hallucinated": 78,
+        "srs_len": 4875,
+        "error_report_len": 3509
+      }
+    },
+    {
+      "scenario": 6,
+      "domain": "school_management_system",
+      "with": {
+        "coverage": 0.7617222964763641,
+        "precision": 0.2111111111111111,
+        "conflict": 1.0,
+        "nfr": 0.3333333333333333,
+        "total": 0.6230833704604043,
+        "hallucinated": 71,
+        "srs_len": 4878,
+        "error_report_len": 3728
+      },
+      "without": {
+        "coverage": 0.7632387802004814,
+        "precision": 0.23076923076923078,
+        "conflict": 0.6,
+        "nfr": 0.0,
+        "total": 0.5177732362540869,
+        "hallucinated": 70,
+        "srs_len": 4718,
+        "error_report_len": 3608
+      }
+    },
+    {
+      "scenario": 7,
+      "domain": "voting_system",
+      "with": {
+        "coverage": 0.6832910031080246,
+        "precision": 0.11458333333333333,
+        "conflict": 1.0,
+        "nfr": 0.5,
+        "total": 0.589562168220679,
+        "hallucinated": 85,
+        "srs_len": 4881,
+        "error_report_len": 3734
+      },
+      "without": {
+        "coverage": 0.7357667982578278,
+        "precision": 0.18478260869565216,
+        "conflict": 0.0,
+        "nfr": 0.0,
+        "total": 0.4048399208680443,
+        "hallucinated": 75,
+        "srs_len": 4902,
+        "error_report_len": 3541
+      }
+    },
+    {
+      "scenario": 8,
+      "domain": "citizen_services_portal",
+      "with": {
+        "coverage": 0.6969909258186817,
+        "precision": 0.16,
+        "conflict": 0.8666666666666667,
+        "nfr": 0.0,
+        "total": 0.5104954629093409,
+        "hallucinated": 63,
+        "srs_len": 4789,
+        "error_report_len": 3939
+      },
+      "without": {
+        "coverage": 0.7190529964864254,
+        "precision": 0.17045454545454544,
+        "conflict": 0.6,
+        "nfr": 0.0,
+        "total": 0.48361740733412173,
+        "hallucinated": 73,
+        "srs_len": 4926,
+        "error_report_len": 3924
+      }
+    },
+    {
+      "scenario": 9,
+      "domain": "smart_parking_system",
+      "with": {
+        "coverage": 0.6390602737665176,
+        "precision": 0.1348314606741573,
+        "conflict": 0.8,
+        "nfr": 0.0,
+        "total": 0.4664964290180903,
+        "hallucinated": 77,
+        "srs_len": 4919,
+        "error_report_len": 3642
+      },
+      "without": {
+        "coverage": 0.7172581106424332,
+        "precision": 0.18823529411764706,
+        "conflict": 0.6,
+        "nfr": 0.0,
+        "total": 0.48627611414474603,
+        "hallucinated": 69,
+        "srs_len": 4810,
+        "error_report_len": 3907
+      }
+    },
+    {
+      "scenario": 10,
+      "domain": "e_commerce_marketplace",
+      "with": {
+        "coverage": 0.6910270340740681,
+        "precision": 0.09302325581395349,
+        "conflict": 1.0,
+        "nfr": 0.0,
+        "total": 0.5141181681998247,
+        "hallucinated": 78,
+        "srs_len": 4790,
+        "error_report_len": 3754
+      },
+      "without": {
+        "coverage": 0.7528124824166298,
+        "precision": 0.1111111111111111,
+        "conflict": 0.0,
+        "nfr": 0.0,
+        "total": 0.3986284634305371,
+        "hallucinated": 80,
+        "srs_len": 4821,
+        "error_report_len": 4019
+      }
+    },
+    {
+      "scenario": 11,
+      "domain": "cold_chain_monitoring",
+      "with": {
+        "coverage": 0.6529003977775574,
+        "precision": 0.13253012048192772,
+        "conflict": 1.0,
+        "nfr": 0.0,
+        "total": 0.5029562229851642,
+        "hallucinated": 72,
+        "srs_len": 5130,
+        "error_report_len": 3917
+      },
+      "without": {
+        "coverage": 0.7436386942863464,
+        "precision": 0.12941176470588237,
+        "conflict": 0.6,
+        "nfr": 0.0,
+        "total": 0.48770170008434965,
+        "hallucinated": 74,
+        "srs_len": 5078,
+        "error_report_len": 3787
+      }
+    },
+    {
+      "scenario": 12,
+      "domain": "smart_building_iot",
+      "with": {
+        "coverage": 0.6419031135737896,
+        "precision": 0.14606741573033707,
+        "conflict": 0.4,
+        "nfr": 0.0,
+        "total": 0.4101650399329622,
+        "hallucinated": 76,
+        "srs_len": 5196,
+        "error_report_len": 3533
+      },
+      "without": {
+        "coverage": 0.7979750484228134,
+        "precision": 0.21176470588235294,
+        "conflict": 0.0,
+        "nfr": 0.0,
+        "total": 0.4413404653878773,
+        "hallucinated": 67,
+        "srs_len": 4895,
+        "error_report_len": 4022
+      }
+    },
+    {
+      "scenario": 13,
+      "domain": "corporate_training_platform",
+      "with": {
+        "coverage": 0.6091448068618774,
+        "precision": 0.08333333333333333,
+        "conflict": 1.0,
+        "nfr": 0.0,
+        "total": 0.47123907009760535,
+        "hallucinated": 77,
+        "srs_len": 4892,
+        "error_report_len": 3932
+      },
+      "without": {
+        "coverage": 0.6104585193097591,
+        "precision": 0.02247191011235955,
+        "conflict": 0.6,
+        "nfr": 0.0,
+        "total": 0.3997236416773515,
+        "hallucinated": 87,
+        "srs_len": 5104,
+        "error_report_len": 3614
+      }
+    },
+    {
+      "scenario": 14,
+      "domain": "insurance_claims_platform",
+      "with": {
+        "coverage": 0.5142878107726574,
+        "precision": 0.03225806451612903,
+        "conflict": 1.0,
+        "nfr": 0.0,
+        "total": 0.41359551828955454,
+        "hallucinated": 90,
+        "srs_len": 4963,
+        "error_report_len": 3624
+      },
+      "without": {
+        "coverage": 0.7448965683579445,
+        "precision": 0.13793103448275862,
+        "conflict": 0.6,
+        "nfr": 0.25,
+        "total": 0.527534491075524,
+        "hallucinated": 75,
+        "srs_len": 4963,
+        "error_report_len": 3836
+      }
+    },
+    {
+      "scenario": 15,
+      "domain": "ride_sharing_platform",
+      "with": {
+        "coverage": 0.701941691339016,
+        "precision": 0.1,
+        "conflict": 0.4,
+        "nfr": 0.25,
+        "total": 0.468470845669508,
+        "hallucinated": 81,
+        "srs_len": 4765,
+        "error_report_len": 3670
+      },
+      "without": {
+        "coverage": 0.6470969617366791,
+        "precision": 0.15384615384615385,
+        "conflict": 0.6,
+        "nfr": 0.25,
+        "total": 0.48181771163757026,
+        "hallucinated": 66,
+        "srs_len": 4834,
+        "error_report_len": 3370
+      }
+    },
+    {
+      "scenario": 16,
+      "domain": "rental_marketplace",
+      "with": {
+        "coverage": 0.7403151467442513,
+        "precision": 0.14772727272727273,
+        "conflict": 1.0,
+        "nfr": 0.25,
+        "total": 0.5872030279175802,
+        "hallucinated": 75,
+        "srs_len": 5015,
+        "error_report_len": 3676
+      },
+      "without": {
+        "coverage": 0.6628927290439606,
+        "precision": 0.15476190476190477,
+        "conflict": 0.0,
+        "nfr": 0.25,
+        "total": 0.3998987454743612,
+        "hallucinated": 71,
+        "srs_len": 4817,
+        "error_report_len": 3909
+      }
+    },
+    {
+      "scenario": 17,
+      "domain": "social_media_platform",
+      "with": {
+        "coverage": 0.757311649620533,
+        "precision": 0.1511627906976744,
+        "conflict": 0.8,
+        "nfr": 0.0,
+        "total": 0.5288883829498014,
+        "hallucinated": 73,
+        "srs_len": 4665,
+        "error_report_len": 3587
+      },
+      "without": {
+        "coverage": 0.6195942349731922,
+        "precision": 0.08433734939759036,
+        "conflict": 0.6,
+        "nfr": 0.0,
+        "total": 0.4166645873661142,
+        "hallucinated": 76,
+        "srs_len": 4923,
+        "error_report_len": 3460
+      }
+    },
+    {
+      "scenario": 18,
+      "domain": "school_management_system",
+      "with": {
+        "coverage": 0.6835523173213005,
+        "precision": 0.17777777777777778,
+        "conflict": 1.0,
+        "nfr": 0.0,
+        "total": 0.5273317142162058,
+        "hallucinated": 74,
+        "srs_len": 4800,
+        "error_report_len": 3382
+      },
+      "without": {
+        "coverage": 0.6485137119889259,
+        "precision": 0.16666666666666666,
+        "conflict": 0.6,
+        "nfr": 0.0,
+        "total": 0.44759018932779626,
+        "hallucinated": 75,
+        "srs_len": 4917,
+        "error_report_len": 3534
+      }
+    },
+    {
+      "scenario": 19,
+      "domain": "employee_performance_management",
+      "with": {
+        "coverage": 0.5499733611941338,
+        "precision": 0.19753086419753085,
+        "conflict": 1.0,
+        "nfr": 0.0,
+        "total": 0.4644928534365731,
+        "hallucinated": 65,
+        "srs_len": 4948,
+        "error_report_len": 3441
+      },
+      "without": {
+        "coverage": 0.684228703379631,
+        "precision": 0.16666666666666666,
+        "conflict": 0.6,
+        "nfr": 0.0,
+        "total": 0.4654476850231488,
+        "hallucinated": 75,
+        "srs_len": 4857,
+        "error_report_len": 4138
+      }
+    },
+    {
+      "scenario": 20,
+      "domain": "citizen_services_portal",
+      "with": {
+        "coverage": 0.5951914079487324,
+        "precision": 0.09302325581395349,
+        "conflict": 1.0,
+        "nfr": 0.0,
+        "total": 0.46620035513715685,
+        "hallucinated": 78,
+        "srs_len": 4986,
+        "error_report_len": 3753
+      },
+      "without": {
+        "coverage": 0.7516721487045288,
+        "precision": 0.14444444444444443,
+        "conflict": 0.6,
+        "nfr": 0.0,
+        "total": 0.49472496324115334,
+        "hallucinated": 77,
+        "srs_len": 5213,
+        "error_report_len": 3783
+      }
+    },
+    {
+      "scenario": 21,
+      "domain": "property_listing_platform",
+      "with": {
+        "coverage": 0.6959719806909561,
+        "precision": 0.1511627906976744,
+        "conflict": 1.0,
+        "nfr": 0.0,
+        "total": 0.5282185484850129,
+        "hallucinated": 73,
+        "srs_len": 4790,
+        "error_report_len": 3825
+      },
+      "without": {
+        "coverage": 0.6824988722801208,
+        "precision": 0.0851063829787234,
+        "conflict": 0.6,
+        "nfr": 0.0,
+        "total": 0.4482707127358051,
+        "hallucinated": 86,
+        "srs_len": 4529,
+        "error_report_len": 3502
+      }
+    },
+    {
+      "scenario": 22,
+      "domain": "pharmacy_management",
+      "with": {
+        "coverage": 0.8023620098829269,
+        "precision": 0.26136363636363635,
+        "conflict": 1.0,
+        "nfr": 0.0,
+        "total": 0.6034537322141907,
+        "hallucinated": 65,
+        "srs_len": 5026,
+        "error_report_len": 3885
+      },
+      "without": {
+        "coverage": 0.7781573496758938,
+        "precision": 0.25316455696202533,
+        "conflict": 0.6,
+        "nfr": 0.25,
+        "total": 0.567211586230352,
+        "hallucinated": 59,
+        "srs_len": 5051,
+        "error_report_len": 3679
+      }
+    }
+  ],
+  "summary": {
+    "conflict": {
+      "with_mean": 0.8757575757575757,
+      "without_mean": 0.4909090909090908,
+      "mean_diff": 0.38484848484848494,
+      "t_p": 9.898142039484703e-06,
+      "wilcoxon_p": 5.7150247842096916e-05,
+      "cohens_d": 1.2309312637357488
+    },
+    "total": {
+      "with_mean": 0.5067962170558183,
+      "without_mean": 0.45979473595976045,
+      "mean_diff": 0.04700148109605787,
+      "t_p": 0.009538068828858947,
+      "wilcoxon_p": 0.01272726058959961,
+      "cohens_d": 0.6081256091637295
+    },
+    "coverage": {
+      "with_mean": 0.6678917973556302,
+      "without_mean": 0.692631873217496,
+      "mean_diff": -0.024740075861865825,
+      "t_p": 0.22459357700929902,
+      "wilcoxon_p": 0.3369474411010742,
+      "cohens_d": -0.2667733542246565
+    },
+    "precision": {
+      "with_mean": 0.13641068279910692,
+      "without_mean": 0.14807581493688035,
+      "mean_diff": -0.011665132137773428,
+      "t_p": 0.4378013019950982,
+      "wilcoxon_p": 0.24789905548095703,
+      "cohens_d": -0.1686363908641658
+    },
+    "nfr": {
+      "with_mean": 0.09469696969696968,
+      "without_mean": 0.06818181818181818,
+      "mean_diff": 0.026515151515151512,
+      "t_p": 0.5265393592804741,
+      "wilcoxon_p": 0.338724147759658,
+      "cohens_d": 0.13730392897811922
+    }
+  }
+}

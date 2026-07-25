@@ -324,7 +324,8 @@ class AbstractAgent(ABC, MARELoggerMixin):
         # Also critical: NVIDIA's 400 JSON body contains the field name 'timeout'
         # (e.g. {'loc': ('body', 'timeout'), ...}) which would otherwise match the
         # "timeout" word in _RETRYABLE_WORDS, causing infinite retries on a bug.
-        if "[400]" in str(exc):
+        s = str(exc)
+        if any(c in s for c in ("[400]", "[401]", "[403]", "[404]", "[422]")):
             return False
         msg = str(exc).lower()
         return (

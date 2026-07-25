@@ -34,7 +34,7 @@ __all__ = [
     "ModelerAgent",
     "CheckerAgent",
     "DocumenterAgent",
-    "NegotiatorAgent"
+    "NegotiatorAgent",
 
     # Factory
     "AgentFactory",

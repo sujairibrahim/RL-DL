@@ -103,6 +103,8 @@ Your output should be professional, well-organized, and suitable for use by deve
 
         prompt_template = """Create a comprehensive Software Requirements Specification (SRS) document following IEEE 830 standards. Use all provided artifacts to create a complete and professional specification.
 
+IMPORTANT: If the Requirements section below contains priority tiers (e.g. P1/P2/P3, Must/Should/Could-have) or indicates that a conflict between requirements was discussed or resolved, you MUST vary each requirement's Priority field accordingly (do not default every requirement to "High"), and you MUST explicitly summarize what was agreed, resolved, or deferred in Section 3.2 Business Rules.
+
 Project Name: {project_name}
 Domain: {domain}
 Version: {version}
@@ -184,12 +186,12 @@ For each requirement include:
 - **Requirement ID:** FR-001 (use sequential zero-padded numbering: FR-001, FR-002, ...)
 - **Title:** [Requirement title]
 - **Description:** The system shall [action] ...
-- **Priority:** High/Medium/Low
+- **Priority:** High/Medium/Low (base this on any prioritization signals in the Requirements input, such as Must/Should/Could-have tiers or P1/P2/P3 labels; if this requirement was involved in a resolved conflict, briefly note it, e.g. "High (conflict with FR-002 resolved in favor of this requirement)")
 - **Source:** [Traceability to user story]
 - **Acceptance Criteria:** [Testable criteria]
 
 ### 3.2 Business Rules
-[Business rules governing system behavior]
+[Business rules governing system behavior. If the Requirements input indicates any prioritization decisions or conflict resolutions between requirements, briefly summarize what was agreed, resolved, or deferred, and why.]
 
 ## 4. External Interface Requirements
 
